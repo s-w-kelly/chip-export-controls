@@ -220,7 +220,7 @@ export default function ChipExportTracker() {
                       { key: 'name', label: 'Chip' },
                       { key: 'tpp', label: 'TPP' },
                       { key: 'pd', label: 'PD' },
-                      { key: 'dieArea', label: 'Interconnect', hasTooltip: true },
+                      { key: 'interconnect', label: 'Interconnect', hasTooltip: true },
                       { key: 'controlStatus', label: 'Status' }
                     ].map(col => (
                       <th
@@ -347,7 +347,7 @@ export default function ChipExportTracker() {
                         </span>
                       </td>
                       <td style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a2e', color: '#9ca3af' }}>
-                        {chip.dieArea ? chip.dieArea.toLocaleString() : '—'}
+                        {chip.interconnect ? chip.interconnect.toLocaleString() : '—'}
                       </td>
                       <td style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a2e' }}>
                         <span style={{
