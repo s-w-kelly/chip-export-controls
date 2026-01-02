@@ -571,6 +571,7 @@ export default function ChipExportTracker() {
                       cursor: 'pointer'
                     }}
                   >
+                    <option value="4">4-bit (FP4)</option>
                     <option value="8">8-bit (FP8, INT8)</option>
                     <option value="16">16-bit (FP16, BF16)</option>
                     <option value="32">32-bit (FP32, TF32)</option>
