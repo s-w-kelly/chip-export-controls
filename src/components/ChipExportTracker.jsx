@@ -89,7 +89,7 @@ export default function ChipExportTracker() {
               margin: 0,
               color: '#ffffff'
             }}>
-              AI Chip Export Control Tracker
+              Export Control Toolkit
             </h1>
           </div>
           <p style={{
@@ -98,7 +98,7 @@ export default function ChipExportTracker() {
             margin: '8px 0 0 28px',
             letterSpacing: '0.3px'
           }}>
-            TPP & Performance Density metrics for semiconductor export compliance analysis
+            Tools for tracking and understanding export controls on AI chips
           </p>
         </div>
       </header>
