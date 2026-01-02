@@ -435,6 +435,10 @@ export default function ChipExportTracker() {
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.int8 ? `${chip.int8} TOPS` : '—'}</div>
                         </div>
                         <div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>INT8</div>
+                          <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.dieArea ? `${chip.dieArea} mm²` : '—'}</div>
+                        </div>
+                        <div>
                           <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>HBM</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.hbmCapacity || '—'}</div>
                         </div>
