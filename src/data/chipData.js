@@ -38,7 +38,7 @@ export const chipData = [
     name: "NVIDIA H200 NVL",
     manufacturer: "NVIDIA",
     architecture: "Hopper",
-    releaseDate: "2022",
+    releaseDate: "2024",
     tpp: 13364,
     pd: 16.42,
     interconnect: "900 GB/s (NVLink)",
@@ -64,7 +64,7 @@ export const chipData = [
     name: "NVIDIA H200 SXM",
     manufacturer: "NVIDIA",
     architecture: "Hopper",
-    releaseDate: "2022",
+    releaseDate: "2024",
     tpp: 15832,
     pd: 19.45,
     interconnect: "900 GB/s (NVLink)",
@@ -84,6 +84,56 @@ export const chipData = [
     sources: [
       { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
       { name: "Semafor", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }    
+    ]
+  },
+  {
+    name: "NVIDIA H800 PCIe",
+    manufacturer: "NVIDIA",
+    architecture: "Hopper",
+    releaseDate: "2023",
+    tpp: 12104,
+    pd: 14.87,
+    interconnect: "600 GB/s (NVLink)",
+    fp4: null,
+    fp8: "3026 (sparse)",
+    fp16: "1513 (sparse)",
+    bf16: "1513 (sparse)",
+    tf32: "756 (sparse)",
+    int8: "3026 (sparse)",
+    dieArea: "814",
+    hbmCapacity: "80 GB HBM3",
+    memoryBandwidth: "2 TB/s",
+    tdp: "350W",
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls.",
+    sources: [
+      { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
+    ]
+  },
+  {
+    name: "NVIDIA H800 SXM",
+    manufacturer: "NVIDIA",
+    architecture: "Hopper",
+    releaseDate: "2023",
+    tpp: 15832,
+    pd: 19.45,
+    interconnect: "900 GB/s (NVLink)",
+    fp4: null,
+    fp8: "3958 (sparse)",
+    fp16: "1979 (sparse)",
+    bf16: "1979 (sparse)",
+    tf32: "989 (sparse)",
+    int8: "3958 (sparse)",
+    dieArea: "814",
+    hbmCapacity: "80 GB HBM3",
+    memoryBandwidth: "3.35 TB/s",
+    tdp: "700W",
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls.",
+    sources: [
+    { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
     ]
   },
   {
@@ -134,31 +184,6 @@ export const chipData = [
     notes: ".",
     sources: [
     { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" }
-    ]
-  },
-  {
-    name: "NVIDIA H800",
-    manufacturer: "NVIDIA",
-    architecture: "Hopper",
-    releaseDate: "2023",
-    tpp: 15831,
-    interconnect: 814,
-    pd: 19.4,
-    fp4: 1,
-    fp8: 4500,
-    fp16: 2250,
-    bf16: 1,
-    tf32: 1,
-    int8: 4500,
-    hbmCapacity: "80 GB",
-    memoryBandwidth: "3.35 TB/s",
-    tdp: "700W",
-    controlStatus: "Controlled (Oct 2023)",
-    eccn: "3A090",
-    notes: "China compliance variant with reduced NVLink bandwidth. Controlled under Oct 2023 rule closing loophole.",
-    sources: [
-      { name: "NVIDIA", url: "#" },
-      { name: "BIS Final Rule Oct 2023", url: "#" }
     ]
   },
   {
