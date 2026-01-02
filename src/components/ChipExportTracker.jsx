@@ -452,15 +452,43 @@ export default function ChipExportTracker() {
                         <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '6px' }}>Sources</div>
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                           {chip.sources.map((src, i) => (
-                            <span key={i} style={{
-                              fontSize: '11px',
-                              color: '#6b7280',
-                              background: 'rgba(255,255,255,0.05)',
-                              padding: '4px 8px',
-                              borderRadius: '4px'
-                            }}>
-                              {src}
-                            </span>
+                            src.url ? (
+                              <a
+                                key={i}
+                                href={src.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  fontSize: '11px',
+                                  color: '#9ca3af',
+                                  background: 'rgba(255,255,255,0.05)',
+                                  padding: '4px 8px',
+                                  borderRadius: '4px',
+                                  textDecoration: 'none',
+                                  transition: 'all 0.2s ease'
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.target.style.background = 'rgba(239, 68, 68, 0.2)';
+                                  e.target.style.color = '#fca5a5';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.target.style.background = 'rgba(255,255,255,0.05)';
+                                  e.target.style.color = '#9ca3af';
+                                }}
+                              >
+                                {src.name}
+                              </a>
+                            ) : (
+                              <span key={i} style={{
+                                fontSize: '11px',
+                                color: '#6b7280',
+                                background: 'rgba(255,255,255,0.05)',
+                                padding: '4px 8px',
+                                borderRadius: '4px'
+                              }}>
+                                {src.name}
+                              </span>
+                            )
                           ))}
                         </div>
                       </div>
@@ -483,7 +511,7 @@ export default function ChipExportTracker() {
             }}>
               <h2 style={{ margin: '0 0 8px', fontSize: '18px', color: '#ffffff' }}>TPP & Performance Density Calculator</h2>
               <p style={{ margin: '0 0 28px', fontSize: '13px', color: '#6b7280' }}>
-                Estimate export control metrics for any AI accelerator
+                Estimate export control metrics for any chip
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
@@ -722,7 +750,22 @@ export default function ChipExportTracker() {
                     </span>
                   )}
                   <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>{rule.date}</div>
-                  <h3 style={{ margin: '0 0 16px', fontSize: '16px', color: '#ffffff' }}>{rule.rule}</h3>
+                  <h3 style={{ margin: '0 0 16px', fontSize: '16px' }}>
+                    <a
+                      href={rule.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: '#ffffff',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = '#ef4444'}
+                      onMouseLeave={(e) => e.target.style.color = '#ffffff'}
+                    >
+                      {rule.rule}
+                    </a>
+                  </h3>
                   <div style={{ display: 'flex', gap: '32px', marginBottom: '16px' }}>
                     <div>
                       <span style={{ fontSize: '12px', color: '#6b7280' }}>TPP Threshold: </span>
@@ -757,7 +800,18 @@ export default function ChipExportTracker() {
                 </h3>
                 <div style={{ fontSize: '13px', color: '#9ca3af', lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 12px' }}>
-                    Per EAR: <code style={{ background: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '4px' }}>TPP = 2 × MacTOPS × bit_length</code>, aggregated over all processing units.
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: '#ef4444',
+                        textDecoration: 'underline',
+                        textUnderlineOffset: '2px'
+                      }}
+                    >
+                      Per EAR
+                    </a>: <code style={{ background: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '4px' }}>TPP = 2 × MacTOPS × bit_length</code>, aggregated over all processing units.
                   </p>
                   <p style={{ margin: '0 0 12px' }}>
                     The factor of 2 reflects industry convention of counting multiply-accumulate (D = A × B + C) as two operations. Since datasheets typically report FLOPS/TOPS already using this convention, the practical formula simplifies to:

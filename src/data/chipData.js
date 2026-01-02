@@ -5,12 +5,12 @@
  * - Add new chips by copying an existing object and modifying values
  * - All numeric fields (tpp, dieArea, pd, etc.) can be null if unknown
  * - controlStatus options: "Controlled", "Controlled (Oct 2023)", "Unknown", "Entity List (Company)"
- * - sources is an array of strings citing where data came from
+ * - sources is an array of objects with { name, url } citing where data came from
  */
 
 export const chipData = [
   {
-    name: "NVIDIA H100 SXM",
+    name: "NVIDIA H100 NVL",
     manufacturer: "NVIDIA",
     architecture: "Hopper",
     releaseDate: "2022",
@@ -26,10 +26,13 @@ export const chipData = [
     controlStatus: "Controlled",
     eccn: "3A090",
     notes: "Primary target of Oct 2022 controls. TPP calculated from FP8 dense (1979 TFLOPS × 8).",
-    sources: ["NVIDIA Hopper Architecture Whitepaper", "BIS Final Rule Oct 2022"]
+    sources: [
+      { name: "NVIDIA", url: "#" },
+      { name: "BIS Final Rule Oct 2023", url: "#" }
+    ]
   },
   {
-    name: "NVIDIA H100 PCIe",
+    name: "NVIDIA H100 SXM",
     manufacturer: "NVIDIA",
     architecture: "Hopper",
     releaseDate: "2022",
@@ -45,7 +48,10 @@ export const chipData = [
     controlStatus: "Controlled",
     eccn: "3A090",
     notes: "Lower clocks than SXM variant. Same die, lower power.",
-    sources: ["NVIDIA H100 Datasheet"]
+    sources: [
+      { name: "NVIDIA", url: "#" },
+      { name: "BIS Final Rule Oct 2023", url: "#" }
+    ]
   },
   {
     name: "NVIDIA H800",
@@ -64,7 +70,10 @@ export const chipData = [
     controlStatus: "Controlled (Oct 2023)",
     eccn: "3A090",
     notes: "China compliance variant with reduced NVLink bandwidth. Controlled under Oct 2023 rule closing loophole.",
-    sources: ["NVIDIA", "BIS Final Rule Oct 2023"]
+    sources: [
+      { name: "NVIDIA", url: "#" },
+      { name: "BIS Final Rule Oct 2023", url: "#" }
+    ]
   },
   {
     name: "NVIDIA A100 SXM",
@@ -83,7 +92,9 @@ export const chipData = [
     controlStatus: "Controlled",
     eccn: "3A090",
     notes: "No FP8 support. TPP from INT8 dense (624 TOPS × 8). Original Oct 2022 control target.",
-    sources: ["NVIDIA Ampere Architecture Whitepaper"]
+    sources: [
+      { name: "NVIDIA Ampere Architecture Whitepaper", url: "#" }
+    ]
   },
   {
     name: "NVIDIA A800",
@@ -102,7 +113,10 @@ export const chipData = [
     controlStatus: "Controlled (Oct 2023)",
     eccn: "3A090",
     notes: "China compliance variant with reduced interconnect. Controlled under Oct 2023 rule.",
-    sources: ["NVIDIA", "BIS Final Rule Oct 2023"]
+    sources: [
+      { name: "NVIDIA", url: "#" },
+      { name: "BIS Final Rule Oct 2023", url: "#" }
+    ]
   },
   {
     name: "NVIDIA B200",
@@ -121,7 +135,10 @@ export const chipData = [
     controlStatus: "Controlled",
     eccn: "3A090",
     notes: "Dual-die design (2×807mm²). TPP estimate from FP8 dense. Values preliminary.",
-    sources: ["NVIDIA GTC 2024", "SemiAnalysis estimates"]
+    sources: [
+      { name: "NVIDIA GTC 2024", url: "#" },
+      { name: "SemiAnalysis estimates", url: "#" }
+    ]
   },
   {
     name: "AMD MI300X",
@@ -140,7 +157,10 @@ export const chipData = [
     controlStatus: "Controlled",
     eccn: "3A090",
     notes: "Chiplet design: 8 XCDs (~1536mm² total logic). TPP from FP8 dense. Die area excludes I/O dies.",
-    sources: ["AMD CDNA 3 Whitepaper", "AMD Tech Day 2023"]
+    sources: [
+      { name: "AMD CDNA 3 Whitepaper", url: "#" },
+      { name: "AMD Tech Day 2023", url: "#" }
+    ]
   },
   {
     name: "Google TPU v5e",
@@ -159,7 +179,10 @@ export const chipData = [
     controlStatus: "Unknown",
     eccn: "Unknown",
     notes: "Limited public specs. TPU v5e optimized for inference. Die size not publicly disclosed.",
-    sources: ["Google Cloud documentation", "Estimates"]
+    sources: [
+      { name: "Google Cloud documentation", url: "#" },
+      { name: "Estimates", url: null }
+    ]
   },
   {
     name: "Huawei Ascend 910B",
@@ -178,6 +201,9 @@ export const chipData = [
     controlStatus: "Entity List (Huawei)",
     eccn: "N/A",
     notes: "Specs unconfirmed. Huawei on Entity List since 2019. Manufactured by SMIC at 7nm.",
-    sources: ["Industry estimates", "TechInsights teardown reports"]
+    sources: [
+      { name: "Industry estimates", url: null },
+      { name: "TechInsights teardown reports", url: "#" }
+    ]
   }
 ];
