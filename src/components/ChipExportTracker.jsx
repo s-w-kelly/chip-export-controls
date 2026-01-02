@@ -6,6 +6,7 @@ export default function ChipExportTracker() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [sortConfig, setSortConfig] = useState({ key: 'tpp', direction: 'desc' });
   const [selectedChip, setSelectedChip] = useState(null);
+  const [showInterconnectTooltip, setShowInterconnectTooltip] = useState(false);
 
   // Calculator state
   const [calcInputs, setCalcInputs] = useState({
@@ -17,9 +18,22 @@ export default function ChipExportTracker() {
 
   const sortedChips = useMemo(() => {
     return [...chipData].sort((a, b) => {
-      const aVal = a[sortConfig.key] ?? -Infinity;
-      const bVal = b[sortConfig.key] ?? -Infinity;
-      return sortConfig.direction === 'asc' ? aVal - bVal : bVal - aVal;
+      const aVal = a[sortConfig.key];
+      const bVal = b[sortConfig.key];
+
+      // Handle string sorting for name and controlStatus columns
+      if (sortConfig.key === 'name' || sortConfig.key === 'controlStatus') {
+        const aStr = aVal ?? '';
+        const bStr = bVal ?? '';
+        return sortConfig.direction === 'asc'
+          ? aStr.localeCompare(bStr)
+          : bStr.localeCompare(aStr);
+      }
+
+      // Numeric sorting for other columns
+      const aNum = aVal ?? -Infinity;
+      const bNum = bVal ?? -Infinity;
+      return sortConfig.direction === 'asc' ? aNum - bNum : bNum - aNum;
     });
   }, [sortConfig]);
 
@@ -206,7 +220,7 @@ export default function ChipExportTracker() {
                       { key: 'name', label: 'Chip' },
                       { key: 'tpp', label: 'TPP' },
                       { key: 'pd', label: 'PD' },
-                      { key: 'dieArea', label: 'Die Area (mm²)' },
+                      { key: 'dieArea', label: 'Interconnect', hasTooltip: true },
                       { key: 'controlStatus', label: 'Status' }
                     ].map(col => (
                       <th
@@ -222,10 +236,74 @@ export default function ChipExportTracker() {
                           letterSpacing: '1px',
                           cursor: 'pointer',
                           borderBottom: '1px solid #2a2a3e',
-                          userSelect: 'none'
+                          userSelect: 'none',
+                          position: col.hasTooltip ? 'relative' : 'static'
                         }}
                       >
                         {col.label}
+                        {col.hasTooltip && (
+                          <span
+                            onMouseEnter={() => setShowInterconnectTooltip(true)}
+                            onMouseLeave={() => setShowInterconnectTooltip(false)}
+                            style={{
+                              marginLeft: '6px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '14px',
+                              height: '14px',
+                              borderRadius: '50%',
+                              border: '1px solid #6b7280',
+                              fontSize: '9px',
+                              color: '#6b7280',
+                              cursor: 'help',
+                              fontWeight: '600',
+                              verticalAlign: 'middle'
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            i
+                          </span>
+                        )}
+                        {col.hasTooltip && showInterconnectTooltip && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '100%',
+                              left: '0',
+                              marginTop: '8px',
+                              width: '380px',
+                              padding: '16px',
+                              background: 'linear-gradient(135deg, #1e1e30 0%, #252540 100%)',
+                              border: '1px solid #3a3a50',
+                              borderRadius: '8px',
+                              boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                              zIndex: 1000,
+                              textTransform: 'none',
+                              letterSpacing: 'normal',
+                              fontWeight: '400',
+                              fontSize: '13px',
+                              lineHeight: '1.6',
+                              color: '#9ca3af',
+                              cursor: 'default'
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Interconnect bandwidth was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD. However, interconnect remains an important metric, and Nvidia has manipulated interconnect on China-specific chips to circumvent export controls. Interconnect is arguably increasingly important given the risk of test-time compute scaling.{' '}
+                            <a
+                              href="#"
+                              style={{
+                                color: '#ef4444',
+                                textDecoration: 'underline',
+                                textUnderlineOffset: '2px'
+                              }}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Some analysts have argued
+                            </a>{' '}
+                            for the re-implementation of interconnect as a control threshold.
+                          </div>
+                        )}
                         {sortConfig.key === col.key && (
                           <span style={{ marginLeft: '6px', opacity: 0.6 }}>
                             {sortConfig.direction === 'asc' ? '↑' : '↓'}
