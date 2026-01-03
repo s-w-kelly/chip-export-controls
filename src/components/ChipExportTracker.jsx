@@ -733,8 +733,11 @@ export default function ChipExportTracker() {
                 <p style={{ margin: '0 0 12px' }}>
                   <strong style={{ color: '#ffffff' }}>Bit Length:</strong> Use the bit length that yields the highest TPP (most likely 8- or 4-bit).
                 </p>
-                <p style={{ margin: '0' }}>
+                <p style={{ margin: '0 0 12px' }}>
                   <strong style={{ color: '#ffffff' }}>Die Area:</strong> All logic dies (including caches) manufactured with a non-planar transistor architecture (typically ≤16nm). Exclude separate memory stacks (e.g., HBM). For chiplet designs, sum all applicable logic die areas.
+                </p>
+                <p style={{ margin: '0 0 12px' }}>
+                  <strong style={{ color: '#ffffff' }}>—</strong>
                 </p>
                 <p style={{ margin: '0' }}>
                   See Methodology tab for full TPP and PD explanation.
