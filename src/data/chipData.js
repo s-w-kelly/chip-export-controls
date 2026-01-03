@@ -55,7 +55,7 @@ export const chipData = [
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: ".",
+    notes: "—",
     sources: [
       { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
       { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
@@ -81,7 +81,7 @@ export const chipData = [
     tdp: "700W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: ".",
+    notes: "—",
     sources: [
       { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
       { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
@@ -240,7 +240,7 @@ export const chipData = [
     tdp: "400W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: ".",
+    notes: "—",
     sources: [
       { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
       { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
@@ -266,7 +266,7 @@ export const chipData = [
     tdp: "700W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: ".",
+    notes: "—",
     sources: [
     { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
     { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
@@ -392,7 +392,7 @@ export const chipData = [
     tdp: "1400W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI355X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi355x-gpu-brochure.pdf" },    
   ]
@@ -417,7 +417,7 @@ export const chipData = [
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI300X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf" },  ]
   },
@@ -441,7 +441,7 @@ export const chipData = [
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI325X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },    
@@ -467,7 +467,7 @@ export const chipData = [
     tdp: "750W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI300X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300x-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
@@ -493,7 +493,7 @@ export const chipData = [
     tdp: "760W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI300A datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300a-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
@@ -519,7 +519,7 @@ export const chipData = [
     tdp: "560W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI250X product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
@@ -545,7 +545,7 @@ export const chipData = [
     tdp: "560W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI250 product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
@@ -571,7 +571,7 @@ export const chipData = [
     tdp: null,
     controlStatus: "NAC eligible",
     eccn: "3A090.b",
-    notes: "",
+    notes: "—",
     sources: [
     { name: "MI250 product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },

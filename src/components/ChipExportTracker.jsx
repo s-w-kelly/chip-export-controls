@@ -728,13 +728,16 @@ export default function ChipExportTracker() {
               </h3>
               <div style={{ fontSize: '13px', color: '#9ca3af', lineHeight: '1.7' }}>
                 <p style={{ margin: '0 0 12px' }}>
-                  <strong style={{ color: '#ffffff' }}>Performance:</strong> Use dense matrix performance, not sparse. If your datasheet shows sparse figures (common for NVIDIA), check for footnotes and halve the value, or use the checkbox above.
+                  <strong style={{ color: '#ffffff' }}>Performance:</strong> Use dense matrix performance, not sparse. If only sparse performance is provided by the chipmaker (common for NVIDIA datasheets), you can generally halve the value or use the checkbox above. However, for some chips, dense performance is not exactly half that of sparse (see, e.g., NVIDIA B300), so check official documentation.
                 </p>
                 <p style={{ margin: '0 0 12px' }}>
-                  <strong style={{ color: '#ffffff' }}>Bit Length:</strong> Use the bit length that yields the highest TPP. For most modern AI chips, this is 8-bit (FP8 or INT8).
+                  <strong style={{ color: '#ffffff' }}>Bit Length:</strong> Use the bit length that yields the highest TPP (most likely 8- or 4-bit).
                 </p>
                 <p style={{ margin: '0' }}>
-                  <strong style={{ color: '#ffffff' }}>Die Area:</strong> Include all logic dies with non-planar transistors (typically ≤16nm). Exclude HBM stacks and I/O dies on separate process nodes. For chiplet designs, sum relevant compute dies.
+                  <strong style={{ color: '#ffffff' }}>Die Area:</strong> All logic dies (including caches) manufactured with a non-planar transistor architecture (typically ≤16nm). Exclude separate memory stacks (e.g., HBM). For chiplet designs, sum all applicable logic die areas.
+                </p>
+                <p style={{ margin: '0' }}>
+                  See Methodology tab for full TPP and PD explanation.
                 </p>
               </div>
             </div>
@@ -792,11 +795,11 @@ export default function ChipExportTracker() {
                     <code style={{ background: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '4px' }}>PD = TPP ÷ applicable_die_area</code>
                   </p>
                   <p style={{ margin: '0 0 12px' }}>
-                    "Applicable die area" includes all logic dies manufactured with non-planar transistor architecture (typically ≤16nm processes including FinFET and GAA).
+                    "Applicable die area" includes all logic dies (including caches) manufactured with a process node that uses a non-planar transistor architecture (typically ≤16nm).
                   </p>
                   <p style={{ margin: 0 }}>
-                    <strong>Include:</strong> All compute die area including caches.<br />
-                    <strong>Exclude:</strong> Separate HBM stacks, I/O dies on older process nodes.
+                    Exclude separate memory stacks (e.g., HBM).
+                    Calculate at the highest level of integration: for chiplet designs, sum all applicable logic die areas; for multi-chip boards, aggregate if the combined parameters exceed thresholds.
                   </p>
                 </div>
               </section>
