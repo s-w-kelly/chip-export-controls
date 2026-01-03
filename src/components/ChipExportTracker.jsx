@@ -294,19 +294,7 @@ export default function ChipExportTracker() {
                             }}
                             onClick={(e) => e.stopPropagation()}
                           >
-                            Interconnect bandwidth was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD. However, interconnect remains an important metric, and Nvidia has manipulated interconnect on China-specific chips to circumvent export controls. Interconnect is arguably increasingly important given the risk of test-time compute scaling.{' '}
-                            <a
-                              href="#"
-                              style={{
-                                color: '#ef4444',
-                                textDecoration: 'underline',
-                                textUnderlineOffset: '2px'
-                              }}
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              Some analysts have argued
-                            </a>{' '}
-                            for the re-implementation of interconnect as a control threshold.
+                            Interconnect bandwidth was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD after Nvidia manipulated interconnect on China-specific chips to circumvent controls. However, interconnect remains an important metric and is arguably increasingly important given the rise of test-time compute scaling.                        
                           </div>
                         )}
                         {sortConfig.key === col.key && (
@@ -331,9 +319,6 @@ export default function ChipExportTracker() {
                     >
                       <td style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a2e' }}>
                         <div style={{ fontWeight: '500', color: '#ffffff' }}>{chip.name}</div>
-                        <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '2px' }}>
-                          {chip.manufacturer} · {chip.architecture}
-                        </div>
                       </td>
                       <td style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a2e' }}>
                         <span style={{
