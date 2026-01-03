@@ -219,11 +219,11 @@ export default function ChipExportTracker() {
             }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
                 <colgroup>
-                  <col style={{ width: '26%' }} /> {/* Chip */}
+                  <col style={{ width: '24%' }} /> {/* Chip */}
                   <col style={{ width: '12%' }} /> {/* TPP */}
                   <col style={{ width: '10%' }} /> {/* PD */}
                   <col style={{ width: '30%' }} /> {/* Interconnect */}
-                  <col style={{ width: '22%' }} /> {/* Status */}
+                  <col style={{ width: '24%' }} /> {/* Status */}
                 </colgroup>
                 <thead>
                   <tr style={{ background: 'rgba(30, 30, 50, 0.8)' }}>
