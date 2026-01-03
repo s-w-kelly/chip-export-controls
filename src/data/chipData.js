@@ -105,7 +105,7 @@ export const chipData = [
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "600W",
-    controlStatus: "Exportable (special exception)",
+    controlStatus: "Exportable\n(special exception)",
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
@@ -132,7 +132,7 @@ export const chipData = [
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "700W",
-    controlStatus: "Exportable (special exception)",
+    controlStatus: "Exportable\n(special exception)",
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
@@ -159,7 +159,7 @@ export const chipData = [
     hbmCapacity: "96 GB HBM3",
     memoryBandwidth: "4 TB/s",
     tdp: "400W",
-    controlStatus: "Exportable (special exception)",
+    controlStatus: "Exportable\n(special exception)",
     eccn: null,
     notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
     sources: [

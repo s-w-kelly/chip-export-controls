@@ -365,6 +365,7 @@ export default function ChipExportTracker() {
                           fontWeight: '600',
                           textTransform: 'uppercase',
                           letterSpacing: '0.5px',
+                          whiteSpace: 'pre-line',
                           background: chip.controlStatus.includes('Controlled') ? 'rgba(239, 68, 68, 0.2)' :
                                       chip.controlStatus === 'Unknown' ? 'rgba(107, 114, 128, 0.2)' : 'rgba(16, 185, 129, 0.2)',
                           color: chip.controlStatus.includes('Controlled') ? '#fca5a5' :
