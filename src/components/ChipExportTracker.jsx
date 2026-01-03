@@ -156,6 +156,8 @@ export default function ChipExportTracker() {
         {activeTab === 'dashboard' && (
           <div>
             {/* Current Thresholds Banner */}
+            <h2 style={{ margin: '0 0 24px', fontSize: '18px', color: '#ffffff' }}>Current Thresholds</h2>
+
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -207,6 +209,8 @@ export default function ChipExportTracker() {
             </div>
 
             {/* Chip Table */}
+            <h2 style={{ margin: '0 0 24px', fontSize: '18px', color: '#ffffff' }}>Key Chips</h2>
+
             <div style={{
               background: 'rgba(20, 20, 35, 0.5)',
               border: '1px solid #2a2a3e',
@@ -733,8 +737,8 @@ export default function ChipExportTracker() {
           </div>
         )}
 
-        {/* Thresholds Tab */}
-        {activeTab === 'thresholds' && (
+        {/* History Tab */}
+        {activeTab === 'history' && (
           <div>
             <h2 style={{ margin: '0 0 24px', fontSize: '18px', color: '#ffffff' }}>Export Control Threshold History</h2>
 
