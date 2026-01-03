@@ -124,7 +124,7 @@ export default function ChipExportTracker() {
         borderBottom: '1px solid #2a2a3e'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '0' }}>
-          {['dashboard', 'calculator', 'thresholds', 'methodology'].map(tab => (
+          {['dashboard', 'calculator', 'history', 'methodology'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
