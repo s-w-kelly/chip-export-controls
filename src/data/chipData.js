@@ -53,7 +53,7 @@ export const chipData = [
     memoryBandwidth: "4.8 TB/s",
     tdp: "600W",
     controlStatus: "Exportable (special exception)",
-    eccn: "3A090.a",
+    eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
       { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
@@ -79,11 +79,37 @@ export const chipData = [
     memoryBandwidth: "4.8 TB/s",
     tdp: "700W",
     controlStatus: "Exportable (special exception)",
-    eccn: "3A090.a",
+    eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
       { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
       { name: "Semafor", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }    
+    ]
+  },
+  {
+    name: "NVIDIA HGX H20",
+    manufacturer: "NVIDIA",
+    architecture: "Hopper",
+    releaseDate: "2023",
+    tpp: 2368,
+    pd: 2.91,
+    interconnect: "900 GB/s (NVLink)",
+    fp4: null,
+    fp8: "296",
+    fp16: "148",
+    bf16: "148",
+    tf32: "74",
+    int8: "296",
+    dieArea: "814",
+    hbmCapacity: "96 GB HBM3",
+    memoryBandwidth: "4 TB/s",
+    tdp: "400W",
+    controlStatus: "Exportable (special exception)",
+    eccn: null,
+    notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
+    sources: [
+      { name: "Tom's Hardware", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
+      { name: "NPR", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
     ]
   },
   {
@@ -106,7 +132,7 @@ export const chipData = [
     tdp: "350W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls.",
+    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
       { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
     ]
@@ -131,7 +157,7 @@ export const chipData = [
     tdp: "700W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls.",
+    notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
     { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
     ]
