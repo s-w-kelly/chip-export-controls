@@ -530,7 +530,7 @@ export default function ChipExportTracker() {
               borderRadius: '8px',
               padding: '32px'
             }}>
-              <h2 style={{ margin: '0 0 8px', fontSize: '18px', color: '#ffffff' }}>TPP & Performance Density Calculator</h2>
+              <h2 style={{ margin: '0 0 8px', fontSize: '18px', color: '#ffffff' }}>TPP & PD Calculator</h2>
               <p style={{ margin: '0 0 28px', fontSize: '13px', color: '#6b7280' }}>
                 Estimate export control metrics for any chip
               </p>
@@ -580,7 +580,7 @@ export default function ChipExportTracker() {
                       cursor: 'pointer'
                     }}
                   >
-                    <option value="4">4-bit (FP4)</option>
+                    <option value="4">4-bit (FP4, INT4)</option>
                     <option value="8">8-bit (FP8, INT8)</option>
                     <option value="16">16-bit (FP16, BF16)</option>
                     <option value="32">32-bit (FP32, TF32)</option>
@@ -891,12 +891,53 @@ export default function ChipExportTracker() {
         marginTop: '48px',
         background: 'rgba(10, 10, 20, 0.5)'
       }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+          }}
+        >
+          {/* Left side */}
           <div style={{ fontSize: '12px', color: '#6b7280' }}>
-            Unofficial reference tool. Not legal advice. Data may be incomplete or outdated.
+            Unofficial reference tool. Not legal advice.
           </div>
-          <div style={{ fontSize: '12px', color: '#6b7280' }}>
-            Last updated: January 2025
+
+          {/* Right side */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              rowGap: '12px',
+              textAlign: 'right',
+              fontSize: '12px',
+              color: '#6b7280',
+              maxWidth: '520px',
+            }}
+          >
+            <div>
+              Created and maintained by{' '}
+              <a
+                href="https://www.skellystuff.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'underline',
+                  fontWeight: 500,
+                }}
+              >
+                Spencer Kelly
+              </a>.
+            </div>
+
+            <div style={{ marginTop: '4px' }}>
+              This website was built using Claude Code but all research/analysis/content is by me.
+            </div>
           </div>
         </div>
       </footer>
