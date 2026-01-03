@@ -902,7 +902,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div style={{ fontSize: '12px', color: '#6b7280' }}>
-            Unofficial reference tool. Not legal advice.
+            Last updated: 1/2/2026. Unofficial reference tool. Not legal advice.
           </div>
 
           {/* Right side */}
@@ -914,7 +914,7 @@ export default function ChipExportTracker() {
               textAlign: 'right',
               fontSize: '12px',
               color: '#6b7280',
-              maxWidth: '520px',
+              maxWidth: '720px',
             }}
           >
             <div>
