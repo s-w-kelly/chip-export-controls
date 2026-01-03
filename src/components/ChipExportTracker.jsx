@@ -401,27 +401,27 @@ export default function ChipExportTracker() {
 
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '20px' }}>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP4</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP4 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.fp4 ? `${chip.fp4} TFLOPS` : '—'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP8</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP8 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.fp8 ? `${chip.fp8} TFLOPS` : '—'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP16</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>FP16 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.fp16 ? `${chip.fp16} TFLOPS` : '—'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>BF16</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>BF16 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.bf16 ? `${chip.bf16} TFLOPS` : '—'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>TF32</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>TF32 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.tf32 ? `${chip.tf32} TFLOPS` : '—'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>INT8</div>
+                          <div style={{ fontSize: '11px', color: '#6b7280', textTransform: 'uppercase', marginBottom: '4px' }}>INT8 Dense</div>
                           <div style={{ fontSize: '16px', color: '#ffffff' }}>{chip.int8 ? `${chip.int8} TOPS` : '—'}</div>
                         </div>
                         <div>
