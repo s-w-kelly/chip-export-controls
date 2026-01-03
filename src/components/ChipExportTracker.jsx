@@ -260,6 +260,7 @@ export default function ChipExportTracker() {
                               border: '1px solid #6b7280',
                               fontSize: '9px',
                               color: '#6b7280',
+                              textTransform: 'none',
                               cursor: 'help',
                               fontWeight: '600',
                               verticalAlign: 'middle'

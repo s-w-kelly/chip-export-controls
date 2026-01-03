@@ -312,31 +312,6 @@ export const chipData = [
     { name: "A100 datasheet", url: "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf." }
     ]
   },
-  {
-    name: "NVIDIA A800",
-    manufacturer: "NVIDIA",
-    architecture: "Ampere",
-    releaseDate: "2022",
-    tpp: 4992,
-    interconnect: 826,
-    pd: 6.0,
-    fp4: 1,
-    fp8: 4500,
-    fp16: 2250,
-    bf16: 1,
-    tf32: 1,
-    int8: 4500,
-    hbmCapacity: "80 GB",
-    memoryBandwidth: "1.55 TB/s",
-    tdp: "400W",
-    controlStatus: "Controlled (Oct 2023)",
-    eccn: "3A090",
-    notes: "China compliance variant with reduced interconnect. Controlled under Oct 2023 rule.",
-    sources: [
-      { name: "NVIDIA", url: "#" },
-      { name: "BIS Final Rule Oct 2023", url: "#" }
-    ]
-  },
     {
     name: "AMD MI300X",
     manufacturer: "AMD",
