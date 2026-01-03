@@ -891,19 +891,26 @@ export default function ChipExportTracker() {
         marginTop: '48px',
         background: 'rgba(10, 10, 20, 0.5)'
       }}>
+        <div
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+          }}
+        >
           {/* Left side */}
           <div style={{ fontSize: '12px', color: '#6b7280' }}>
-            Last updated: 1/2/2026. Unofficial reference tool. Not legal advice.
+            Unofficial reference tool. Not legal advice.
           </div>
 
           {/* Right side */}
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              flexWrap: 'wrap',
-              rowGap: '12px',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
               textAlign: 'right',
               fontSize: '12px',
               color: '#6b7280',
@@ -930,6 +937,7 @@ export default function ChipExportTracker() {
               This website was built using Claude Code but all research/analysis/content is by me.
             </div>
           </div>
+        </div>
       </footer>
     </div>
   );
