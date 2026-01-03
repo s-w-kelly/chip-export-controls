@@ -10,28 +10,81 @@
 
 export const chipData = [
   {
+    name: "NVIDIA B300",
+    manufacturer: "NVIDIA",
+    architecture: "Blackwell",
+    releaseDate: "2025",
+    tpp: 56000,
+    pd: 68.80,
+    interconnect: "1800 GB/s (NVLink)",
+    fp4: 14000,
+    fp8: 4500,
+    fp16: 2250,
+    bf16: 2250,
+    tf32: 1100,
+    int8: 154.5,
+    dieArea: "814 (estimate)",
+    hbmCapacity: "270 GB HBM3e",
+    memoryBandwidth: "7.7 TB/s",
+    tdp: "1000W",
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "While the B300 has identical arithmetic performance for most bit lengths as the B200, Blackwell Ultra improved dense performance for FP4, so the B300 TPP is ~1.6x the B200.",
+    sources: [
+      { name: "Blackwell Ultra technical brief", url: "https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet?ncid=no-ncid" },
+      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
+    ]
+  },
+  {
     name: "NVIDIA B200",
     manufacturer: "NVIDIA",
     architecture: "Blackwell",
     releaseDate: "2024",
     tpp: 36000,
-    interconnect: 1614,
-    pd: 22.3,
-    fp4: 1,
+    pd: 44.23,
+    interconnect: "1800 GB/s (NVLink)",
+    fp4: 9000,
     fp8: 4500,
     fp16: 2250,
-    bf16: 1,
-    tf32: 1,
-    int8: 4500,
-    hbmCapacity: "192 GB",
+    bf16: 2250,
+    tf32: 1100,
+    int8: 2500,
+    dieArea: "814 (estimate)",
+    hbmCapacity: "192 GB HBM3e",
     memoryBandwidth: "8 TB/s",
     tdp: "1000W",
     controlStatus: "Controlled",
-    eccn: "3A090",
-    notes: "Dual-die design (2×807mm²). TPP estimate from FP8 dense. Values preliminary.",
+    eccn: "3A090.a",
+    notes: ".",
     sources: [
-      { name: "NVIDIA GTC 2024", url: "#" },
-      { name: "SemiAnalysis estimates", url: "#" }
+      { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
+      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
+    ]
+  },
+  {
+    name: "NVIDIA B100",
+    manufacturer: "NVIDIA",
+    architecture: "Blackwell",
+    releaseDate: "2024",
+    tpp: 28000,
+    pd: 34.40,
+    interconnect: "1800 GB/s (NVLink)",
+    fp4: 7000,
+    fp8: 3500,
+    fp16: 1750,
+    bf16: 1750,
+    tf32: 900,
+    int8: 3500,
+    dieArea: "814 (estimate)",
+    hbmCapacity: "192 GB HBM3e",
+    memoryBandwidth: "8 TB/s",
+    tdp: "700W",
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: ".",
+    sources: [
+      { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
+      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
   {
@@ -57,7 +110,8 @@ export const chipData = [
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
       { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
-      { name: "Semafor", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
+      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
     ]
   },
   {
@@ -83,7 +137,8 @@ export const chipData = [
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
       { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
-      { name: "Semafor", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }    
+      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
     ]
   },
   {
@@ -109,7 +164,8 @@ export const chipData = [
     notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
     sources: [
       { name: "Tom's Hardware", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
-      { name: "NPR", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
+      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "NPR (Trump deal)", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
     ]
   },
   {
@@ -134,7 +190,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-      { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
+      { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
+      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
@@ -159,7 +216,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-    { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" }
+    { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
+    { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
@@ -184,8 +242,9 @@ export const chipData = [
     eccn: "3A090.a",
     notes: ".",
     sources: [
-      { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" }
-    ]
+      { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
+      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+        ]
   },
   {
     name: "NVIDIA H100 SXM",
@@ -209,7 +268,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: ".",
     sources: [
-    { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" }
+    { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
+    { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
