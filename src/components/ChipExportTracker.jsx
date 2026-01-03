@@ -124,7 +124,7 @@ export default function ChipExportTracker() {
         borderBottom: '1px solid #2a2a3e'
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '0' }}>
-          {['dashboard', 'calculator', 'history', 'methodology'].map(tab => (
+          {['dashboard', 'calculator', 'methodology','history'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -737,73 +737,6 @@ export default function ChipExportTracker() {
           </div>
         )}
 
-        {/* History Tab */}
-        {activeTab === 'history' && (
-          <div>
-            <h2 style={{ margin: '0 0 24px', fontSize: '18px', color: '#ffffff' }}>Export Control Threshold History</h2>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {thresholdHistory.map((rule, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: idx === thresholdHistory.length - 1
-                      ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(30, 30, 50, 0.8) 100%)'
-                      : 'linear-gradient(135deg, #1e1e30 0%, #252540 100%)',
-                    border: idx === thresholdHistory.length - 1 ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid #3a3a50',
-                    borderRadius: '8px',
-                    padding: '24px',
-                    position: 'relative'
-                  }}
-                >
-                  {idx === thresholdHistory.length - 1 && (
-                    <span style={{
-                      position: 'absolute',
-                      top: '16px',
-                      right: '16px',
-                      fontSize: '10px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                      color: '#ef4444',
-                      fontWeight: '600'
-                    }}>
-                      Current
-                    </span>
-                  )}
-                  <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>{rule.date}</div>
-                  <h3 style={{ margin: '0 0 16px', fontSize: '16px' }}>
-                    <a
-                      href={rule.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: '#ffffff',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => e.target.style.color = '#ef4444'}
-                      onMouseLeave={(e) => e.target.style.color = '#ffffff'}
-                    >
-                      {rule.rule}
-                    </a>
-                  </h3>
-                  <div style={{ display: 'flex', gap: '32px', marginBottom: '16px' }}>
-                    <div>
-                      <span style={{ fontSize: '12px', color: '#6b7280' }}>TPP Threshold: </span>
-                      <span style={{ fontSize: '16px', fontWeight: '600', color: '#ef4444' }}>{rule.tppThreshold.toLocaleString()}</span>
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '12px', color: '#6b7280' }}>PD Threshold: </span>
-                      <span style={{ fontSize: '16px', fontWeight: '600', color: '#ef4444' }}>{rule.pdThreshold}</span>
-                    </div>
-                  </div>
-                  <p style={{ margin: 0, fontSize: '13px', color: '#9ca3af', lineHeight: '1.6' }}>{rule.notes}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Methodology Tab */}
         {activeTab === 'methodology' && (
           <div style={{ maxWidth: '800px' }}>
@@ -880,6 +813,74 @@ export default function ChipExportTracker() {
             </div>
           </div>
         )}
+
+        {/* History Tab */}
+        {activeTab === 'history' && (
+          <div>
+            <h2 style={{ margin: '0 0 24px', fontSize: '18px', color: '#ffffff' }}>Export Control Threshold History</h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {thresholdHistory.map((rule, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: idx === thresholdHistory.length - 1
+                      ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(30, 30, 50, 0.8) 100%)'
+                      : 'linear-gradient(135deg, #1e1e30 0%, #252540 100%)',
+                    border: idx === thresholdHistory.length - 1 ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid #3a3a50',
+                    borderRadius: '8px',
+                    padding: '24px',
+                    position: 'relative'
+                  }}
+                >
+                  {idx === thresholdHistory.length - 1 && (
+                    <span style={{
+                      position: 'absolute',
+                      top: '16px',
+                      right: '16px',
+                      fontSize: '10px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      color: '#ef4444',
+                      fontWeight: '600'
+                    }}>
+                      Current
+                    </span>
+                  )}
+                  <div style={{ fontSize: '12px', color: '#6b7280', marginBottom: '4px' }}>{rule.date}</div>
+                  <h3 style={{ margin: '0 0 16px', fontSize: '16px' }}>
+                    <a
+                      href={rule.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: '#ffffff',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = '#ef4444'}
+                      onMouseLeave={(e) => e.target.style.color = '#ffffff'}
+                    >
+                      {rule.rule}
+                    </a>
+                  </h3>
+                  <div style={{ display: 'flex', gap: '32px', marginBottom: '16px' }}>
+                    <div>
+                      <span style={{ fontSize: '12px', color: '#6b7280' }}>TPP Threshold: </span>
+                      <span style={{ fontSize: '16px', fontWeight: '600', color: '#ef4444' }}>{rule.tppThreshold.toLocaleString()}</span>
+                    </div>
+                    <div>
+                      <span style={{ fontSize: '12px', color: '#6b7280' }}>PD Threshold: </span>
+                      <span style={{ fontSize: '16px', fontWeight: '600', color: '#ef4444' }}>{rule.pdThreshold}</span>
+                    </div>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#9ca3af', lineHeight: '1.6' }}>{rule.notes}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </main>
 
       {/* Footer */}
