@@ -152,7 +152,7 @@ export default function ChipExportTracker() {
         }}>
           <div>
             <h1 style={{
-              fontSize: '30px',
+              fontSize: '28px',
               fontWeight: '600',
               fontFamily: fonts.mono,
               margin: 0,
@@ -233,7 +233,7 @@ export default function ChipExportTracker() {
         {activeTab === 'dashboard' && (
           <div>
             {/* Section Header */}
-            <div style={{ marginBottom: '40px' }}>
+            <div style={{ marginBottom: '30px' }}>
               <h2 style={{
                 fontSize: '28px',
                 fontWeight: '600',
@@ -1017,17 +1017,20 @@ export default function ChipExportTracker() {
           fontSize: '13px',
           color: theme.textMuted,
         }}>
-          <div>Last updated: 1/3/2026 · Unofficial reference tool · Not legal advice</div>
+          <div>Last updated: 1/4/2026 · Unofficial reference tool · Not legal advice</div>
           <div style={{ textAlign: 'right' }}>
-            Created by{' '}
+            Created and maintained by{' '}
             <a
               href="https://www.skellystuff.net/"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: theme.accent, textDecoration: 'none' }}
+              style={{ color: 'inherit', textDecoration: 'underline' }}
             >
               Spencer Kelly
             </a>
+          </div>
+          <div style={{ marginTop: '4px' }}>
+            This website was built using Claude Code but all research/analysis/content is by me.
           </div>
         </div>
       </footer>
