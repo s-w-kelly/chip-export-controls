@@ -534,7 +534,7 @@ export default function ChipExportTracker() {
                           { label: 'BF16 Dense', value: chip.bf16 ? `${chip.bf16} TFLOP/s` : '—' },
                           { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOP/s` : '—' },
                           { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
-                          { label: 'Die Area', value: chip.dieArea ? `${chip.dieArea} mm²` : '—' },
+                          { label: 'Die Area', value: chip.dieArea || '—' },
                           { label: 'Process Node', value: chip.processNode || '—' },
                           { label: 'HBM', value: chip.hbmCapacity || '—' },
                           { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
