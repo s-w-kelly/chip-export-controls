@@ -528,12 +528,12 @@ export default function ChipExportTracker() {
                         borderTop: `1px solid ${theme.border}`,
                       }}>
                         {[
-                          { label: 'FP4 Dense', value: chip.fp4 ? `${chip.fp4} TFLOPS` : '—' },
-                          { label: 'FP8 Dense', value: chip.fp8 ? `${chip.fp8} TFLOPS` : '—' },
-                          { label: 'FP16 Dense', value: chip.fp16 ? `${chip.fp16} TFLOPS` : '—' },
-                          { label: 'BF16 Dense', value: chip.bf16 ? `${chip.bf16} TFLOPS` : '—' },
-                          { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOPS` : '—' },
-                          { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOPS` : '—' },
+                          { label: 'FP4 Dense', value: chip.fp4 ? `${chip.fp4} TFLOP/s` : '—' },
+                          { label: 'FP8 Dense', value: chip.fp8 ? `${chip.fp8} TFLOP/s` : '—' },
+                          { label: 'FP16 Dense', value: chip.fp16 ? `${chip.fp16} TFLOP/s` : '—' },
+                          { label: 'BF16 Dense', value: chip.bf16 ? `${chip.bf16} TFLOP/s` : '—' },
+                          { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOP/s` : '—' },
+                          { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
                           { label: 'Die Area', value: chip.dieArea ? `${chip.dieArea} mm²` : '—' },
                           { label: 'HBM', value: chip.hbmCapacity || '—' },
                           { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
@@ -622,7 +622,7 @@ export default function ChipExportTracker() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
                 <div>
                   <label style={{ ...labelStyle, display: 'block', marginBottom: '8px' }}>
-                    Peak Performance (TFLOPS/TOPS)
+                    Peak Performance (TFLOP/s or TOP/S)
                   </label>
                   <input
                     type="number"
@@ -777,7 +777,7 @@ export default function ChipExportTracker() {
                 color: theme.accent,
                 fontFamily: fonts.mono,
               }}>
-                <strong>Formula:</strong> TPP = {calcInputs.isSparse ? '(TFLOPS ÷ 2)' : 'TFLOPS'} × {calcInputs.bitLength}
+                <strong>Formula:</strong> TPP = {calcInputs.isSparse ? '(TFLOP/s ÷ 2)' : 'TFLOP/s'} × {calcInputs.bitLength}
                 {calcInputs.dieArea && <span> · PD = TPP ÷ {calcInputs.dieArea}mm²</span>}
               </div>
             </div>
@@ -851,10 +851,10 @@ export default function ChipExportTracker() {
                       borderRadius: '4px',
                       fontFamily: fonts.mono,
                       fontSize: '13px',
-                    }}>TPP = 2 × MacTOPS × bit_length</code>, aggregated over all processing units on the integrated circuit.
+                    }}>TPP = 2 × MacTOP/s × bit_length</code>, aggregated over all processing units.
                   </p>
                   <p style={{ margin: '0 0 14px' }}>
-                    The factor of 2 reflects industry convention of counting one multiply-accumulate computation as two operations. Since datasheets typically report FLOPS/TOPS already using this convention, the practical formula simplifies to:
+                    The factor of 2 reflects industry convention of counting one multiply-accumulate computation as two operations. Since datasheets typically report FLOP/s and TOP/s already using this convention, the practical formula simplifies to:
                   </p>
                   <p style={{ margin: '0 0 16px' }}>
                     <code style={{
@@ -863,9 +863,10 @@ export default function ChipExportTracker() {
                       borderRadius: '4px',
                       fontFamily: fonts.mono,
                       fontSize: '13px',
-                    }}>TPP = TFLOPS (dense) × bit_length</code>
+                    }}>TPP = TFLOP/s (dense) × bit_length</code>
                   </p>
                   <div style={{
+                    margin: '0 0 16px',
                     padding: '14px 16px',
                     background: theme.statusExceedsBg,
                     borderRadius: '6px',
@@ -873,9 +874,9 @@ export default function ChipExportTracker() {
                     color: theme.statusExceeds,
                     fontSize: '14px',
                   }}>
-                    <strong>Note:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), dense performance is generally half (but not always; see, e.g., NVIDIA B300 FP4).
+                    <strong>Note:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), dense performance is generally half that of sparse. However, this is not always true (see, e.g., NVIDIA B300 FP4); check official chip documentation to ensure accuracy.
                   </div>
-                  <p style={{ margin: '0 0 14px' }}>
+                  <p style={{ margin: 0 }}>
                     A chip’s TPP for purposes of assessing export control status is determined using the bit length that yields the highest value. E.g., the BIS notes that the 4800 TPP threshold can be met with 600 TOP/s at 8 bits or 300 TFLOP/s at 16 bits. 
                   </p>
                 </div>
@@ -1013,7 +1014,7 @@ export default function ChipExportTracker() {
             </div>
 
             <div style={{ ...cardStyle, padding: '36px' }}>
-              <section style={{ paddingTop: '24px', borderTop: `1px solid ${theme.border}` }}>
+              <section style={{ marginBottom: '24px' }}>
                 <h3 style={{
                   fontSize: '18px',
                   fontWeight: '600',
