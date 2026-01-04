@@ -227,7 +227,7 @@ export default function ChipExportTracker() {
       </header>
 
       {/* Main Content */}
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 32px' }}>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 32px' }}>
 
         {/* Dashboard Tab */}
         {activeTab === 'dashboard' && (
@@ -365,6 +365,7 @@ export default function ChipExportTracker() {
                                 border: `1px solid ${theme.textMuted}`,
                                 fontSize: '9px',
                                 color: theme.textMuted,
+                                textTransform: 'lowercase',
                                 cursor: 'help',
                               }}
                             >
