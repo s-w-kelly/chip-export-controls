@@ -152,9 +152,9 @@ export default function ChipExportTracker() {
         }}>
           <div>
             <h1 style={{
-              fontSize: '22px',
+              fontSize: '30px',
               fontWeight: '600',
-              fontFamily: fonts.serif,
+              fontFamily: fonts.mono,
               margin: 0,
               letterSpacing: '-0.3px',
             }}>
@@ -233,6 +233,17 @@ export default function ChipExportTracker() {
         {activeTab === 'dashboard' && (
           <div>
             {/* Section Header */}
+            <div style={{ marginBottom: '40px' }}>
+              <h2 style={{
+                fontSize: '28px',
+                fontWeight: '600',
+                fontFamily: fonts.serif,
+                margin: '0 0 8px',
+              }}>
+                Export Control Dashboard
+              </h2>
+            </div>
+            
             <div style={{ marginBottom: '24px' }}>
               <h2 style={{
                 fontSize: '13px',
@@ -798,7 +809,7 @@ export default function ChipExportTracker() {
         {/* Methodology Tab */}
         {activeTab === 'methodology' && (
           <div style={{ maxWidth: '720px' }}>
-            <div style={{ marginBottom: '40px' }}>
+            <div style={{ marginBottom: '30px' }}>
               <h2 style={{
                 fontSize: '28px',
                 fontWeight: '600',
@@ -910,7 +921,7 @@ export default function ChipExportTracker() {
         {/* History Tab */}
         {activeTab === 'history' && (
           <div style={{ maxWidth: '800px' }}>
-            <div style={{ marginBottom: '32px' }}>
+            <div style={{ marginBottom: '30px' }}>
               <h2 style={{
                 fontSize: '28px',
                 fontWeight: '600',
