@@ -189,7 +189,7 @@ export default function ChipExportTracker() {
             onMouseEnter={(e) => e.target.style.background = theme.bgHover}
             onMouseLeave={(e) => e.target.style.background = 'transparent'}
           >
-            {isDarkMode ? '☀' : '☾'} {isDarkMode ? 'Light' : 'Dark'}
+            {isDarkMode ? '☀' : '☾'}
           </button>
         </div>
 
@@ -1007,30 +1007,48 @@ export default function ChipExportTracker() {
         marginTop: '80px',
         background: theme.bgAlt,
       }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '24px 32px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          fontSize: '13px',
-          color: theme.textMuted,
-        }}>
-          <div>Last updated: 1/4/2026 · Unofficial reference tool · Not legal advice</div>
-          <div style={{ textAlign: 'right' }}>
-            Created and maintained by{' '}
-            <a
-              href="https://www.skellystuff.net/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'inherit', textDecoration: 'underline' }}
-            >
-              Spencer Kelly
-            </a>
+        <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '24px 32px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            fontSize: '13px',
+            color: theme.textMuted,
+          }}
+        >
+          {/* Left side */}
+          <div>
+            Last updated: 1/4/2026 · Unofficial reference tool · Not legal advice
           </div>
-          <div style={{ marginTop: '4px' }}>
-            This website was built using Claude Code but all research/analysis/content is by me.
+
+          {/* Right side */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+              textAlign: 'right',
+              maxWidth: '520px',
+            }}
+          >
+            <div>
+              Created and maintained by{' '}
+              <a
+                href="https://www.skellystuff.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
+                Spencer Kelly
+              </a>
+            </div>
+
+            <div style={{ marginTop: '4px' }}>
+              This website was built using Claude Code but all research/analysis/content is by me.
+            </div>
           </div>
         </div>
       </footer>
