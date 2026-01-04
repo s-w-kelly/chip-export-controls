@@ -997,12 +997,22 @@ export default function ChipExportTracker() {
                       </span>
                     </div>
                   </div>
-                  <p style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}>
-                    {rule.notes}
-                  </p>
+                  <div
+                    style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}
+                    dangerouslySetInnerHTML={{ __html: rule.notes }}
+                    className="notes-content"
+                  />
                 </div>
               ))}
             </div>
+            <style>{`
+              .notes-content p { margin: 0 0 12px 0; }
+              .notes-content p:last-child { margin-bottom: 0; }
+              .notes-content ul { margin: 12px 0; padding-left: 24px; }
+              .notes-content li { margin-bottom: 8px; }
+              .notes-content a { color: ${theme.accent}; text-decoration: underline; }
+              .notes-content a:hover { color: ${theme.accentHover}; }
+            `}</style>
           </div>
         )}
 
