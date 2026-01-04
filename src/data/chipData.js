@@ -24,7 +24,7 @@ export const chipData = [
     tf32: 1100,
     int8: null,
     dieArea: "1628 (estimate)",
-    processNode: "—",
+    processNode: "TSMC N4P",
     hbmCapacity: "270 GB HBM3e",
     memoryBandwidth: "7.7 TB/s",
     tdp: "1000W",
@@ -32,7 +32,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "While the B300 has identical arithmetic performance for most bit lengths as the B200, Blackwell Ultra improved dense performance for FP4, so the B300 TPP is ~1.6x the B200. For INT8, the official Blackwell Ultra datasheet performance figure appears erroneous and has been exluded from the data above.",
     sources: [
-      { name: "Blackwell Ultra technical brief", url: "https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet?ncid=no-ncid" },
+      { name: "Blackwell Ultra technical brief (performance, specs)", url: "https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet?ncid=no-ncid" },
+      { name: "Blackwell technical brief (process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=6" },
       { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
@@ -51,7 +52,7 @@ export const chipData = [
     tf32: 1100,
     int8: 2500,
     dieArea: "1628 (estimate)",
-    processNode: "—",
+    processNode: "TSMC N4P",
     hbmCapacity: "192 GB HBM3e",
     memoryBandwidth: "8 TB/s",
     tdp: "1000W",
@@ -59,7 +60,7 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-      { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
+      { name: "Blackwell technical brief (performance, specs, process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
       { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
@@ -78,7 +79,7 @@ export const chipData = [
     tf32: 900,
     int8: 3500,
     dieArea: "1628 (estimate)",
-    processNode: "—",
+    processNode: "TSMC N4P",
     hbmCapacity: "192 GB HBM3e",
     memoryBandwidth: "8 TB/s",
     tdp: "700W",
@@ -86,7 +87,7 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-      { name: "Blackwell technical brief", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
+      { name: "Blackwell technical brief (performance, specs, process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
       { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
@@ -105,7 +106,7 @@ export const chipData = [
     tf32: 417.5,
     int8: 1670.5,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "600W",
@@ -113,8 +114,8 @@ export const chipData = [
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
-      { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
-      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "H200 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
       { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
     ]
   },
@@ -133,7 +134,7 @@ export const chipData = [
     tf32: 494.5,
     int8: 1979,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "700W",
@@ -141,8 +142,8 @@ export const chipData = [
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
-      { name: "H200 datasheet", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
-      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "H200 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
       { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
     ]
   },
@@ -161,7 +162,7 @@ export const chipData = [
     tf32: 74,
     int8: 296,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "96 GB HBM3",
     memoryBandwidth: "4 TB/s",
     tdp: "400W",
@@ -169,8 +170,8 @@ export const chipData = [
     eccn: null,
     notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
     sources: [
-      { name: "Tom's Hardware", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
-      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "Tom's Hardware (performance, specs)", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
       { name: "NPR (Trump deal)", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
     ]
   },
@@ -197,8 +198,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-      { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
-      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+      { name: "H800 datasheet (performance, specs)", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
@@ -216,7 +217,7 @@ export const chipData = [
     tf32: 494.5,
     int8: 1979,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.35 TB/s",
     tdp: "700W",
@@ -224,8 +225,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-    { name: "H800 datasheet", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
-    { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+    { name: "H800 datasheet (performance, specs)", url: "https://www.chaoqing-i.com/upload/20231128/NVIDIA%20H800%20GPU%20Datasheet.pdf" },
+    { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
@@ -243,7 +244,7 @@ export const chipData = [
     tf32: 417.5,
     int8: 1670.5,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.9 TB/s",
     tdp: "400W",
@@ -251,8 +252,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-      { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
-      { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+      { name: "H100 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
         ]
   },
   {
@@ -270,7 +271,7 @@ export const chipData = [
     tf32: 494.5,
     int8: 1979,
     dieArea: 814,
-    processNode: "—",
+    processNode: "TSMC N4",
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.35 TB/s",
     tdp: "700W",
@@ -278,8 +279,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-    { name: "H100 datasheet", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
-    { name: "NVIDIA Technical Blog (die area)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+    { name: "H100 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-gpu/h100-datasheet-24306" },
+    { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
     ]
   },
   {
@@ -297,7 +298,7 @@ export const chipData = [
     tf32: 156,
     int8: 624,
     dieArea: 826,
-    processNode: "—",
+    processNode: "TSMC N7",
     hbmCapacity: "80 GB HBM2e",
     memoryBandwidth: "1.9 TB/s",
     tdp: "250W",
@@ -305,7 +306,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as A100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-      { name: "A800 datasheet", url: "https://img.deepbaytech.com/NVIDIA%20A800%20TENSOR%20CORE%20GPU.pdf" }
+      { name: "A800 datasheet (performance, specs)", url: "https://img.deepbaytech.com/NVIDIA%20A800%20TENSOR%20CORE%20GPU.pdf" },
+      { name: "Ampere white paper (die area and process node)", url: "https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf#page=14" },
     ]
   },
   {
@@ -323,7 +325,7 @@ export const chipData = [
     tf32: 156,
     int8: 624,
     dieArea: 826,
-    processNode: "—",
+    processNode: "TSMC N7",
     hbmCapacity: "80 GB HBM2e",
     memoryBandwidth: "2 TB/s",
     tdp: "400W",
@@ -331,7 +333,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
-    { name: "A800 datasheet", url: "https://img.deepbaytech.com/NVIDIA%20A800%20TENSOR%20CORE%20GPU.pdf" }
+      { name: "A800 datasheet (performance, specs)", url: "https://img.deepbaytech.com/NVIDIA%20A800%20TENSOR%20CORE%20GPU.pdf" },
+      { name: "Ampere white paper (die area and process node)", url: "https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf#page=14" },
     ]
   },
   {
@@ -349,7 +352,7 @@ export const chipData = [
     tf32: 156,
     int8: 624,
     dieArea: 826,
-    processNode: "—",
+    processNode: "TSMC N7",
     hbmCapacity: "40 GB HBM2",
     memoryBandwidth: "1.6 TB/s",
     tdp: "250W",
@@ -357,7 +360,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "Primary target of 2022 controls, with intial thresholds essentially set right at A100 levels (TPP limit of 4800 right below A100 TPP, interconnect limit of 600 GB/s right at A100 mark).",
     sources: [
-      { name: "A100 datasheet", url: "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf." }
+      { name: "A100 datasheet (performance, specs)", url: "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf" },
+      { name: "Ampere white paper (die area and process node)", url: "https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf#page=14" },
     ]
   },
   {
@@ -375,7 +379,7 @@ export const chipData = [
     tf32: 156,
     int8: 624,
     dieArea: 826,
-    processNode: "—",
+    processNode: "TSMC N7",
     hbmCapacity: "40 GB HBM2",
     memoryBandwidth: "1.6 TB/s",
     tdp: "400W",
@@ -383,7 +387,8 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "Primary target of 2022 controls, with intial thresholds essentially set right at A100 levels (TPP limit of 4800 right below A100 TPP, interconnect limit of 600 GB/s right at A100 mark).",
     sources: [
-    { name: "A100 datasheet", url: "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf." }
+      { name: "A100 datasheet (performance, specs)", url: "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf" },
+      { name: "Ampere white paper (die area and process node)", url: "https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf#page=14" },
     ]
   },
   {
@@ -401,7 +406,7 @@ export const chipData = [
     tf32: null,
     int8: 5033.2,
     dieArea: "1017 (estimate)",
-    processNode: "—",
+    processNode: "TSMC N3P, N6",
     hbmCapacity: "288 GB HBM3e",
     memoryBandwidth: "8 TB/s",
     tdp: "1400W",
@@ -409,7 +414,9 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-    { name: "MI355X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi355x-gpu-brochure.pdf" },    
+    { name: "MI355X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi355x-gpu-brochure.pdf" },    
+    { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/amd-cdna-next.g1093" },    
+    { name: "CDNA 4 white paper (process node)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf#page=4" },      
   ]
   },
   {
@@ -427,7 +434,7 @@ export const chipData = [
     tf32: null,
     int8: 4614,
     dieArea: "1017 (estimate)",
-    processNode: "—",
+    processNode: "TSMC N3P, N6",
     hbmCapacity: "288 GB HBM3e",
     memoryBandwidth: "8 TB/s",
     tdp: "1000W",
@@ -435,7 +442,11 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-    { name: "MI300X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf" },  ]
+    { name: "MI350X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf" }, 
+    { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/amd-cdna-next.g1093" },    
+    { name: "CDNA 4 white paper (process node)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf#page=4" },    
+  ]
+  
   },
   {
     name: "AMD MI325X",
@@ -452,16 +463,17 @@ export const chipData = [
     tf32: 653.7,
     int8: 2614.9,
     dieArea: 1017,
-    processNode: "—",
+    processNode: "TSMC ",
     hbmCapacity: "256 GB HBM3e",
     memoryBandwidth: "6 TB/s",
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "—",
+    notes: "TSMC N5 or N5P (estimate)",
     sources: [
-    { name: "MI325X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf" },
+    { name: "MI325X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },    
+    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
   ]
   },
   {
@@ -485,10 +497,11 @@ export const chipData = [
     tdp: "750W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "—",
+    notes: "TSMC N5 or N5P (estimate)",
     sources: [
-    { name: "MI300X datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300x-data-sheet.pdf" },
+    { name: "MI300X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300x-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
+    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
   ]
   },
   {
@@ -512,10 +525,11 @@ export const chipData = [
     tdp: "760W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "—",
+    notes: "TSMC N5 or N5P (estimate)",
     sources: [
-    { name: "MI300A datasheet", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300a-data-sheet.pdf" },
+    { name: "MI300A datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300a-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
+    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
     ]
   },
   {
@@ -533,7 +547,7 @@ export const chipData = [
     tf32: null,
     int8: 383,
     dieArea: 1580,
-    processNode: "—",
+    processNode: "TSMC N6",
     hbmCapacity: "128 GB HBM2e",
     memoryBandwidth: "3.2 TB/s",
     tdp: "560W",
@@ -541,8 +555,9 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-    { name: "MI250X product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html" },
+    { name: "MI250X product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
   {
@@ -560,7 +575,7 @@ export const chipData = [
     tf32: null,
     int8: 362.1,
     dieArea: 1580,
-    processNode: "—",
+    processNode: "TSMC N6",
     hbmCapacity: "128 GB HBM2e",
     memoryBandwidth: "3.2 TB/s",
     tdp: "560W",
@@ -568,8 +583,9 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "—",
     sources: [
-    { name: "MI250 product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
+    { name: "MI250 product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
   {
@@ -587,7 +603,7 @@ export const chipData = [
     tf32: null,
     int8: 181,
     dieArea: 790,
-    processNode: "—",
+    processNode: "TSMC N6",
     hbmCapacity: "64 GB HBM2e",
     memoryBandwidth: "1.6 TB/s",
     tdp: null,
@@ -595,8 +611,9 @@ export const chipData = [
     eccn: "3A090.b",
     notes: "—",
     sources: [
-    { name: "MI250 product page", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
+    { name: "MI250 product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
     { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
 ];
