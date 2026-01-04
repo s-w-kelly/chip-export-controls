@@ -995,6 +995,14 @@ export default function ChipExportTracker() {
                         </span>
                       </div>
                     )}
+                    {rule.performanceThreshold != null && (
+                      <div>
+                        <span style={{ fontSize: '12px', color: theme.textMuted }}>Performance Threshold: </span>
+                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                          {rule.performanceThreshold}
+                        </span>
+                      </div>
+                    )}
                     {rule.interconnectThreshold != null && (
                       <div>
                         <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
@@ -1017,8 +1025,7 @@ export default function ChipExportTracker() {
               .notes-content p:last-child { margin-bottom: 0; }
               .notes-content ul { margin: 12px 0; padding-left: 24px; }
               .notes-content li { margin-bottom: 8px; }
-              .notes-content a { color: ${theme.accent}; text-decoration: underline; }
-              .notes-content a:hover { color: ${theme.accentHover}; }
+              .notes-content a { color: ${theme.text}; text-decoration: underline; }
             `}</style>
           </div>
         )}

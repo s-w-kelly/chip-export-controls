@@ -21,7 +21,7 @@ export const thresholdHistory = [
   {
     date: "October 7, 2022",
     rule: "Implementation of Additional Export Controls: Certain Advanced Computing and Semiconductor Manufacturing Items; Supercomputer and Semiconductor End Use; Entity List Modification, 87 Fed. Reg. 62186 (Oct. 13, 2022)",
-    tppThreshold: 4800,
+    performanceThreshold: 4800,
     interconnectThreshold: "600 GB/s",
     notes: ` 
       <p>Initial semiconductor export controls targeting AI chips. Used two criteria, both of which a chip had to meet to be subject to export controls:</p>
