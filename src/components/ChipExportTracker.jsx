@@ -401,7 +401,7 @@ export default function ChipExportTracker() {
                               color: theme.textSecondary,
                             }}
                           >
-                            Interconnect bandwidth was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD after Nvidia manipulated interconnect on China-specific chips to circumvent controls.
+                            Interconnect bandwidth (the rate at which chips can transfer data between each other) was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD after Nvidia manipulated interconnect on China-specific chips to circumvent controls. See History tab for more.
                           </div>
                         )}
                       </th>
@@ -990,6 +990,12 @@ export default function ChipExportTracker() {
                         {rule.pdThreshold}
                       </span>
                     </div>
+                    <div>
+                      <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
+                      <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                        {rule.interconnectThreshold}
+                      </span>
+                    </div>
                   </div>
                   <p style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}>
                     {rule.notes}
@@ -1027,8 +1033,9 @@ export default function ChipExportTracker() {
                 </h3>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
-                    This tracker compiles data from manufacturer whitepapers, official datasheets, BIS final rules, and industry analysis (SemiAnalysis, CSET). Where official figures are unavailable, estimates are noted.
+                    https://epoch.ai/gradient-updates/us-export-controls-china-ai
                   </p>
+                    https://cset.georgetown.edu/article/bis-2023-update-explainer/ https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions
                   <p style={{ margin: 0, fontStyle: 'italic', color: theme.textMuted }}>
                     This tool is for informational purposes only. It does not constitute legal advice. Consult qualified export control counsel for compliance determinations.
                   </p>
