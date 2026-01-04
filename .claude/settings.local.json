@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(frontend-design)",
+      "WebFetch(domain:ifp.org)",
+      "WebFetch(domain:epoch.ai)"
+    ]
+  }
+}
