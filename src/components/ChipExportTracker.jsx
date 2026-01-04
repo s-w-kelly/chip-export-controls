@@ -227,7 +227,7 @@ export default function ChipExportTracker() {
       </header>
 
       {/* Main Content */}
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 32px' }}>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '16px 32px' }}>
 
         {/* Dashboard Tab */}
         {activeTab === 'dashboard' && (
@@ -262,7 +262,7 @@ export default function ChipExportTracker() {
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: '16px',
-              marginBottom: '48px',
+              marginBottom: '36px',
             }}>
               <div style={{ ...cardStyle, padding: '24px' }}>
                 <div style={{ ...labelStyle, marginBottom: '8px' }}>TPP Threshold</div>
