@@ -201,7 +201,7 @@ export default function ChipExportTracker() {
           display: 'flex',
           gap: '4px',
         }}>
-          {['dashboard', 'calculator', 'methodology', 'history'].map(tab => (
+          {['dashboard', 'calculator', 'methodology', 'history', 'notes'].map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -819,6 +819,17 @@ export default function ChipExportTracker() {
               }}>
                 Calculation Methodology
               </h2>
+              <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
+                See {' '}
+                <a
+                  href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-774/appendix-Supplement%20No.%201%20to%20Part%20774#:~:text=Technical%20Note%202%20to%203A090%2Ea%20and%203A090%2Eb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'inherit', textDecoration: 'underline' }}
+                >
+                  15 C.F.R. pt. 774, supp. 1 (Technical Note 2 to 3A090.a and 3A090.b)
+                </a>                                         
+              </p>
             </div>
 
             <div style={{ ...cardStyle, padding: '36px' }}>
@@ -834,7 +845,7 @@ export default function ChipExportTracker() {
                 </h3>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
-                    Per EAR: <code style={{
+                    <code style={{
                       background: theme.bgHover,
                       padding: '3px 8px',
                       borderRadius: '4px',
@@ -1000,6 +1011,35 @@ export default function ChipExportTracker() {
           </div>
         )}
 
+        {/* Notes Tab */}
+        {activeTab === 'notes' && (
+          <div style={{ maxWidth: '720px' }}>
+            <div style={{ marginBottom: '30px' }}>
+              <h2 style={{
+                fontSize: '28px',
+                fontWeight: '600',
+                fontFamily: fonts.serif,
+                margin: '0 0 8px',
+              }}>
+                Notes and Sources
+              </h2>
+            </div>
+
+            <div style={{ ...cardStyle, padding: '36px' }}>
+              <section style={{ marginBottom: '36px' }}>
+                <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
+                  <p style={{ margin: '0 0 14px' }}>
+                    Notes
+                  </p>
+                  <p style={{ margin: '0 0 14px' }}>
+                    Sources
+                  </p>                                  
+                </div>
+              </section>
+            </div>
+          </div>
+        )}
+
       </main>
 
       {/* Footer */}
@@ -1022,7 +1062,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 1/4/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 1/5/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}
