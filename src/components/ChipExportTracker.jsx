@@ -611,7 +611,7 @@ export default function ChipExportTracker() {
                 fontFamily: fonts.serif,
                 margin: '0 0 8px',
               }}>
-                TPP & PD Calculator
+                TPP and PD Calculator
               </h2>
               <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
                 Estimate export control metrics for any chip
@@ -851,10 +851,10 @@ export default function ChipExportTracker() {
                       borderRadius: '4px',
                       fontFamily: fonts.mono,
                       fontSize: '13px',
-                    }}>TPP = 2 × MacTOPS × bit_length</code>, aggregated over all processing units.
+                    }}>TPP = 2 × MacTOPS × bit_length</code>, aggregated over all processing units on the integrated circuit.
                   </p>
                   <p style={{ margin: '0 0 14px' }}>
-                    The factor of 2 reflects industry convention of counting multiply-accumulate as two operations. Since datasheets typically report FLOPS/TOPS already using this convention, the practical formula simplifies to:
+                    The factor of 2 reflects industry convention of counting one multiply-accumulate computation as two operations. Since datasheets typically report FLOPS/TOPS already using this convention, the practical formula simplifies to:
                   </p>
                   <p style={{ margin: '0 0 16px' }}>
                     <code style={{
@@ -873,8 +873,11 @@ export default function ChipExportTracker() {
                     color: theme.statusExceeds,
                     fontSize: '14px',
                   }}>
-                    <strong>Critical:</strong> Use dense matrix performance. NVIDIA datasheets often show sparse performance (2× dense) with a footnote. Sparse figures must be halved.
+                    <strong>Note:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), dense performance is generally half (but not always; see, e.g., NVIDIA B300 FP4).
                   </div>
+                  <p style={{ margin: '0 0 14px' }}>
+                    A chip’s TPP for purposes of assessing export control status is determined using the bit length that yields the highest value. E.g., the BIS notes that the 4800 TPP threshold can be met with 600 TOP/s at 8 bits or 300 TFLOP/s at 16 bits. 
+                  </p>
                 </div>
               </section>
 
@@ -899,33 +902,17 @@ export default function ChipExportTracker() {
                     }}>PD = TPP ÷ applicable_die_area</code>
                   </p>
                   <p style={{ margin: '0 0 14px' }}>
-                    "Applicable die area" includes all logic dies (including caches) manufactured with a process node that uses a non-planar transistor architecture (typically ≤16nm).
+                    “Applicable die area” includes all logic dies (including caches) manufactured with a process node that uses a non-planar transistor architecture (typically ≤16nm).
+                  </p>
+                  <p style={{ margin: '0 0 14px'  }}>
+                    The applicable area does not include separate memory stacks (e.g., HBM).
                   </p>
                   <p style={{ margin: 0 }}>
-                    Exclude separate memory stacks (e.g., HBM). Calculate at the highest level of integration: for chiplet designs, sum all applicable logic die areas.
+                    PD should be calculated at the highest level of integration: for chiplet designs, sum all applicable logic die areas.
                   </p>
                 </div>
               </section>
-
-              <section style={{ paddingTop: '24px', borderTop: `1px solid ${theme.border}` }}>
-                <h3 style={{
-                  fontSize: '18px',
-                  fontWeight: '600',
-                  fontFamily: fonts.serif,
-                  marginBottom: '16px',
-                  color: theme.text,
-                }}>
-                  Data Sources
-                </h3>
-                <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
-                  <p style={{ margin: '0 0 14px' }}>
-                    This tracker compiles data from manufacturer whitepapers, official datasheets, BIS final rules, and industry analysis (SemiAnalysis, CSET). Where official figures are unavailable, estimates are noted.
-                  </p>
-                  <p style={{ margin: 0, fontStyle: 'italic', color: theme.textMuted }}>
-                    This tool is for informational purposes only. It does not constitute legal advice. Consult qualified export control counsel for compliance determinations.
-                  </p>
-                </div>
-              </section>
+              
             </div>
           </div>
         )}
@@ -1026,14 +1013,23 @@ export default function ChipExportTracker() {
             </div>
 
             <div style={{ ...cardStyle, padding: '36px' }}>
-              <section style={{ marginBottom: '36px' }}>
+              <section style={{ paddingTop: '24px', borderTop: `1px solid ${theme.border}` }}>
+                <h3 style={{
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  fontFamily: fonts.serif,
+                  marginBottom: '16px',
+                  color: theme.text,
+                }}>
+                  Data Sources
+                </h3>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
-                    Notes
+                    This tracker compiles data from manufacturer whitepapers, official datasheets, BIS final rules, and industry analysis (SemiAnalysis, CSET). Where official figures are unavailable, estimates are noted.
                   </p>
-                  <p style={{ margin: '0 0 14px' }}>
-                    Sources
-                  </p>                                  
+                  <p style={{ margin: 0, fontStyle: 'italic', color: theme.textMuted }}>
+                    This tool is for informational purposes only. It does not constitute legal advice. Consult qualified export control counsel for compliance determinations.
+                  </p>
                 </div>
               </section>
             </div>
