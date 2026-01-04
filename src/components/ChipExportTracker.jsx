@@ -535,6 +535,7 @@ export default function ChipExportTracker() {
                           { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOP/s` : '—' },
                           { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
                           { label: 'Die Area', value: chip.dieArea ? `${chip.dieArea} mm²` : '—' },
+                          { label: 'Process Node', value: chip.processNode || '—' },
                           { label: 'HBM', value: chip.hbmCapacity || '—' },
                           { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
                           { label: 'TDP', value: chip.tdp || '—' },
@@ -874,7 +875,7 @@ export default function ChipExportTracker() {
                     color: theme.statusExceeds,
                     fontSize: '14px',
                   }}>
-                    <strong>Note:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), dense performance is generally half that of sparse. However, this is not always true (see, e.g., NVIDIA B300 FP4); check official chip documentation to ensure accuracy.
+                    <strong>Note:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), dense performance is generally half that of sparse. However, this is not always true (see, e.g., NVIDIA B300 FP4); check official documentation to ensure accuracy.
                   </div>
                   <p style={{ margin: 0 }}>
                     A chip’s TPP for purposes of assessing export control status is determined using the bit length that yields the highest value. E.g., the BIS notes that the 4800 TPP threshold can be met with 600 TOP/s at 8 bits or 300 TFLOP/s at 16 bits. 
@@ -928,7 +929,7 @@ export default function ChipExportTracker() {
                 fontFamily: fonts.serif,
                 margin: 0,
               }}>
-                Threshold History
+                Export Control History
               </h2>
             </div>
 
