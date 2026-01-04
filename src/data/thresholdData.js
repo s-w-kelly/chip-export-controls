@@ -2,9 +2,10 @@
  * Export Control Threshold History
  *
  * To update this data:
- * - Add new rules to the array (most recent should be last)
- * - The last entry in the array is used as the "current" threshold
- * - tppThreshold and pdThreshold are the control thresholds
+ * - Add new rules to the array (most recent should be first)
+ * - The first entry in the array is used as the "current" threshold
+ * - Only include thresholds that exist for each rule (tppThreshold, pdThreshold, interconnectThreshold)
+ * - notes field supports HTML for rich formatting
  * - url is the link to the official rule document
  */
 

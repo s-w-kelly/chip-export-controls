@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { chipData } from '../data/chipData';
 import { thresholdHistory } from '../data/thresholdData';
+import { notesContent } from '../data/notesData';
 
 // Clean, editorial theme configurations
 const themes = {
@@ -98,7 +99,7 @@ export default function ChipExportTracker() {
     return calculatedTPP / parseFloat(calcInputs.dieArea);
   }, [calculatedTPP, calcInputs.dieArea]);
 
-  const currentThresholds = thresholdHistory[thresholdHistory.length - 1];
+  const currentThresholds = thresholdHistory[0];
 
   const getControlStatus = (tpp, pd) => {
     if (!tpp && !pd) return { status: 'unknown', color: theme.textMuted };
@@ -940,11 +941,11 @@ export default function ChipExportTracker() {
                   style={{
                     ...cardStyle,
                     padding: '28px',
-                    borderLeft: idx === thresholdHistory.length - 1 ? `3px solid ${theme.accent}` : `1px solid ${theme.border}`,
+                    borderLeft: idx === 0 ? `3px solid ${theme.accent}` : `1px solid ${theme.border}`,
                     position: 'relative',
                   }}
                 >
-                  {idx === thresholdHistory.length - 1 && (
+                  {idx === 0 && (
                     <span style={{
                       position: 'absolute',
                       top: '20px',
@@ -978,24 +979,30 @@ export default function ChipExportTracker() {
                     </a>
                   </h3>
                   <div style={{ display: 'flex', gap: '32px', marginBottom: '16px' }}>
-                    <div>
-                      <span style={{ fontSize: '12px', color: theme.textMuted }}>TPP Threshold: </span>
-                      <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                        {rule.tppThreshold.toLocaleString()}
-                      </span>
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '12px', color: theme.textMuted }}>PD Threshold: </span>
-                      <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                        {rule.pdThreshold}
-                      </span>
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
-                      <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                        {rule.interconnectThreshold}
-                      </span>
-                    </div>
+                    {rule.tppThreshold != null && (
+                      <div>
+                        <span style={{ fontSize: '12px', color: theme.textMuted }}>TPP Threshold: </span>
+                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                          {rule.tppThreshold.toLocaleString()}
+                        </span>
+                      </div>
+                    )}
+                    {rule.pdThreshold != null && (
+                      <div>
+                        <span style={{ fontSize: '12px', color: theme.textMuted }}>PD Threshold: </span>
+                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                          {rule.pdThreshold}
+                        </span>
+                      </div>
+                    )}
+                    {rule.interconnectThreshold != null && (
+                      <div>
+                        <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
+                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                          {rule.interconnectThreshold}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <div
                     style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}
@@ -1031,27 +1038,26 @@ export default function ChipExportTracker() {
             </div>
 
             <div style={{ ...cardStyle, padding: '36px' }}>
-              <section style={{ marginBottom: '24px' }}>
-                <h3 style={{
-                  fontSize: '18px',
-                  fontWeight: '600',
-                  fontFamily: fonts.serif,
-                  marginBottom: '16px',
-                  color: theme.text,
-                }}>
-                  Data Sources
-                </h3>
-                <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
-                  <p style={{ margin: '0 0 14px' }}>
-                    https://epoch.ai/gradient-updates/us-export-controls-china-ai
-                  </p>
-                    https://cset.georgetown.edu/article/bis-2023-update-explainer/ https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions
-                  <p style={{ margin: 0, fontStyle: 'italic', color: theme.textMuted }}>
-                    This tool is for informational purposes only. It does not constitute legal advice. Consult qualified export control counsel for compliance determinations.
-                  </p>
-                </div>
-              </section>
+              <div
+                className="notes-content"
+                style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}
+                dangerouslySetInnerHTML={{ __html: notesContent }}
+              />
             </div>
+            <style>{`
+              .notes-content h3 {
+                font-size: 18px;
+                font-weight: 600;
+                font-family: ${fonts.serif};
+                margin-bottom: 16px;
+                color: ${theme.text};
+              }
+              .notes-content .disclaimer {
+                margin-top: 20px;
+                font-style: italic;
+                color: ${theme.textMuted};
+              }
+            `}</style>
           </div>
         )}
 
