@@ -34,7 +34,7 @@ export const chipData = [
     sources: [
       { name: "Blackwell Ultra technical brief (performance, specs)", url: "https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet?ncid=no-ncid" },
       { name: "Blackwell technical brief (process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=6" },
-      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
+      { name: "Tom’s Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
   {
@@ -61,7 +61,7 @@ export const chipData = [
     notes: "—",
     sources: [
       { name: "Blackwell technical brief (performance, specs, process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
-      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
+      { name: "Tom’s Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
   {
@@ -88,7 +88,7 @@ export const chipData = [
     notes: "—",
     sources: [
       { name: "Blackwell technical brief (performance, specs, process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=19" },
-      { name: "Tom's Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
+      { name: "Tom’s Hardware (die area estimate)", url: "https://www.tomshardware.com/pc-components/gpus/nvidias-next-gen-ai-gpu-revealed-blackwell-b200-gpu-delivers-up-to-20-petaflops-of-compute-and-massive-improvements-over-hopper-h100#:~:text=The%20reason%20for%20this%20dual,and%20Ada%20Lovelace%20architecture%20GPUs." },
     ]
   },
   {
@@ -170,7 +170,7 @@ export const chipData = [
     eccn: null,
     notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
     sources: [
-      { name: "Tom's Hardware (performance, specs)", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
+      { name: "Tom’s Hardware (performance, specs)", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
       { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
       { name: "NPR (Trump deal)", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
     ]
@@ -463,17 +463,17 @@ export const chipData = [
     tf32: 653.7,
     int8: 2614.9,
     dieArea: "1017 mm² (estimate)",
-    processNode: "TSMC ",
+    processNode: "TSMC N5 or N5P (estimate)",
     hbmCapacity: "256 GB HBM3e",
     memoryBandwidth: "6 TB/s",
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "TSMC N5 or N5P (estimate)",
+    notes: "—",
     sources: [
     { name: "MI325X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },    
-    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
+    { name: "Tom’s Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
   ]
   },
   {
@@ -491,17 +491,17 @@ export const chipData = [
     tf32: 653.7,
     int8: 2614.9,
     dieArea: "1017 mm² (estimate)",
-    processNode: "—",
+    processNode: "TSMC N5 or N5P (estimate)",
     hbmCapacity: "192 GB HBM3",
     memoryBandwidth: "5.3 TB/s",
     tdp: "750W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "TSMC N5 or N5P (estimate)",
+    notes: "—",
     sources: [
     { name: "MI300X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300x-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
-    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
+    { name: "Tom’s Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
   ]
   },
   {
@@ -519,17 +519,17 @@ export const chipData = [
     tf32: 490.3,
     int8: 1961.2,
     dieArea: "1017 mm² (estimate)",
-    processNode: "—",
+    processNode: "TSMC N5 or N5P (estimate)",
     hbmCapacity: "128 GB HBM3",
     memoryBandwidth: "5.3 TB/s",
     tdp: "760W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "TSMC N5 or N5P (estimate)",
+    notes: "—",
     sources: [
     { name: "MI300A datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300a-data-sheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },
-    { name: "Tom's Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
+    { name: "Tom’s Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
     ]
   },
   {
@@ -556,7 +556,7 @@ export const chipData = [
     notes: "—",
     sources: [
     { name: "MI250X product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250x.html" },
-    { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "Tom’s Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
     { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
@@ -584,7 +584,7 @@ export const chipData = [
     notes: "—",
     sources: [
     { name: "MI250 product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
-    { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "Tom’s Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
     { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
@@ -612,7 +612,7 @@ export const chipData = [
     notes: "—",
     sources: [
     { name: "MI250 product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
-    { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "Tom’s Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
     { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },
