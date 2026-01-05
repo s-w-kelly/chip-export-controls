@@ -62,7 +62,8 @@ export default function ChipExportTracker() {
     flops: '',
     bitLength: '8',
     isSparse: false,
-    dieArea: ''
+    dieArea: '',
+    isDatacenter: true
   });
 
   const sortedChips = useMemo(() => {
@@ -101,14 +102,51 @@ export default function ChipExportTracker() {
 
   const currentThresholds = thresholdHistory[0];
 
-  const getControlStatus = (tpp, pd) => {
-    if (!tpp && !pd) return { status: 'unknown', color: theme.textMuted };
-    const exceedsTPP = tpp && tpp > currentThresholds.tppThreshold;
-    const exceedsPD = pd && pd > currentThresholds.pdThreshold;
-    if (exceedsTPP || exceedsPD) {
-      return { status: 'Likely Controlled', color: theme.statusExceeds };
+  // Status colors
+  const statusColors = {
+    controlled: theme.statusExceeds,          // red
+    nacEligible: '#ca8a04',                   // yellow/amber
+    notControlled: theme.statusBelow,         // green
+    unknown: theme.textMuted
+  };
+
+  const getControlStatus = (tpp, pd, isDatacenter = true) => {
+    if (!tpp) return { status: 'Enter values', color: statusColors.unknown, eccn: null };
+
+    if (isDatacenter) {
+      // Datacenter chips - full two-tiered system
+
+      // Tier 1: License Required (ECCN 3A090.a)
+      // .a.1: TPP >= 4800
+      if (tpp >= 4800) {
+        return { status: 'Controlled', color: statusColors.controlled, eccn: '3A090.a.1' };
+      }
+      // .a.2: TPP >= 1600 AND PD >= 5.92
+      if (tpp >= 1600 && pd && pd >= 5.92) {
+        return { status: 'Controlled', color: statusColors.controlled, eccn: '3A090.a.2' };
+      }
+
+      // Tier 2: NAC/ACA Eligible (ECCN 3A090.b)
+      // .b.1: 2400 <= TPP < 4800 AND 1.6 <= PD < 5.92
+      if (tpp >= 2400 && tpp < 4800 && pd && pd >= 1.6 && pd < 5.92) {
+        return { status: 'Controlled but NAC/ACA eligible', color: statusColors.nacEligible, eccn: '3A090.b.1' };
+      }
+      // .b.2: TPP >= 1600 AND 3.2 <= PD < 5.92
+      if (tpp >= 1600 && pd && pd >= 3.2 && pd < 5.92) {
+        return { status: 'Controlled but NAC/ACA eligible', color: statusColors.nacEligible, eccn: '3A090.b.2' };
+      }
+
+      // Does not meet any controlled criteria
+      return { status: 'Not controlled', color: statusColors.notControlled, eccn: null };
+    } else {
+      // Non-datacenter chips - simpler rules
+      // TPP >= 4800: NAC/ACA eligible
+      if (tpp >= 4800) {
+        return { status: 'Controlled but NAC/ACA eligible', color: statusColors.nacEligible, eccn: null };
+      }
+      // TPP < 4800: Not controlled
+      return { status: 'Not controlled', color: statusColors.notControlled, eccn: null };
     }
-    return { status: 'Below Thresholds', color: theme.statusBelow };
   };
 
   // Shared styles
@@ -261,50 +299,117 @@ export default function ChipExportTracker() {
             {/* Threshold Cards */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
+              gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '16px',
               marginBottom: '36px',
             }}>
+              {/* Datacenter Chips Card */}
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>License required (ECCN 3A090.a)</div>
                 <div style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  fontFamily: fonts.mono,
-                  color: theme.text,
-                  letterSpacing: '-1px',
+                  ...labelStyle,
+                  marginBottom: '16px',
+                  fontSize: '12px',
+                  color: theme.accent,
                 }}>
-                  ECCN 3A090.a.1 = 4,800 TPP
+                  Datacenter Chips
                 </div>
-                <div style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  fontFamily: fonts.mono,
-                  color: theme.text,
-                  letterSpacing: '-1px',
-                }}>
-                  ECCN 3A090.a.2 = 1,600 TPP + 5.92 PD
+
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: theme.statusExceeds,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    License Required (3A090.a)
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>.a.1: TPP ≥ 4,800</div>
+                    <div>.a.2: TPP ≥ 1,600 AND PD ≥ 5.92</div>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: `1px solid ${theme.border}`, paddingTop: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: '#ca8a04',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    NAC/ACA Eligible (3A090.b)
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>.b.1: 2,400 ≤ TPP &lt; 4,800 AND 1.6 ≤ PD &lt; 5.92</div>
+                    <div>.b.2: TPP ≥ 1,600 AND 3.2 ≤ PD &lt; 5.92</div>
+                  </div>
                 </div>
               </div>
+
+              {/* Non-Datacenter Chips Card */}
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>Eligible for NAC/ACA license exceptions (ECCN 3A090.b)</div>
                 <div style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  fontFamily: fonts.mono,
-                  color: theme.text,
-                  letterSpacing: '-1px',
+                  ...labelStyle,
+                  marginBottom: '16px',
+                  fontSize: '12px',
+                  color: theme.accent,
                 }}>
-                  ECCN 3A090.b.1 = 2,400–4,800 TPP + 1.6–5.92 PD 
+                  Non-Datacenter Chips
                 </div>
-                <div style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  fontFamily: fonts.mono,
-                  color: theme.text,
-                  letterSpacing: '-1px',
-                }}>
-                  ECCN 3A090.b.2 = 1600 TPP + 3.2–5.92 PD
+
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: '#ca8a04',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    NAC/ACA Eligible
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>TPP ≥ 4,800</div>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: `1px solid ${theme.border}`, paddingTop: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: theme.statusBelow,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    Not Controlled
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>TPP &lt; 4,800</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -441,7 +546,9 @@ export default function ChipExportTracker() {
                           fontFamily: fonts.mono,
                           fontSize: '13px',
                           fontWeight: '500',
-                          color: chip.tpp && chip.tpp > currentThresholds.tppThreshold ? theme.statusExceeds : theme.statusBelow,
+                          color: chip.tpp >= 4800 ? theme.statusExceeds :
+                                 chip.tpp >= 1600 ? statusColors.nacEligible :
+                                 theme.statusBelow,
                         }}>
                           {chip.tpp ? chip.tpp.toLocaleString() : '—'}
                         </span>
@@ -451,7 +558,9 @@ export default function ChipExportTracker() {
                           fontFamily: fonts.mono,
                           fontSize: '13px',
                           fontWeight: '500',
-                          color: chip.pd && chip.pd > currentThresholds.pdThreshold ? theme.statusExceeds : theme.statusBelow,
+                          color: chip.pd >= 5.92 ? theme.statusExceeds :
+                                 chip.pd >= 1.6 ? statusColors.nacEligible :
+                                 theme.statusBelow,
                         }}>
                           {chip.pd ? chip.pd.toFixed(1) : '—'}
                         </span>
@@ -474,8 +583,10 @@ export default function ChipExportTracker() {
                           textTransform: 'uppercase',
                           letterSpacing: '0.3px',
                           background: chip.controlStatus.includes('Controlled') ? theme.statusExceedsBg :
+                                      chip.controlStatus.toLowerCase().includes('nac') ? 'rgba(202, 138, 4, 0.12)' :
                                       chip.controlStatus === 'Unknown' ? theme.bgHover : theme.statusBelowBg,
                           color: chip.controlStatus.includes('Controlled') ? theme.statusExceeds :
+                                 chip.controlStatus.toLowerCase().includes('nac') ? statusColors.nacEligible :
                                  chip.controlStatus === 'Unknown' ? theme.textMuted : theme.statusBelow,
                         }}>
                           {chip.controlStatus}
@@ -678,7 +789,7 @@ export default function ChipExportTracker() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
                 <div>
                   <label style={{ ...labelStyle, display: 'block', marginBottom: '8px' }}>
                     Die Area (mm²)
@@ -722,6 +833,36 @@ export default function ChipExportTracker() {
                 </div>
               </div>
 
+              <div style={{
+                marginBottom: '32px',
+                padding: '16px',
+                background: theme.bg,
+                borderRadius: '8px',
+                border: `1px solid ${theme.border}`,
+              }}>
+                <label style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  color: theme.text,
+                }}>
+                  <input
+                    type="checkbox"
+                    checked={calcInputs.isDatacenter}
+                    onChange={e => setCalcInputs(prev => ({ ...prev, isDatacenter: e.target.checked }))}
+                    style={{ width: '18px', height: '18px', cursor: 'pointer' }}
+                  />
+                  <span>
+                    <strong>Datacenter marketing</strong>
+                    <span style={{ color: theme.textMuted, marginLeft: '8px' }}>
+                      (chip is designed or marketed for use in datacenters)
+                    </span>
+                  </span>
+                </label>
+              </div>
+
               {/* Results */}
               <div style={{
                 background: theme.bg,
@@ -736,13 +877,10 @@ export default function ChipExportTracker() {
                       fontSize: '28px',
                       fontWeight: '600',
                       fontFamily: fonts.mono,
-                      color: calculatedTPP && calculatedTPP > currentThresholds.tppThreshold ? theme.statusExceeds : theme.statusBelow,
+                      color: calculatedTPP ? theme.text : theme.textMuted,
                       letterSpacing: '-1px',
                     }}>
                       {calculatedTPP ? calculatedTPP.toLocaleString() : '—'}
-                    </div>
-                    <div style={{ fontSize: '12px', color: theme.textMuted, marginTop: '4px', fontFamily: fonts.mono }}>
-                      Threshold: {currentThresholds.tppThreshold.toLocaleString()}
                     </div>
                   </div>
                   <div>
@@ -751,24 +889,38 @@ export default function ChipExportTracker() {
                       fontSize: '28px',
                       fontWeight: '600',
                       fontFamily: fonts.mono,
-                      color: calculatedPD && calculatedPD > currentThresholds.pdThreshold ? theme.statusExceeds : calculatedPD ? theme.statusBelow : theme.textMuted,
+                      color: calculatedPD ? theme.text : theme.textMuted,
                       letterSpacing: '-1px',
                     }}>
                       {calculatedPD ? calculatedPD.toFixed(2) : '—'}
                     </div>
-                    <div style={{ fontSize: '12px', color: theme.textMuted, marginTop: '4px', fontFamily: fonts.mono }}>
-                      Threshold: {currentThresholds.pdThreshold}
-                    </div>
                   </div>
                   <div>
                     <div style={{ ...labelStyle, marginBottom: '8px' }}>Assessment</div>
-                    <div style={{
-                      fontSize: '16px',
-                      fontWeight: '600',
-                      color: getControlStatus(calculatedTPP, calculatedPD).color,
-                    }}>
-                      {!calculatedTPP ? 'Enter values' : getControlStatus(calculatedTPP, calculatedPD).status}
-                    </div>
+                    {(() => {
+                      const result = getControlStatus(calculatedTPP, calculatedPD, calcInputs.isDatacenter);
+                      return (
+                        <>
+                          <div style={{
+                            fontSize: '16px',
+                            fontWeight: '600',
+                            color: result.color,
+                          }}>
+                            {result.status}
+                          </div>
+                          {result.eccn && (
+                            <div style={{
+                              fontSize: '13px',
+                              color: theme.textMuted,
+                              marginTop: '4px',
+                              fontFamily: fonts.mono,
+                            }}>
+                              ECCN {result.eccn}
+                            </div>
+                          )}
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
               </div>

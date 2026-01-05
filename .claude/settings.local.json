@@ -3,7 +3,9 @@
     "allow": [
       "Skill(frontend-design)",
       "WebFetch(domain:ifp.org)",
-      "WebFetch(domain:epoch.ai)"
+      "WebFetch(domain:epoch.ai)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)"
     ]
   }
 }
