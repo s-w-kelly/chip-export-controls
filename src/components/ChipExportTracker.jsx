@@ -266,7 +266,7 @@ export default function ChipExportTracker() {
               marginBottom: '36px',
             }}>
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>TPP Threshold</div>
+                <div style={{ ...labelStyle, marginBottom: '8px' }}>Total Processing Performance (TPP)</div>
                 <div style={{
                   fontSize: '32px',
                   fontWeight: '600',
@@ -278,7 +278,7 @@ export default function ChipExportTracker() {
                 </div>
               </div>
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>PD Threshold</div>
+                <div style={{ ...labelStyle, marginBottom: '8px' }}>Performance Density (PD)</div>
                 <div style={{
                   fontSize: '32px',
                   fontWeight: '600',
@@ -287,20 +287,6 @@ export default function ChipExportTracker() {
                   letterSpacing: '-1px',
                 }}>
                   {currentThresholds.pdThreshold}
-                </div>
-              </div>
-              <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>Current Rule</div>
-                <div style={{
-                  fontSize: '15px',
-                  fontWeight: '500',
-                  color: theme.text,
-                  marginBottom: '4px',
-                }}>
-                  {currentThresholds.rule}
-                </div>
-                <div style={{ fontSize: '13px', color: theme.textMuted }}>
-                  {currentThresholds.date}
                 </div>
               </div>
             </div>
@@ -941,27 +927,9 @@ export default function ChipExportTracker() {
                   style={{
                     ...cardStyle,
                     padding: '28px',
-                    borderLeft: idx === 0 ? `3px solid ${theme.accent}` : `1px solid ${theme.border}`,
                     position: 'relative',
                   }}
                 >
-                  {idx === 0 && (
-                    <span style={{
-                      position: 'absolute',
-                      top: '20px',
-                      right: '20px',
-                      fontSize: '11px',
-                      fontWeight: '600',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                      color: theme.accent,
-                      background: theme.accentBg,
-                      padding: '4px 10px',
-                      borderRadius: '4px',
-                    }}>
-                      Current
-                    </span>
-                  )}
                   <div style={{ fontSize: '13px', color: theme.textMuted, marginBottom: '6px' }}>
                     {rule.date}
                   </div>
@@ -1025,7 +993,7 @@ export default function ChipExportTracker() {
               .notes-content p:last-child { margin-bottom: 0; }
               .notes-content ul { margin: 12px 0; padding-left: 24px; }
               .notes-content li { margin-bottom: 8px; }
-              .notes-content a { color: 'inherit'; text-decoration: underline; }
+              .notes-content a { color: theme.textSecondary; text-decoration: underline; }
             `}</style>
           </div>
         )}

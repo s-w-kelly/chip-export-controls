@@ -34,8 +34,6 @@ export const thresholdHistory = [
   {
     date: "2024",
     rule: "Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items, 89 Fed. Reg. 96790 (Dec. 5, 2024)",
-    tppThreshold: 4800,
-    pdThreshold: 5.92,
     notes: ` 
       <p></p>        
       <p>The HBM controls <a href="https://ifp.org/the-h20-problem/#3-bis-should-issue-a-new-rule-strengthening-export-controls-on-inference-chips">do not cover</a> chips co-packaged with HBM, just the HBM chips themselves</p>        
