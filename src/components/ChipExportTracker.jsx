@@ -993,7 +993,7 @@ export default function ChipExportTracker() {
               .notes-content p:last-child { margin-bottom: 0; }
               .notes-content ul { margin: 12px 0; padding-left: 24px; }
               .notes-content li { margin-bottom: 8px; }
-              .notes-content a { color: theme.textSecondary; text-decoration: underline; }
+              .notes-content a { color: inherit; text-decoration: underline; }
             `}</style>
           </div>
         )}
