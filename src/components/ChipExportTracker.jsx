@@ -266,27 +266,45 @@ export default function ChipExportTracker() {
               marginBottom: '36px',
             }}>
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>Total Processing Performance (TPP)</div>
+                <div style={{ ...labelStyle, marginBottom: '8px' }}>License required (ECCN 3A090.a)</div>
                 <div style={{
-                  fontSize: '32px',
+                  fontSize: '24px',
                   fontWeight: '600',
                   fontFamily: fonts.mono,
                   color: theme.text,
                   letterSpacing: '-1px',
                 }}>
-                  {currentThresholds.tppThreshold.toLocaleString()}
+                  ECCN 3A090.a.1 = 4,800 TPP
+                </div>
+                <div style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  fontFamily: fonts.mono,
+                  color: theme.text,
+                  letterSpacing: '-1px',
+                }}>
+                  ECCN 3A090.a.2 = 1,600 TPP + 5.92 PD
                 </div>
               </div>
               <div style={{ ...cardStyle, padding: '24px' }}>
-                <div style={{ ...labelStyle, marginBottom: '8px' }}>Performance Density (PD)</div>
+                <div style={{ ...labelStyle, marginBottom: '8px' }}>Eligible for NAC/ACA license exceptions (ECCN 3A090.b)</div>
                 <div style={{
-                  fontSize: '32px',
+                  fontSize: '24px',
                   fontWeight: '600',
                   fontFamily: fonts.mono,
                   color: theme.text,
                   letterSpacing: '-1px',
                 }}>
-                  {currentThresholds.pdThreshold}
+                  ECCN 3A090.b.1 = 2,400–4,800 TPP + 1.6–5.92 PD 
+                </div>
+                <div style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  fontFamily: fonts.mono,
+                  color: theme.text,
+                  letterSpacing: '-1px',
+                }}>
+                  ECCN 3A090.b.2 = 1600 TPP + 3.2–5.92 PD
                 </div>
               </div>
             </div>
@@ -610,7 +628,7 @@ export default function ChipExportTracker() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
                 <div>
                   <label style={{ ...labelStyle, display: 'block', marginBottom: '8px' }}>
-                    Peak Performance (TFLOP/s or TOP/S)
+                    Peak Performance (TFLOP/s or TOP/s)
                   </label>
                   <input
                     type="number"
