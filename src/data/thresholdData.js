@@ -12,7 +12,7 @@
 export const thresholdHistory = [
   {
     date: "2026",
-    rule: "Current status",
+    rule: "Current Status",
     tppThreshold: 4800,
     pdThreshold: 5.92,
     notes: ` 
