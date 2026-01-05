@@ -167,11 +167,12 @@ export const chipData = [
     memoryBandwidth: "4 TB/s",
     tdp: "400W",
     controlStatus: "Exportable\n(special exception)",
-    eccn: null,
-    notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. However, the H20's inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it a powerful chip with the rise of reasoning models and test-time compute scaling. The US considered banning H20 sales to China, but the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
+    eccn: "3A991 or 4A994 (estimate)",
+    notes: "China-specific Hopper chip with downgraded arithmetic performance to fall under TPP and PD thresholds in light of 2023 controls. The H20’s inference-optimized features (enhanced interconnect and memory capacity/bandwidth) made it an unexpectedly powerful chip with the rise of reasoning models that leverage test-time compute scaling. While the TPP and PD metrics fall below the control thresholds, the US government concluded that the export of H20s violates the supercomputer end-use restrictions under 15 C.F.R § 744.23(a)(1). However, the Trump Administration instead opted to allow exports in exchange for 15% of Nvidia's revenue from these sales.",
     sources: [
       { name: "Tom’s Hardware (performance, specs)", url: "https://www.tomshardware.com/news/nvidias-latest-regulation-compliant-gpu-for-china-has-been-delayed-to-early-next-year" },
-      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
+      { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },
+      { name: "IFP (ECCN and supercomputer end-use analyses)", url: "https://ifp.org/the-h20-problem/" },        
       { name: "NPR (Trump deal)", url: "https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china" },    
     ]
   },
