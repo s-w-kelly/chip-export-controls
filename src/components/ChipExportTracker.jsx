@@ -1244,7 +1244,7 @@ export default function ChipExportTracker() {
 
         {/* Notes Tab */}
         {activeTab === 'notes' && (
-          <div style={{ maxWidth: '720px' }}>
+          <div style={{ maxWidth: '800px' }}>
             <div style={{ marginBottom: '30px' }}>
               <h2 style={{
                 fontSize: '28px',
@@ -1258,22 +1258,48 @@ export default function ChipExportTracker() {
 
             <div style={{ ...cardStyle, padding: '36px' }}>
               <div
-                className="notes-content"
+                className="notes-tab-content"
                 style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}
                 dangerouslySetInnerHTML={{ __html: notesContent }}
               />
             </div>
             <style>{`
-              .notes-content h3 {
+              .notes-tab-content section {
+                margin-bottom: 36px;
+              }
+              .notes-tab-content section:last-child {
+                margin-bottom: 0;
+              }
+              .notes-tab-content section + section {
+                padding-top: 24px;
+                border-top: 1px solid ${theme.border};
+              }
+              .notes-tab-content h3 {
                 font-size: 18px;
                 font-weight: 600;
                 font-family: ${fonts.serif};
-                margin-bottom: 16px;
+                margin: 0 0 16px 0;
                 color: ${theme.text};
               }
-              .notes-content p { margin-bottom: 18px}
-              .notes-content ul { margin: 12px 0; padding-left: 24px; }
-              .notes-content li { margin-bottom: 8px; }
+              .notes-tab-content p {
+                margin: 0 0 14px 0;
+              }
+              .notes-tab-content p:last-child {
+                margin-bottom: 0;
+              }
+              .notes-tab-content ul {
+                margin: 12px 0;
+                padding-left: 24px;
+              }
+              .notes-tab-content li {
+                margin-bottom: 8px;
+              }
+              .notes-tab-content a {
+                color: inherit;
+                text-decoration: underline;
+              }
+              .notes-tab-content a:hover {
+                text-decoration: underline;
               }
             `}</style>
           </div>
