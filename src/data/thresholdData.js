@@ -12,29 +12,50 @@
 export const thresholdHistory = [
   {
     date: "2026",
-    rule: "Current Status",
+    rule: "Current Status/Trends",
     notes: ` 
-      <p>The 2023 TPP/PD framework remains in place (with the same thresholds), and was essentially <a href="https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions#:~:text=The%20short%20answer%20is%2C%20no%2E%20Nvidia%20has%20no%20way%20to%20really%20game%20these%20rules%20even%20with%20a%20brand%2Dnew%20clean%20sheet%20design%2E">successful at closing the loopholes</a> the BIS was targeting. 
-      However, the rise of reasoning models and test-time compute scaling in 2024 changed the landscape of what specifications were desireable for chips. For instance, the H20, a significantly downgraded China-specific Hopper chip NVIDIA designed in response to the 2023 controls, suddenly became powerful: the H20 is <a href="https://newsletter.semianalysis.com/p/nvidias-new-china-ai-chips-circumvent">~20% faster</a> for inference than the H100 due to its higher memory capacity (96 GB vs 80 GB) and memory bandwidth (4 vs 3.4 TB/s), even with significantly lower arithmetic performance.</p>        
-      <p>In response to the “H20 problem” (i.e, the growing importance of inference and the implications for what chips are desireable), <a href="https://ifp.org/the-h20-problem/#3-bis-should-issue-a-new-rule-strengthening-export-controls-on-inference-chips">some policy analysts</a> and even the <a href="https://chinaselectcommittee.house.gov/sites/evo-subsites/selectcommitteeontheccp.house.gov/files/evo-media-document/DeepSeek Final.pdf#page=10">House Select Committee on the CCP</a> have argued for adding criteria to target inference chips, such as by using memory bandwidth as a threshold metric or by restricting the export of AI chips co-packaged with HBM.</p>    
-      <p>chip location tracking</p>
-      <p>However, with the Trump Administration emphasizing "exporting the AI stack," it is unclear if they will expand controls further.</p>      
+      <p>The 2023 TPP/PD framework remains in place (with the same thresholds), and was essentially <a href="https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions#:~:text=The%20short%20answer%20is%2C%20no%2E%20Nvidia%20has%20no%20way%20to%20really%20game%20these%20rules%20even%20with%20a%20brand%2Dnew%20clean%20sheet%20design%2E">successful at closing the loopholes</a> the BIS was targeting.</p>
+      <p>However, the rise of reasoning models and test-time compute scaling in 2024 changed the landscape of what specifications were desireable for chips. For instance, the H20, a significantly downgraded China-specific Hopper chip NVIDIA designed in response to the 2023 controls, suddenly became powerful: the H20 is <a href="https://newsletter.semianalysis.com/p/nvidias-new-china-ai-chips-circumvent">~20% faster</a> for inference than the H100 due to its higher memory capacity (96 GB vs 80 GB) and memory bandwidth (4 vs 3.4 TB/s), even with significantly lower arithmetic performance.</p>        
+      In response to the “H20 problem” (i.e, the growing importance of inference and the implications for what chips are desireable), <a href="https://ifp.org/the-h20-problem/#3-bis-should-issue-a-new-rule-strengthening-export-controls-on-inference-chips">some policy analysts</a> and even the <a href="https://chinaselectcommittee.house.gov/sites/evo-subsites/selectcommitteeontheccp.house.gov/files/evo-media-document/DeepSeek Final.pdf#page=10">House Select Committee on the CCP</a> have argued for adding criteria to target inference chips, such as by using memory bandwidth as a threshold metric or by restricting the export of AI chips co-packaged with HBM.</p>    
+      <p>In light of ongoing chip smuggling and diversion by Chinese companies to access NVIDIA H100s and other powerful chips, <a href="https://www.transformernews.ai/p/ai-chip-location-verification-nvidia-china-csa">many experts</a> are pushing for implementing on-chip location verification mechanisms, and a bill has been introduced in Congress to this end.
+      The <a href="https://www.congress.gov/bill/119th-congress/house-bill/3447/text">Chip Security Act</a> would “require any covered integrated circuit product to be outfitted with chip security mechanisms that implement location verification, using techniques that are feasible and appropriate.”
+      Chipmakers have <a href="https://www.transformernews.ai/i/173170396/not-so-fast">criticized</a> the proposal as “burdensome,” but <a href="https://www.iaps.ai/research/location-verification-for-ai-chips#:~:text=Firmware%20update">analysts estimate</a> that location verification functionality could be achieved with a firmware update to existing chips costing less than $1 million, and NVIDIA has <a href="https://www.reuters.com/business/nvidia-builds-location-verification-tech-that-could-help-fight-chip-smuggling-2025-12-10/">already developed</a> the necessary technology.</p>
     `,
   },
   {
     date: "2025",
     rule: "AI Diffusion Rule and Recission",
     notes: ` 
-      <p>Biden Admin Diffusion Rule, Trump Recission, individual deals with Saudi Arabia and stuff, and deals with NVIDIA and AMD (H20 and MI308X, H200s, etc.)</p>        
+      <p>In the final days of his term, President Biden released a sweeping <a href="https://www.federalregister.gov/documents/2025/01/15/2025-00636/framework-for-artificial-intelligence-diffusion">“Framework for Artificial Intelligence Diffusion”</a>. In brief, the rule <a href="https://www.rand.org/pubs/perspectives/PEA3776-1.html">would have created</a> a three-tiered system controlling which countries can import advanced AI chips (with per-country caps on H100-equivalent GPUs) as well as certain model weights.</p>  
+      <p>However, the Trump Administration <a href="https://cset.georgetown.edu/newsletter/may-15-2025/">rescinded</a> the Diffusion Rule days before it was set to take effect and instead <a href="https://carnegieendowment.org/emissary/2025/05/ai-chip-trump-gulf-uae-saudi-security-risk-good-deal?lang=en">opted to sign</a> individual deals with countries, starting with Saudi Arabia and the United Arab Emirates.</p>
+      <p>Rather than restrict AI diffusion as the Biden Administration attempted, the Trump Administration, led by advisor David Sacks, has <a href="https://thezvi.substack.com/i/164743152/when-david-sacks-says-win-the-ai-race-he-literally-means-market-share">pushed</a> for aggressively exporting “the American tech stack,” interpreting “winning the AI race” as “achiev[ing] a decisive advantage that can be measured in market share.”</p>
+      <p>To that end, while the Trump Administration has not formally rolled back export controls beyond rescinding the Diffusion Rule, it <a href="https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china">walked back</a> plans to ban exports of the NVIDIA H20 and AMD MI308 (inference-optimized chips with downgraded arithmetic performance to circumvent export controls) and, at the end of 2025, <a href="https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china">allowed</a> the export of H200 chips (identical to controlled H100 chips but with <i>higher</i> memory capacity and bandwidth).</p>
     `,
   },
   {
     date: "2024",
     rule: "Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items, 89 Fed. Reg. 96790 (Dec. 5, 2024)",
     notes: ` 
-      <p></p>        
-      <p>The HBM controls <a href="https://ifp.org/the-h20-problem/#3-bis-should-issue-a-new-rule-strengthening-export-controls-on-inference-chips">do not cover</a> chips co-packaged with HBM, just the HBM chips themselves</p>        
-    `,
+      <p>In 2024, BIS maintained the TPP/PD framework for GPUs but introduced controls for <a href="https://newsletter.semianalysis.com/p/scaling-the-memory-wall-the-rise-and-roadmap-of-hbm#throughput-optimized-io-is-the-lifeblood-of-the-ai-accelerator">High-Bandwidth Memory (“HBM”)</a> chips, a type of dynamic random access memory (“DRAM”) often co-packaged with GPU logic chips to allow for high performance data transfers.</p>
+      <p>HBM was targeted as a prime chokepoint for export controls for three primary reasons:</p>
+      <ul>
+        <li>
+          HBM is extremely important for AI compute performance: it <a href="https://www.csis.org/analysis/understanding-biden-administrations-updated-export-controls#:~:text=HBM%2C%20and%20the%20rapid%20data%20access%20it%20enables%2C%20has%20been%20an%20integral%20part%20of%20the%20AI%20story">has</a> “been an integral part of the AI story,” and became <a href="https://ifp.org/the-h20-problem/#background">even more important</a> in the latter half of 2024 with the emergence of reasoning models that made inference-optimized compute (which requires high memory bandwidth) critical.
+        </li>
+        <li>
+          HBM is extremely expensive: it <a href="https://www.chinatalk.media/p/export-controls-and-hbm#:~:text=accounts%20for%2050%25%20or%20more%20of%20the%20total%20cost%20of%20an%20AI%20chip">accounts</a> for ~50% of the cost of an AI chip.</p>        
+        </li>
+        <li>
+          HBM is extremely difficult to produce and production is essentially run by four companies: SK Hynix and Samsung in Korea <a href="https://www.chinatalk.media/i/152840795/asian-chipmakers-run-the-game">control ~95%</a> of the global HBM market, with the remaining 5% held by US company Micron, and copackaging HBM with GPU logies dies <a href="https://www.chinatalk.media/p/export-controls-and-hbm#:~:text=TSMC%20also%20controls%20approximately%2090%25">requires</a> a special packaging technology (Chip-on-Wafer-on-Substrate, or CoWoS) for which Taiwanese foundry TSMC controls 90% of the global capacity.</p>     
+        </li>
+      </ul>
+      <p>The BIS <a href="https://www.federalregister.gov/d/2024-28270/p-105">established</a> that HBM with a “memory bandwidth density” of 2GB/s/mm² would be controlled under ECCN 3A090.c. As the BIS noted, “[a]ll HBM stacks currently in production exceed this threshold.”
+      Notably, however, the rule <a href="https://www.federalregister.gov/d/2024-28270/p-106">excluded</a> co-packaged HBM. In other words, ECCN 3A090.c only applied to separate HBM chips, and AI chips already produced with HBM on board (which would inevitably exceed the bandwidth density threshold) would not be subject to export controls based on the included HBM; their export control status would continue to be governed by the TPP/PD/datacenter marketing criteria.</p>
+      <p>Targeting the HBM chokepoint left Chinese chipmakers like Huawei reliant on domestic producers, which <a href="https://www.chinatalk.media/i/161434996/chinese-memory-advancements">are</a> ~3 generations behind SK Hynix/Samsung/Micron (or ~6–8 years). 
+      However, the 2024 HBM controls <a href="https://ifp.org/the-h20-problem/#background">were leaked</a> six months prior to their release in December, which allowed leading Chinese chipmaker Huawei to stockpile a year’s worth of HBM before controls were in effect.
+      Further, SemiAnalysis <a href="https://www.chinatalk.media/i/152840795/asian-chipmakers-run-the-game">has reported</a> that Huawei continues to access HBM by importing it packaged with a cheap logic die, circumventing the controls since they do not apply to co-packaged HBM, and the chip does not exceed the TPP/PD thresholds.</p>        
+      <p>Concurrently with the HBM rules, the BIS <a href="https://www.federalregister.gov/documents/2024/12/05/2024-28267/additions-and-modifications-to-the-entity-list-removals-from-the-validated-end-user-veu-program">added</a> added 140 Chinese, Japanese, South Korean, and Singaporean conpanies to its Entity List to address diversion concerns.</p>
+      `,
     url: "https://www.federalregister.gov/documents/2024/12/05/2024-28270/foreign-produced-direct-product-rule-additions-and-refinements-to-controls-for-advanced-computing"
   },    
     {
@@ -74,6 +95,8 @@ export const thresholdHistory = [
         Further, to address the risk of Chinese companies obtaining chips shipped/diverted through other countries or foreign subsidiaries the BIS introduced <a href="https://www.federalregister.gov/d/2023-23055/p-306">“end-use” rules</a>.
         In relevant part, controlled (ECCN 3A090) chips would require a license if exported to any desination outside of the D:1, 4, and 5 countries with knowledge that the chip “is destined for any entity that is headquartered in, or whose ultimate parent company is headquartered in” a D:5 country or Macau and will be used in a “supercomputer.”
       </p>
+      <p>Overall, the 2023 framework <a href="https://newsletter.semianalysis.com/i/175661061/ai-semiconductor-controls">was</a> “incredibly strict” and “block[ed] a variety of GPUs . . . the market and firms like Nvidia did not expect.” 
+      After the reversal of attempted expansions to export controls at the end of the Biden Administration (see above), the 2023 rules essentially remain in place for GPUs.</p>
       `,
     url: "https://www.federalregister.gov/documents/2023/10/25/2023-23055/implementation-of-additional-export-controls-certain-advanced-computing-items-supercomputer-and"
   },
@@ -83,7 +106,7 @@ export const thresholdHistory = [
     performanceThreshold: 4800,
     interconnectThreshold: "600 GB/s",
     notes: ` 
-      <p>Initial semiconductor export controls targeting AI chips destined for China, issued by the Bureau of Industry and Security (BIS). 
+      <p>Initial semiconductor export controls targeting AI chips destined for China, issued by the Bureau of Industry and Security (“BIS”). 
       Used two criteria, both of which a chip had to meet to be subject to export controls:</p>
       <ul>
         <li>

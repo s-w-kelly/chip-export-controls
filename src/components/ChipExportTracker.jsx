@@ -204,7 +204,7 @@ export default function ChipExportTracker() {
               color: theme.textMuted,
               margin: '4px 0 0',
             }}>
-              Tools for tracking AI chip export controls
+              Tools for tracking and undestanding AI chip export controls
             </p>
           </div>
 
@@ -363,13 +363,21 @@ export default function ChipExportTracker() {
               <div style={{ ...cardStyle, padding: '24px' }}>
                 <div style={{
                   ...labelStyle,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   fontSize: '12px',
                   color: theme.accent,
                 }}>
                   Non-Datacenter Chips
                 </div>
-
+                <div style={{
+                    fontSize: '12px',
+                    fontFamily: fonts.sans,
+                    color: theme.textMuted,
+                    lineHeight: '1.6',
+                    marginBottom: '14px',
+                  }}>
+                    <div>Note 2 to 3A090.a and 3A090.b</div>
+                  </div>
                 <div style={{ marginBottom: '16px' }}>
                   <div style={{
                     fontSize: '11px',
