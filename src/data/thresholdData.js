@@ -5,6 +5,8 @@
  * - Add new rules to the array (most recent should be first)
  * - The first entry in the array is used as the "current" threshold
  * - Only include thresholds that exist for each rule (tppThreshold, pdThreshold, interconnectThreshold)
+ * - summary: Brief title shown in collapsed header (e.g., "Initial AI chip controls")
+ * - rule: Full official rule name, shown hyperlinked in expanded view
  * - notes field supports HTML for rich formatting
  * - url is the link to the official rule document
  */
@@ -12,7 +14,8 @@
 export const thresholdHistory = [
   {
     date: "2026",
-    rule: "Current Status/Trends",
+    summary: "Current status and trends",
+    rule: "",
     notes: ` 
       <p>The 2023 TPP/PD framework remains in place (with the same thresholds), and was essentially <a href="https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions#:~:text=The%20short%20answer%20is%2C%20no%2E%20Nvidia%20has%20no%20way%20to%20really%20game%20these%20rules%20even%20with%20a%20brand%2Dnew%20clean%20sheet%20design%2E">successful at closing the loopholes</a> the BIS was targeting.</p>
       <p>However, the rise of reasoning models and test-time compute scaling in 2024 changed the landscape of what specifications were desireable for chips. For instance, the H20, a significantly downgraded China-specific Hopper chip NVIDIA designed in response to the 2023 controls, suddenly became powerful: the H20 is <a href="https://newsletter.semianalysis.com/p/nvidias-new-china-ai-chips-circumvent">~20% faster</a> for inference than the H100 due to its higher memory capacity (96 GB vs 80 GB) and memory bandwidth (4 vs 3.4 TB/s), even with significantly lower arithmetic performance.</p>        
@@ -24,9 +27,10 @@ export const thresholdHistory = [
   },
   {
     date: "2025",
-    rule: "AI Diffusion Rule and Recission",
+    summary: "AI Diffusion Rule and rescission",
+    rule: "",
     notes: ` 
-      <p>In the final days of his term, President Biden released a sweeping <a href="https://www.federalregister.gov/documents/2025/01/15/2025-00636/framework-for-artificial-intelligence-diffusion">“Framework for Artificial Intelligence Diffusion”</a>. In brief, the rule <a href="https://www.rand.org/pubs/perspectives/PEA3776-1.html">would have created</a> a three-tiered system controlling which countries can import advanced AI chips (with per-country caps on H100-equivalent GPUs) as well as certain model weights.</p>  
+      <p>In the final days of his term, President Biden released a sweeping <a href="https://www.federalregister.gov/documents/2025/01/15/2025-00636/framework-for-artificial-intelligence-diffusion">“Framework for Artificial Intelligence Diffusion</a>.” In brief, the rule <a href="https://www.rand.org/pubs/perspectives/PEA3776-1.html">would have created</a> a three-tiered system controlling which countries can import advanced AI chips (with per-country caps on H100-equivalent GPUs) as well as certain model weights.</p>  
       <p>However, the Trump Administration <a href="https://cset.georgetown.edu/newsletter/may-15-2025/">rescinded</a> the Diffusion Rule days before it was set to take effect and instead <a href="https://carnegieendowment.org/emissary/2025/05/ai-chip-trump-gulf-uae-saudi-security-risk-good-deal?lang=en">opted to sign</a> individual deals with countries, starting with Saudi Arabia and the United Arab Emirates.</p>
       <p>Rather than restrict AI diffusion as the Biden Administration attempted, the Trump Administration, led by advisor David Sacks, has <a href="https://thezvi.substack.com/i/164743152/when-david-sacks-says-win-the-ai-race-he-literally-means-market-share">pushed</a> for aggressively exporting “the American tech stack,” interpreting “winning the AI race” as “achiev[ing] a decisive advantage that can be measured in market share.”</p>
       <p>To that end, while the Trump Administration has not formally rolled back export controls beyond rescinding the Diffusion Rule, it <a href="https://www.npr.org/2025/08/11/nx-s1-5498689/trump-nvidia-h20-chip-sales-china">walked back</a> plans to ban exports of the NVIDIA H20 and AMD MI308 (inference-optimized chips with downgraded arithmetic performance to circumvent export controls) and, at the end of 2025, <a href="https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china">allowed</a> the export of H200 chips (identical to controlled H100 chips but with <i>higher</i> memory capacity and bandwidth).</p>
@@ -34,6 +38,7 @@ export const thresholdHistory = [
   },
   {
     date: "2024",
+    summary: "HBM controls and Entity List additions",
     rule: "Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items, 89 Fed. Reg. 96790 (Dec. 5, 2024)",
     notes: ` 
       <p>In 2024, BIS maintained the TPP/PD framework for GPUs but introduced controls for <a href="https://newsletter.semianalysis.com/p/scaling-the-memory-wall-the-rise-and-roadmap-of-hbm#throughput-optimized-io-is-the-lifeblood-of-the-ai-accelerator">High-Bandwidth Memory (“HBM”)</a> chips, a type of dynamic random access memory (“DRAM”) often co-packaged with GPU logic chips to allow for high performance data transfers.</p>
@@ -60,6 +65,7 @@ export const thresholdHistory = [
   },    
     {
     date: "2023",
+    summary: "TPP/PD framework introduced",
     rule: "Implementation of Additional Export Controls: Certain Advanced Computing Items; Supercomputer and Semiconductor End Use; Updates and Corrections, 88 Fed. Reg. 73458 (Oct. 25, 2023)",
     tppThreshold: 4800,
     pdThreshold: 5.92,
@@ -102,6 +108,7 @@ export const thresholdHistory = [
   },
   {
     date: "2022",
+    summary: "Initial AI chip controls",
     rule: "Implementation of Additional Export Controls: Certain Advanced Computing and Semiconductor Manufacturing Items; Supercomputer and Semiconductor End Use; Entity List Modification, 87 Fed. Reg. 62186 (Oct. 13, 2022)",
     performanceThreshold: 4800,
     interconnectThreshold: "600 GB/s",

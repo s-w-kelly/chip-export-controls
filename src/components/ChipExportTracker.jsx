@@ -66,6 +66,8 @@ export default function ChipExportTracker() {
     isDatacenter: true
   });
 
+  const [expandedHistory, setExpandedHistory] = useState({});
+
   const sortedChips = useMemo(() => {
     return [...chipData].sort((a, b) => {
       const aVal = a[sortConfig.key];
@@ -1098,73 +1100,137 @@ export default function ChipExportTracker() {
               </h2>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {thresholdHistory.map((rule, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    ...cardStyle,
-                    padding: '28px',
-                    position: 'relative',
-                  }}
-                >
-                  <div style={{ fontSize: '13px', color: theme.textMuted, marginBottom: '6px' }}>
-                    {rule.date}
-                  </div>
-                  <h3 style={{ margin: '0 0 16px', fontSize: '18px', fontFamily: fonts.serif }}>
-                    <a
-                      href={rule.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: theme.text,
-                        textDecoration: 'none',
-                      }}
-                    >
-                      {rule.rule}
-                    </a>
-                  </h3>
-                  <div style={{ display: 'flex', gap: '32px', marginBottom: '16px' }}>
-                    {rule.tppThreshold != null && (
-                      <div>
-                        <span style={{ fontSize: '12px', color: theme.textMuted }}>TPP Threshold: </span>
-                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                          {rule.tppThreshold.toLocaleString()}
-                        </span>
-                      </div>
-                    )}
-                    {rule.pdThreshold != null && (
-                      <div>
-                        <span style={{ fontSize: '12px', color: theme.textMuted }}>PD Threshold: </span>
-                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                          {rule.pdThreshold}
-                        </span>
-                      </div>
-                    )}
-                    {rule.performanceThreshold != null && (
-                      <div>
-                        <span style={{ fontSize: '12px', color: theme.textMuted }}>Performance Threshold: </span>
-                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                          {rule.performanceThreshold}
-                        </span>
-                      </div>
-                    )}
-                    {rule.interconnectThreshold != null && (
-                      <div>
-                        <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
-                        <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
-                          {rule.interconnectThreshold}
-                        </span>
-                      </div>
-                    )}
-                  </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {thresholdHistory.map((rule, idx) => {
+                const isExpanded = expandedHistory[idx] ?? false;
+                return (
                   <div
-                    style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}
-                    dangerouslySetInnerHTML={{ __html: rule.notes }}
-                    className="notes-content"
-                  />
-                </div>
-              ))}
+                    key={idx}
+                    style={{
+                      ...cardStyle,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {/* Collapsible Header */}
+                    <div
+                      onClick={() => setExpandedHistory(prev => ({ ...prev, [idx]: !prev[idx] }))}
+                      style={{
+                        padding: '20px 28px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        background: isExpanded ? theme.bgHover : 'transparent',
+                        transition: 'background 0.15s ease',
+                      }}
+                      onMouseEnter={(e) => { if (!isExpanded) e.currentTarget.style.background = theme.bgHover; }}
+                      onMouseLeave={(e) => { if (!isExpanded) e.currentTarget.style.background = 'transparent'; }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
+                        <span style={{
+                          fontSize: '22px',
+                          fontWeight: '600',
+                          fontFamily: fonts.mono,
+                          color: theme.text,
+                        }}>
+                          {rule.date}
+                        </span>
+                        <span style={{
+                          fontSize: '14px',
+                          color: theme.textMuted,
+                        }}>
+                          {rule.summary || rule.rule}
+                        </span>
+                      </div>
+                      <span style={{
+                        fontSize: '18px',
+                        color: theme.textMuted,
+                        transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.2s ease',
+                      }}>
+                        ▼
+                      </span>
+                    </div>
+
+                    {/* Expandable Content */}
+                    {isExpanded && (
+                      <div style={{
+                        padding: '0 28px 28px',
+                        borderTop: `1px solid ${theme.border}`,
+                      }}>
+                        {rule.rule && (
+                          <div style={{ marginTop: '16px', marginBottom: '16px' }}>
+                            {rule.url ? (
+                              <a
+                                href={rule.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  fontSize: '14px',
+                                  color: theme.accent,
+                                  textDecoration: 'none',
+                                  lineHeight: '1.5',
+                                }}
+                              >
+                                {rule.rule}
+                              </a>
+                            ) : (
+                              <span style={{
+                                fontSize: '14px',
+                                color: theme.textSecondary,
+                                lineHeight: '1.5',
+                              }}>
+                                {rule.rule}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        {(rule.tppThreshold != null || rule.pdThreshold != null || rule.performanceThreshold != null || rule.interconnectThreshold != null) && (
+                          <div style={{ display: 'flex', gap: '32px', marginTop: '16px', marginBottom: '16px' }}>
+                            {rule.tppThreshold != null && (
+                              <div>
+                                <span style={{ fontSize: '12px', color: theme.textMuted }}>TPP Threshold: </span>
+                                <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                                  {rule.tppThreshold.toLocaleString()}
+                                </span>
+                              </div>
+                            )}
+                            {rule.pdThreshold != null && (
+                              <div>
+                                <span style={{ fontSize: '12px', color: theme.textMuted }}>PD Threshold: </span>
+                                <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                                  {rule.pdThreshold}
+                                </span>
+                              </div>
+                            )}
+                            {rule.performanceThreshold != null && (
+                              <div>
+                                <span style={{ fontSize: '12px', color: theme.textMuted }}>Performance Threshold: </span>
+                                <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                                  {rule.performanceThreshold}
+                                </span>
+                              </div>
+                            )}
+                            {rule.interconnectThreshold != null && (
+                              <div>
+                                <span style={{ fontSize: '12px', color: theme.textMuted }}>Interconnect BW Threshold: </span>
+                                <span style={{ fontSize: '16px', fontWeight: '600', fontFamily: fonts.mono, color: theme.text }}>
+                                  {rule.interconnectThreshold}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        <div
+                          style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6', marginTop: '16px' }}
+                          dangerouslySetInnerHTML={{ __html: rule.notes }}
+                          className="notes-content"
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <style>{`
               .notes-content p { margin: 0 0 12px 0; }
@@ -1205,10 +1271,9 @@ export default function ChipExportTracker() {
                 margin-bottom: 16px;
                 color: ${theme.text};
               }
-              .notes-content .disclaimer {
-                margin-top: 20px;
-                font-style: italic;
-                color: ${theme.textMuted};
+              .notes-content p { margin-bottom: 18px}
+              .notes-content ul { margin: 12px 0; padding-left: 24px; }
+              .notes-content li { margin-bottom: 8px; }
               }
             `}</style>
           </div>
@@ -1236,7 +1301,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 1/5/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 1/6/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}
