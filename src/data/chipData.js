@@ -661,7 +661,7 @@ export const chipData = [
     hbmCapacity: "64 GB HBM2e",
     memoryBandwidth: "1.6 TB/s",
     tdp: null,
-    controlStatus: "NAC eligible",
+    controlStatus: "NAC/ACA eligible",
     eccn: "3A090.b",
     notes: "—",
     sources: [

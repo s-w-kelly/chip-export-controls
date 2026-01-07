@@ -89,10 +89,19 @@ export const thresholdHistory = [
           Tier 1 = Datacenter chips with 4,800 TPP or 1,600 TPP + 5.92 PD. Controlled, export license required, reviewed with presumption of denial for country group D:5 and Macau, reviewed with presumption of approval for D:1 and D:4 countries.
         </li>
         <li>
-          Tier 2 = Datacenter chips with 2,400–4,800 TPP + 1.6–5.92 PD or 1600 TPP + 3.2–5.92 PD. Controlled, export license required, but eligible for Notified Advanced Computing (NAC) license exemption. Export to China potentially allowed if 25-day notification provided.
+          Tier 2 = Datacenter chips with 2,400–4,800 TPP + 1.6–5.92 PD or 1600 TPP + 3.2–5.92 PD. Controlled, export license required, but eligible for Notified Advanced Computing (“NAC”) or Advanced Computing Authorized (“ACA”) license exception. Export to China potentially allowed if 25-day notification provided.
         </li>
         </ul>  
-      <p><a href="https://www.federalregister.gov/d/2023-23055/p-204">Non-datacenter chips</a> with a TPP of 4,800 = NAC eligible; TPP below 4,800 = not controlled.</p>
+      <p><a href="https://www.federalregister.gov/d/2023-23055/p-204">Non-datacenter chips</a> with a TPP of 4,800 = NAC/ACA eligible; TPP below 4,800 = not controlled.</p>
+      <p>Note that the original 2023 final rule only referenced the NAC program, but an <a href="https://www.federalregister.gov/d/2024-07004/p-19">April 2024 update</a> separated the original proposal into two separate license exceptions:</p>
+      <ul>
+        <li>
+          NAC, for exports/reexports to D:5 countries (see below) and Macau, or companies with an ultimate parent headquartered in a D:5 country or Macau. Such exports require a notification to BIS.
+        </li>
+        <li>
+          ACA, for exports, reexports, and transfers (in-country) to D:1 or D:4 countries (except Macau and destinations also in D:5). Such exports do NOT require a notification to BIS.        
+        </li>
+      </ul>      
       <p>
         While the 2022 rule only imposed controls on chips exports directly to China and Macau, the 2023 rules dramatically expanded the geographic scope of controls.
         The controls now covered over 40 countries from <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-740/appendix-Supplement%20No.%201%20to%20Part%20740">EAR Country Group</a> D:5 (U.S. Arms Embargoed Countries such as China, Iran, and Russia) and Macau, and Groups D:1 (countries controlled for national security reasons, such as Georgia, Turkmenistan, Vietnam) and D:4 (countries controlled for missile technology concerns, such as Pakistan, Saudi Arabia, and the UAE).
