@@ -10,6 +10,33 @@
 
 export const chipData = [
   {
+    name: "NVIDIA R100",
+    manufacturer: "NVIDIA",
+    architecture: "Rubin",
+    releaseDate: "2026",
+    tpp: 100000,
+    pd: 61.43,
+    interconnect: "3600 GB/s (NVLink)",
+    fp4: "25000 (inference)",
+    fp8: 8750,
+    fp16: null,
+    bf16: null,
+    tf32: null,
+    int8: null,
+    dieArea: "1628 mm² (estimate)",
+    processNode: "TSMC N3P",
+    hbmCapacity: "288 GB HBM4",
+    memoryBandwidth: "22 TB/s",
+    tdp: null,
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "Specs and threshold metrics based on intial NVIDIA press releases/blog posts in early 2026. It is unclear if advertised performance figures were dense or sparse (but were assumed sparse in line with NVIDIA tendencies) and die area is unknown, so TPP/PD should be considered rough estimates.",
+    sources: [
+      { name: "Vera Rubin platform technical blog", url: "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/#rubin_gpu_execution_engine_for_transformer-era_ai" },
+      { name: "Semicon (process node)", url: "https://www.semicone.com/article-179.html" },
+    ]
+  },
+  {
     name: "NVIDIA B300",
     manufacturer: "NVIDIA",
     architecture: "Blackwell",
