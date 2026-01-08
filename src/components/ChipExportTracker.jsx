@@ -1040,7 +1040,7 @@ export default function ChipExportTracker() {
                   <strong style={{ color: theme.text }}>Performance:</strong> Use dense matrix performance. If only sparse performance is provided (common for NVIDIA datasheets), halve the value or use the checkbox above.
                 </p>
                 <p style={{ margin: '0 0 12px' }}>
-                  <strong style={{ color: theme.text }}>Bit Length:</strong> Use the bit length that yields the highest TPP (most likely 8- or 4-bit).
+                  <strong style={{ color: theme.text }}>Bit Length:</strong> Use the bit length that yields the highest TPP (most likely 8- or 4-bit for modern chips).
                 </p>
                 <p style={{ margin: 0 }}>
                   <strong style={{ color: theme.text }}>Die Area:</strong> All logic dies manufactured with a non-planar transistor architecture (typically ≤16nm), including caches but excluding separate memory stacks.
@@ -1238,7 +1238,7 @@ export default function ChipExportTracker() {
                     The rules explicitly state that a front-end fabricator or OSAT company cannot overcome the presumption by simply relying on the attestation of an end user or other party to the transaction. They must use one of the three methods (A, B, or C) outlined above.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an applicable IC.
+                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an IC.
                   </p>
                 </div>
               </section>  
@@ -1291,7 +1291,7 @@ export default function ChipExportTracker() {
                 fontFamily: fonts.serif,
                 margin: 0,
               }}>
-                Export Control History
+                AI Chip Export Control History
               </h2>
             </div>
 
@@ -1522,7 +1522,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 1/7/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 1/8/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}

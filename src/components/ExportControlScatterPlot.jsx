@@ -661,8 +661,8 @@ export default function ExportControlScatterPlot({
             label={{
               value: 'Total Processing Performance (TPP)',
               angle: -90,
-              position: 'insideLeft',
-              offset: 10,
+              position: 'outsideLeft',
+              offset: 20,
               fill: theme.textSecondary,
               fontSize: 13,
               fontFamily: fonts.sans,
