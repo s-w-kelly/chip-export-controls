@@ -977,7 +977,7 @@ export default function ChipExportTracker() {
 
         {/* Methodology Tab */}
         {activeTab === 'methodology' && (
-          <div style={{ maxWidth: '720px' }}>
+          <div style={{ maxWidth: '800px' }}>
             <div style={{ marginBottom: '30px' }}>
               <h2 style={{
                 fontSize: '28px',
@@ -995,21 +995,21 @@ export default function ChipExportTracker() {
                   fontSize: '18px',
                   fontWeight: '600',
                   fontFamily: fonts.serif,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   color: theme.text,
                 }}>
                   Total Processing Performance (TPP)
                 </h3>
-              <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
-                See 15 C.F.R. pt. 774, supp. 1 ({' '})
+              <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
+                See {' '}
                 <a
                   href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-774/appendix-Supplement%20No.%201%20to%20Part%20774#:~:text=Technical%20Note%202%20to%203A090%2Ea%20and%203A090%2Eb"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'underline' }}
                 >
-                  Technical Note 2 to 3A090.a and 3A090.b
-                </a>                                         
+                  15 C.F.R. pt. 774, supp. 1 (Technical Note 2 to 3A090.a and 3A090.b)
+                </a>
               </p>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
@@ -1055,21 +1055,21 @@ export default function ChipExportTracker() {
                   fontSize: '18px',
                   fontWeight: '600',
                   fontFamily: fonts.serif,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   color: theme.text,
                 }}>
                   Performance Density (PD)
                 </h3>
-              <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
-                See 15 C.F.R. pt. 774, supp. 1 ({' '})
+              <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
+                See {' '}
                 <a
                   href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-774/appendix-Supplement%20No.%201%20to%20Part%20774#:~:text=Technical%20Note%202%20to%203A090%2Ea%20and%203A090%2Eb"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'underline' }}
                 >
-                  Technical Note 2 to 3A090.a and 3A090.b
-                </a>                                         
+                  15 C.F.R. pt. 774, supp. 1 (Technical Note 2 to 3A090.a and 3A090.b)
+                </a>
               </p>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
@@ -1098,48 +1098,72 @@ export default function ChipExportTracker() {
                   fontSize: '18px',
                   fontWeight: '600',
                   fontFamily: fonts.serif,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   color: theme.text,
                 }}>
                   Datacenter Design/Marketing
                 </h3>
-              <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
-                See 15 C.F.R. pt. 774, supp. 1 ({' '})
+              <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
+                See {' '}
                 <a
                   href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-774/appendix-Supplement%20No.%201%20to%20Part%20774#:~:text=Technical%20Note%202%20to%203A090%2Ea%20and%203A090%2Eb"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'underline' }}
                 >
-                  Note 1 to 3A090.a
-                </a>                                         
+                  15 C.F.R. pt. 774, supp. 1 (Note 1 to 3A090.a)
+                </a>
               </p>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
-                    When a “front-end fabricator” or “Outsourced Semiconductor Assembly and Test” (“OSAT”) company is seeking to export, reexport, or transfer (in-country) an “applicable advanced logic integrated circuit” (“IC”) (logic integrated circuits produced using the “16/14 nanometer node” or below or using a non-planar transistor architecture, see 15 C.F.R. § 772.1) there is a presumption that the item is 3A090.a and designed or marketed for datacenters.
+                    When a "front-end fabricator" or "Outsourced Semiconductor Assembly and Test" ("OSAT") company is seeking to export, reexport, or transfer (in-country) an "applicable advanced logic integrated circuit" ("IC") (logic integrated circuits produced using the "16/14 nanometer node" or below or using a non-planar transistor architecture, see 15 C.F.R. § 772.1) there is a presumption that the item is 3A090.a and designed or marketed for datacenters.
                   </p>
                   <p style={{ margin: '0 0 14px'  }}>
-                    Option A: The designer of the IC is an approved or authorized IC designer, and they provide a datasheet or other attestation of the TPP and PD indicating that the IC is not 3A090.a.
+                    <strong>Option A:</strong> The designer of the IC is an approved or authorized IC designer, and they provide a datasheet or other attestation of the TPP and PD indicating that the IC is not 3A090.a.
                   </p>
-                  <p style={{ margin: '0 0 14px'  }}>
-                    Option B: The front-end fabricator is not located in D:5 or Macau and attests that
-                    (a) the “aggregated approximated transistor count” of the final packaged IC is below 30 billion transistors, or 
-                    (b) the final packaged IC does not contain high-bandwidth memory and that the “aggregated approximated transistor count” of the final packaged IC is below 
-                        (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or 
+                  <p style={{ margin: '0 0 6px'  }}>
+                    <strong>Option B:</strong> The front-end fabricator is not located in D:5 or Macau and attests that:
+                  </p>
+                  <div style={{ marginLeft: '20px', marginBottom: '14px' }}>
+                    <p style={{ margin: '0 0 6px' }}>
+                      (a) the "aggregated approximated transistor count" of the final packaged IC is below 30 billion transistors, or
+                    </p>
+                    <p style={{ margin: '0 0 6px' }}>
+                      (b) the final packaged IC does not contain high-bandwidth memory and that the "aggregated approximated transistor count" of the final packaged IC is below:
+                    </p>
+                    <div style={{ marginLeft: '20px' }}>
+                      <p style={{ margin: '0 0 4px' }}>
+                        (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or
+                      </p>
+                      <p style={{ margin: 0 }}>
                         (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter
+                      </p>
+                    </div>
+                  </div>
+                  <p style={{ margin: '0 0 6px'  }}>
+                    <strong>Option C:</strong> The IC was packaged by an approved OSAT company and attests that:
                   </p>
-                  <p style={{ margin: '0 0 14px'  }}>
-                    Option C: The IC was packaged by an approved OSAT company and attests that
-                    (a) the “aggregated approximated transistor count” of the final packaged IC is below 30 billion transistors, or 
-                    (b) the final packaged IC does not contain high-bandwidth memory and that the “aggregated approximated transistor count” of the final packaged IC is below 
-                        (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or 
+                  <div style={{ marginLeft: '20px', marginBottom: '14px' }}>
+                    <p style={{ margin: '0 0 6px' }}>
+                      (a) the "aggregated approximated transistor count" of the final packaged IC is below 30 billion transistors, or
+                    </p>
+                    <p style={{ margin: '0 0 6px' }}>
+                      (b) the final packaged IC does not contain high-bandwidth memory and that the "aggregated approximated transistor count" of the final packaged IC is below:
+                    </p>
+                    <div style={{ marginLeft: '20px' }}>
+                      <p style={{ margin: '0 0 4px' }}>
+                        (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or
+                      </p>
+                      <p style={{ margin: 0 }}>
                         (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter
-                  </p>
+                      </p>
+                    </div>
+                  </div>
                   <p style={{ margin: '0 0 14px'  }}>
                     The rules explicitly state that a front-end fabricator or OSAT company cannot overcome the presumption by simply relying on the attestation of an end user or other party to the transaction. They must use one of the three methods (a, b, or c) outlined above.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an “applicable advanced logic integrated circuit.”
+                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an "applicable advanced logic integrated circuit."
                   </p>
                 </div>
               </section>  
@@ -1149,12 +1173,12 @@ export default function ChipExportTracker() {
                   fontSize: '18px',
                   fontWeight: '600',
                   fontFamily: fonts.serif,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   color: theme.text,
                 }}>
                   License Exceptions (NAC/ACA)
                 </h3>
-                <p style={{ fontSize: '15px', color: theme.textMuted, margin: 0 }}>
+                <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
                 See {' '}
                 <a
                   href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-740/section-740.8"
@@ -1163,17 +1187,17 @@ export default function ChipExportTracker() {
                   style={{ color: 'inherit', textDecoration: 'underline' }}
                 >
                   15 C.F.R. § 740.8
-                </a>                                         
+                </a>
               </p>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
                     3A090.b chips or controlled non-datacenter chips (TPP ≥ 4800) may be eligible for a license exception under one of two options.
                   </p>
                   <p style={{ margin: '0 0 14px'  }}>
-                    Notified Advanced Computing (“NAC”): For exports/reexports to D:5 countries and Macau, or companies with an ultimate parent headquartered in a D:5 country or Macau. Such exports require a notification to BIS 25 days prior to export or reexport.
+                    <strong>Notified Advanced Computing ("NAC"):</strong> For exports/reexports to D:5 countries and Macau, or companies with an ultimate parent headquartered in a D:5 country or Macau. Such exports require a notification to BIS 25 days prior to export or reexport.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Advanced Computing Authorized (“ACA”): For exports, reexports, and transfers (in-country) to D:1 or D:4 countries (except Macau and destinations also in D:5). Such exports do NOT require a notification to BIS.  
+                    <strong>Advanced Computing Authorized ("ACA"):</strong> For exports, reexports, and transfers (in-country) to D:1 or D:4 countries (except Macau and destinations also in D:5). Such exports do NOT require a notification to BIS.
                   </p>
                 </div>
               </section>  
