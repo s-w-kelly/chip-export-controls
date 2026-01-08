@@ -998,7 +998,7 @@ export default function ChipExportTracker() {
                   marginBottom: '6px',
                   color: theme.text,
                 }}>
-                  Total Processing Performance (TPP)
+                  Total Processing Performance (“TPP”)
                 </h3>
               <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
                 See {' '}
@@ -1058,7 +1058,7 @@ export default function ChipExportTracker() {
                   marginBottom: '6px',
                   color: theme.text,
                 }}>
-                  Performance Density (PD)
+                  Performance Density (“PD”)
                 </h3>
               <p style={{ fontSize: '15px', color: theme.textMuted, margin: '0 0 16px 0' }}>
                 See {' '}
@@ -1116,7 +1116,7 @@ export default function ChipExportTracker() {
               </p>
                 <div style={{ fontSize: '15px', color: theme.textSecondary, lineHeight: '1.8' }}>
                   <p style={{ margin: '0 0 14px' }}>
-                    When a "front-end fabricator" or "Outsourced Semiconductor Assembly and Test" ("OSAT") company is seeking to export, reexport, or transfer (in-country) an "applicable advanced logic integrated circuit" ("IC") (logic integrated circuits produced using the "16/14 nanometer node" or below or using a non-planar transistor architecture, see 15 C.F.R. § 772.1) there is a presumption that the item is 3A090.a and designed or marketed for datacenters.
+                    When a “front-end fabricator" or “Outsourced Semiconductor Assembly and Test” (“OSAT”) company is seeking to export, reexport, or transfer (in-country) an “applicable advanced logic integrated circuit” (“IC”) (logic integrated circuits produced using the “16/14 nanometer node” or below or using a non-planar transistor architecture, see 15 C.F.R. § 772.1) there is a presumption that the item is 3A090.a and designed or marketed for datacenters.
                   </p>
                   <p style={{ margin: '0 0 14px'  }}>
                     <strong>Option A:</strong> The designer of the IC is an approved or authorized IC designer, and they provide a datasheet or other attestation of the TPP and PD indicating that the IC is not 3A090.a.
@@ -1126,17 +1126,17 @@ export default function ChipExportTracker() {
                   </p>
                   <div style={{ marginLeft: '20px', marginBottom: '14px' }}>
                     <p style={{ margin: '0 0 6px' }}>
-                      (a) the "aggregated approximated transistor count" of the final packaged IC is below 30 billion transistors, or
+                      (a) the “aggregated approximated transistor count” of the final packaged IC is below 30 billion transistors, or
                     </p>
                     <p style={{ margin: '0 0 6px' }}>
-                      (b) the final packaged IC does not contain high-bandwidth memory and that the "aggregated approximated transistor count" of the final packaged IC is below:
+                      (b) the final packaged IC does not contain high-bandwidth memory and that the “aggregated approximated transistor count” of the final packaged IC is below:
                     </p>
                     <div style={{ marginLeft: '20px' }}>
                       <p style={{ margin: '0 0 4px' }}>
                         (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or
                       </p>
                       <p style={{ margin: 0 }}>
-                        (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter
+                        (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter.
                       </p>
                     </div>
                   </div>
@@ -1145,25 +1145,25 @@ export default function ChipExportTracker() {
                   </p>
                   <div style={{ marginLeft: '20px', marginBottom: '14px' }}>
                     <p style={{ margin: '0 0 6px' }}>
-                      (a) the "aggregated approximated transistor count" of the final packaged IC is below 30 billion transistors, or
+                      (a) the “aggregated approximated transistor count” of the final packaged IC is below 30 billion transistors, or
                     </p>
                     <p style={{ margin: '0 0 6px' }}>
-                      (b) the final packaged IC does not contain high-bandwidth memory and that the "aggregated approximated transistor count" of the final packaged IC is below:
+                      (b) the final packaged IC does not contain high-bandwidth memory and that the “aggregated approximated transistor count” of the final packaged IC is below:
                     </p>
                     <div style={{ marginLeft: '20px' }}>
                       <p style={{ margin: '0 0 4px' }}>
                         (i) 35 billion transistors for any exports, reexports, or transfers (in-country) completed in 2027; or
                       </p>
                       <p style={{ margin: 0 }}>
-                        (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter
+                        (ii) 40 billion transistors for any exports, reexports, or transfers (in-country) completed in 2029 or thereafter.
                       </p>
                     </div>
                   </div>
                   <p style={{ margin: '0 0 14px'  }}>
-                    The rules explicitly state that a front-end fabricator or OSAT company cannot overcome the presumption by simply relying on the attestation of an end user or other party to the transaction. They must use one of the three methods (a, b, or c) outlined above.
+                    The rules explicitly state that a front-end fabricator or OSAT company cannot overcome the presumption by simply relying on the attestation of an end user or other party to the transaction. They must use one of the three methods (A, B, or C) outlined above.
                   </p>
                   <p style={{ margin: 0 }}>
-                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an "applicable advanced logic integrated circuit."
+                    Note: This presumption applies only to the front-end fabricator or OSAT; it does not apply to other entites seeking to export, reexport, or transfer an applicable IC.
                   </p>
                 </div>
               </section>  
@@ -1194,10 +1194,10 @@ export default function ChipExportTracker() {
                     3A090.b chips or controlled non-datacenter chips (TPP ≥ 4800) may be eligible for a license exception under one of two options.
                   </p>
                   <p style={{ margin: '0 0 14px'  }}>
-                    <strong>Notified Advanced Computing ("NAC"):</strong> For exports/reexports to D:5 countries and Macau, or companies with an ultimate parent headquartered in a D:5 country or Macau. Such exports require a notification to BIS 25 days prior to export or reexport.
+                    <strong>Notified Advanced Computing (“NAC”):</strong> For exports/reexports to D:5 countries and Macau, or companies with an ultimate parent headquartered in a D:5 country or Macau. Such exports require a notification to BIS 25 days prior to export or reexport.
                   </p>
                   <p style={{ margin: 0 }}>
-                    <strong>Advanced Computing Authorized ("ACA"):</strong> For exports, reexports, and transfers (in-country) to D:1 or D:4 countries (except Macau and destinations also in D:5). Such exports do NOT require a notification to BIS.
+                    <strong>Advanced Computing Authorized (“ACA”):</strong> For exports, reexports, and transfers (in-country) to D:1 or D:4 countries (except Macau and destinations also in D:5). Such exports do NOT require a notification to BIS.
                   </p>
                 </div>
               </section>  
