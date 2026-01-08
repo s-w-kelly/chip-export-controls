@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { chipData } from '../data/chipData';
 import { thresholdHistory } from '../data/thresholdData';
 import { notesContent } from '../data/notesData';
+import ExportControlScatterPlot from './ExportControlScatterPlot';
 
 // Clean, editorial theme configurations
 const themes = {
@@ -774,6 +775,29 @@ export default function ChipExportTracker() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Threshold Visualization Section */}
+            <div style={{ marginTop: '48px' }}>
+              <div style={{ marginBottom: '20px' }}>
+                <h2 style={{
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: theme.textMuted,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  margin: 0,
+                }}>
+                  Threshold Visualization
+                </h2>
+              </div>
+              <ExportControlScatterPlot
+                chipData={chipData}
+                theme={theme}
+                fonts={fonts}
+                onChipSelect={setSelectedChip}
+                selectedChip={selectedChip}
+              />
             </div>
 
           </div>

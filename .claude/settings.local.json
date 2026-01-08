@@ -5,7 +5,11 @@
       "WebFetch(domain:ifp.org)",
       "WebFetch(domain:epoch.ai)",
       "Bash(npm run build:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(timeout:*)",
+      "mcp__ide__getDiagnostics"
     ]
   }
 }

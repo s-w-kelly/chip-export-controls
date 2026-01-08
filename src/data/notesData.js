@@ -9,7 +9,7 @@ export const notesContent = `
   <section>
     <h3>Disclaimer</h3>
     <p>This tool is for informational purposes only. It does not constitute legal advice and should not be used to definitively assess compliance. While I have strived to be accurate and precise in the information presented, I have also
-    over-simplified the rules in many cases, in ways that may not matter for policymaking/analysis purposes, but could well matter for actual compliance.</p>
+    over-simplified the rules in many cases, in ways I believe are not critical for policymaking/analysis purposes, but could well be critical for actual compliance.</p>
   </section>
   <section>
     <h3>Sources</h3>
