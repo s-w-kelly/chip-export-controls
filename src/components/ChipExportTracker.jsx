@@ -626,7 +626,7 @@ export default function ChipExportTracker() {
                                    chip.pd >= 1.6 ? statusColors.nacEligible :
                                    theme.statusBelow,
                           }}>
-                            {chip.pd ? chip.pd.toFixed(1) : '—'}
+                            {chip.pd ? chip.pd.toFixed(2) : '—'}
                           </span>
                         </td>
                         <td style={{
