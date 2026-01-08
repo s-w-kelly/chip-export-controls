@@ -436,7 +436,7 @@ export default function ChipExportTracker() {
             </div>
 
             {/* Key Chips Section */}
-            <div style={{ marginBottom: '24px' }}>
+            <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <h2 style={{
                 fontSize: '13px',
                 fontWeight: '600',
@@ -447,6 +447,48 @@ export default function ChipExportTracker() {
               }}>
                 Key Chips
               </h2>
+              <button
+                onClick={() => {
+                  const headers = ['Chip', 'TPP', 'PD', 'Interconnect', 'Status'];
+                  const rows = sortedChips.map(chip => [
+                    chip.name,
+                    chip.tpp ?? '',
+                    chip.pd ?? '',
+                    chip.interconnect ?? '',
+                    chip.controlStatus.replace(/\n/g, ' ')
+                  ]);
+                  const csvContent = [
+                    headers.join(','),
+                    ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+                  ].join('\n');
+                  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                  const url = URL.createObjectURL(blob);
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.download = 'key_chips_export_control_data.csv';
+                  link.click();
+                  URL.revokeObjectURL(url);
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  background: 'transparent',
+                  border: `1px solid ${theme.border}`,
+                  borderRadius: '6px',
+                  color: theme.textSecondary,
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  fontFamily: fonts.sans,
+                  transition: 'all 0.15s ease',
+                }}
+                onMouseEnter={(e) => e.target.style.background = theme.bgHover}
+                onMouseLeave={(e) => e.target.style.background = 'transparent'}
+              >
+                Export CSV
+              </button>
             </div>
 
             {/* Chip Table */}

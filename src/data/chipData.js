@@ -10,7 +10,7 @@
 
 export const chipData = [
   {
-    name: "NVIDIA R100",
+    name: "NVIDIA R100 (estimate)",
     manufacturer: "NVIDIA",
     architecture: "Rubin",
     releaseDate: "2026",
@@ -35,6 +35,32 @@ export const chipData = [
       { name: "Vera Rubin platform technical blog", url: "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/#rubin_gpu_execution_engine_for_transformer-era_ai" },
       { name: "Semicon (process node)", url: "https://www.semicone.com/article-179.html" },
     ]
+  },
+  {
+    name: "NVIDIA B30A",
+    manufacturer: "NVIDIA",
+    architecture: "Blackwell",
+    releaseDate: "2026",
+    tpp: 56000,
+    pd: 34.40,
+    interconnect: "900 GB/s (NVLink)",
+    fp4: 7000,
+    fp8: 2250,
+    fp16: 1125,
+    bf16: 1125,
+    tf32: 550,
+    int8: null,
+    dieArea: "814 mm² (estimate)",
+    processNode: "TSMC N4P",
+    hbmCapacity: "135 GB HBM3e",
+    memoryBandwidth: "7.7 TB/s",
+    tdp: null,
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "Specs and threshold metrics based on rumors and analysis in the cited IFP report that the B30A would be 1/2 of a B300 (one logic die rather than two, 4 HBM stacks rather than 8), which would likely produce 1/2 of the B300’s performance. However, all specs and the TPP/PD should be considered estimates. This chip is included for the sake of completeness and to note that the Trump Administration is reportedly considering permitting sales of the B30A following lobbying efforts from NVIDIA.",
+    sources: [
+      { name: "IFP, “Should the US Sell Blackwell Chips to China”", url: "https://ifp.org/the-b30a-decision/" },
+      ]
   },
   {
     name: "NVIDIA B300",
@@ -476,7 +502,7 @@ export const chipData = [
   ]
   },
    {
-    name: "AMD MI308",
+    name: "AMD MI308 (estimate)",
     manufacturer: "AMD",
     architecture: "CDNA 3",
     releaseDate: "2024",
