@@ -77,6 +77,17 @@ export default function ChipExportTracker() {
         const bStr = bVal ?? '';
         return sortConfig.direction === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
       }
+      // Handle interconnect column - extract numeric value from strings like "3600 GB/s (NVLink)"
+      if (sortConfig.key === 'interconnect') {
+        const extractNumber = (val) => {
+          if (!val || val === '—') return -Infinity;
+          const match = val.match(/^[\d.]+/);
+          return match ? parseFloat(match[0]) : -Infinity;
+        };
+        const aNum = extractNumber(aVal);
+        const bNum = extractNumber(bVal);
+        return sortConfig.direction === 'asc' ? aNum - bNum : bNum - aNum;
+      }
       const aNum = aVal ?? -Infinity;
       const bNum = bVal ?? -Infinity;
       return sortConfig.direction === 'asc' ? aNum - bNum : bNum - aNum;
@@ -333,8 +344,8 @@ export default function ChipExportTracker() {
                     color: theme.text,
                     lineHeight: '1.6',
                   }}>
-                    <div>.a.1: TPP ≥ 4,800</div>
-                    <div>.a.2: TPP ≥ 1,600 AND PD ≥ 5.92</div>
+                    <div><strong>.a.1:</strong> TPP ≥ 4,800</div>
+                    <div><strong>.a.2:</strong> TPP ≥ 1,600 AND PD ≥ 5.92</div>
                   </div>
                 </div>
 
@@ -355,8 +366,8 @@ export default function ChipExportTracker() {
                     color: theme.text,
                     lineHeight: '1.6',
                   }}>
-                    <div>.b.1: 2,400 ≤ TPP &lt; 4,800 AND 1.6 ≤ PD &lt; 5.92</div>
-                    <div>.b.2: TPP ≥ 1,600 AND 3.2 ≤ PD &lt; 5.92</div>
+                    <div><strong>.b.1:</strong> 2,400 ≤ TPP &lt; 4,800 AND 1.6 ≤ PD &lt; 5.92</div>
+                    <div><strong>.b.2:</strong> TPP ≥ 1,600 AND 3.2 ≤ PD &lt; 5.92</div>
                   </div>
                 </div>
               </div>
@@ -530,201 +541,199 @@ export default function ChipExportTracker() {
                 </thead>
                 <tbody>
                   {sortedChips.map((chip, idx) => (
-                    <tr
-                      key={chip.name}
-                      onClick={() => setSelectedChip(selectedChip === chip.name ? null : chip.name)}
-                      style={{
-                        borderBottom: idx < sortedChips.length - 1 ? `1px solid ${theme.border}` : 'none',
-                        background: selectedChip === chip.name ? theme.accentBg : 'transparent',
-                        cursor: 'pointer',
-                        transition: 'background 0.1s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (selectedChip !== chip.name) e.currentTarget.style.background = theme.bgHover;
-                      }}
-                      onMouseLeave={(e) => {
-                        if (selectedChip !== chip.name) e.currentTarget.style.background = 'transparent';
-                      }}
-                    >
-                      <td style={{ padding: '14px 20px' }}>
-                        <span style={{ fontWeight: '500', fontFamily: fonts.mono, fontSize: '13px' }}>
-                          {chip.name}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px 20px' }}>
-                        <span style={{
+                    <React.Fragment key={chip.name}>
+                      <tr
+                        onClick={() => setSelectedChip(selectedChip === chip.name ? null : chip.name)}
+                        style={{
+                          borderBottom: selectedChip === chip.name ? 'none' : (idx < sortedChips.length - 1 ? `1px solid ${theme.border}` : 'none'),
+                          background: selectedChip === chip.name ? theme.accentBg : 'transparent',
+                          cursor: 'pointer',
+                          transition: 'background 0.1s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (selectedChip !== chip.name) e.currentTarget.style.background = theme.bgHover;
+                        }}
+                        onMouseLeave={(e) => {
+                          if (selectedChip !== chip.name) e.currentTarget.style.background = 'transparent';
+                        }}
+                      >
+                        <td style={{ padding: '14px 20px' }}>
+                          <span style={{ fontWeight: '500', fontFamily: fonts.mono, fontSize: '13px' }}>
+                            {chip.name}
+                          </span>
+                        </td>
+                        <td style={{ padding: '14px 20px' }}>
+                          <span style={{
+                            fontFamily: fonts.mono,
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            color: chip.tpp >= 4800 ? theme.statusExceeds :
+                                   chip.tpp >= 1600 ? statusColors.nacEligible :
+                                   theme.statusBelow,
+                          }}>
+                            {chip.tpp ? chip.tpp.toLocaleString() : '—'}
+                          </span>
+                        </td>
+                        <td style={{ padding: '14px 20px' }}>
+                          <span style={{
+                            fontFamily: fonts.mono,
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            color: chip.pd >= 5.92 ? theme.statusExceeds :
+                                   chip.pd >= 1.6 ? statusColors.nacEligible :
+                                   theme.statusBelow,
+                          }}>
+                            {chip.pd ? chip.pd.toFixed(1) : '—'}
+                          </span>
+                        </td>
+                        <td style={{
+                          padding: '14px 20px',
                           fontFamily: fonts.mono,
                           fontSize: '13px',
-                          fontWeight: '500',
-                          color: chip.tpp >= 4800 ? theme.statusExceeds :
-                                 chip.tpp >= 1600 ? statusColors.nacEligible :
-                                 theme.statusBelow,
+                          color: theme.textMuted,
                         }}>
-                          {chip.tpp ? chip.tpp.toLocaleString() : '—'}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px 20px' }}>
-                        <span style={{
-                          fontFamily: fonts.mono,
-                          fontSize: '13px',
-                          fontWeight: '500',
-                          color: chip.pd >= 5.92 ? theme.statusExceeds :
-                                 chip.pd >= 1.6 ? statusColors.nacEligible :
-                                 theme.statusBelow,
-                        }}>
-                          {chip.pd ? chip.pd.toFixed(1) : '—'}
-                        </span>
-                      </td>
-                      <td style={{
-                        padding: '14px 20px',
-                        fontFamily: fonts.mono,
-                        fontSize: '13px',
-                        color: theme.textMuted,
-                      }}>
-                        {chip.interconnect ? chip.interconnect.toLocaleString() : '—'}
-                      </td>
-                      <td style={{ padding: '14px 20px' }}>
-                        <span style={{
-                          display: 'inline-block',
-                          padding: '4px 10px',
-                          borderRadius: '4px',
-                          fontSize: '11px',
-                          fontWeight: '600',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.3px',
-                          background: chip.controlStatus.includes('Controlled') ? theme.statusExceedsBg :
-                                      chip.controlStatus.toLowerCase().includes('nac') ? 'rgba(202, 138, 4, 0.12)' :
-                                      chip.controlStatus === 'Unknown' ? theme.bgHover : theme.statusBelowBg,
-                          color: chip.controlStatus.includes('Controlled') ? theme.statusExceeds :
-                                 chip.controlStatus.toLowerCase().includes('nac') ? statusColors.nacEligible :
-                                 chip.controlStatus === 'Unknown' ? theme.textMuted : theme.statusBelow,
-                        }}>
-                          {chip.controlStatus}
-                        </span>
-                      </td>
-                    </tr>
+                          {chip.interconnect ? chip.interconnect.toLocaleString() : '—'}
+                        </td>
+                        <td style={{ padding: '14px 20px' }}>
+                          <span style={{
+                            display: 'inline-block',
+                            padding: '4px 10px',
+                            borderRadius: '4px',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.3px',
+                            background: chip.controlStatus.includes('Controlled') ? theme.statusExceedsBg :
+                                        chip.controlStatus.toLowerCase().includes('nac') ? 'rgba(202, 138, 4, 0.12)' :
+                                        chip.controlStatus === 'Unknown' ? theme.bgHover : theme.statusBelowBg,
+                            color: chip.controlStatus.includes('Controlled') ? theme.statusExceeds :
+                                   chip.controlStatus.toLowerCase().includes('nac') ? statusColors.nacEligible :
+                                   chip.controlStatus === 'Unknown' ? theme.textMuted : theme.statusBelow,
+                          }}>
+                            {chip.controlStatus}
+                          </span>
+                        </td>
+                      </tr>
+                      {selectedChip === chip.name && (
+                        <tr>
+                          <td colSpan={5} style={{ padding: 0, borderBottom: idx < sortedChips.length - 1 ? `1px solid ${theme.border}` : 'none' }}>
+                            <div style={{ padding: '28px', background: theme.bgAlt }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '24px' }}>
+                                <div>
+                                  <h3 style={{
+                                    margin: 0,
+                                    fontSize: '20px',
+                                    fontWeight: '600',
+                                    fontFamily: fonts.serif,
+                                  }}>
+                                    {chip.name}
+                                  </h3>
+                                  <p style={{ margin: '6px 0 0', fontSize: '14px', color: theme.textMuted }}>
+                                    {chip.manufacturer} · {chip.architecture} · Released {chip.releaseDate}
+                                  </p>
+                                </div>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); setSelectedChip(null); }}
+                                  style={{
+                                    background: 'transparent',
+                                    border: `1px solid ${theme.border}`,
+                                    color: theme.textMuted,
+                                    padding: '6px 12px',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    fontSize: '13px',
+                                    fontFamily: fonts.sans,
+                                  }}
+                                >
+                                  Close
+                                </button>
+                              </div>
+
+                              <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(4, 1fr)',
+                                gap: '20px',
+                                paddingTop: '20px',
+                                borderTop: `1px solid ${theme.border}`,
+                              }}>
+                                {[
+                                  { label: 'FP4 Dense', value: chip.fp4 ? `${chip.fp4} TFLOP/s` : '—' },
+                                  { label: 'FP8 Dense', value: chip.fp8 ? `${chip.fp8} TFLOP/s` : '—' },
+                                  { label: 'FP16 Dense', value: chip.fp16 ? `${chip.fp16} TFLOP/s` : '—' },
+                                  { label: 'BF16 Dense', value: chip.bf16 ? `${chip.bf16} TFLOP/s` : '—' },
+                                  { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOP/s` : '—' },
+                                  { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
+                                  { label: 'Die Area', value: chip.dieArea || '—' },
+                                  { label: 'Process Node', value: chip.processNode || '—' },
+                                  { label: 'HBM', value: chip.hbmCapacity || '—' },
+                                  { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
+                                  { label: 'TDP', value: chip.tdp || '—' },
+                                  { label: 'ECCN', value: chip.eccn || '—' },
+                                ].map(item => (
+                                  <div key={item.label}>
+                                    <div style={{ ...labelStyle, marginBottom: '4px' }}>{item.label}</div>
+                                    <div style={{ fontSize: '14px', fontFamily: fonts.mono, color: theme.text }}>
+                                      {item.value}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {chip.notes && (
+                                <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: `1px solid ${theme.border}` }}>
+                                  <div style={{ ...labelStyle, marginBottom: '8px' }}>Notes</div>
+                                  <p style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}>
+                                    {chip.notes}
+                                  </p>
+                                </div>
+                              )}
+
+                              <div style={{ marginTop: '20px' }}>
+                                <div style={{ ...labelStyle, marginBottom: '10px' }}>Sources</div>
+                                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                                  {chip.sources.map((src, i) => (
+                                    src.url ? (
+                                      <a
+                                        key={i}
+                                        href={src.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={(e) => e.stopPropagation()}
+                                        style={{
+                                          fontSize: '12px',
+                                          color: theme.accent,
+                                          background: theme.accentBg,
+                                          padding: '5px 10px',
+                                          borderRadius: '4px',
+                                          textDecoration: 'none',
+                                        }}
+                                      >
+                                        {src.name}
+                                      </a>
+                                    ) : (
+                                      <span key={i} style={{
+                                        fontSize: '12px',
+                                        color: theme.textMuted,
+                                        background: theme.bgHover,
+                                        padding: '5px 10px',
+                                        borderRadius: '4px',
+                                      }}>
+                                        {src.name}
+                                      </span>
+                                    )
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            {/* Expanded Detail Panel */}
-            {selectedChip && (
-              <div style={{ ...cardStyle, marginTop: '24px', padding: '28px' }}>
-                {(() => {
-                  const chip = chipData.find(c => c.name === selectedChip);
-                  return (
-                    <>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '24px' }}>
-                        <div>
-                          <h3 style={{
-                            margin: 0,
-                            fontSize: '20px',
-                            fontWeight: '600',
-                            fontFamily: fonts.serif,
-                          }}>
-                            {chip.name}
-                          </h3>
-                          <p style={{ margin: '6px 0 0', fontSize: '14px', color: theme.textMuted }}>
-                            {chip.manufacturer} · {chip.architecture} · Released {chip.releaseDate}
-                          </p>
-                        </div>
-                        <button
-                          onClick={() => setSelectedChip(null)}
-                          style={{
-                            background: 'transparent',
-                            border: `1px solid ${theme.border}`,
-                            color: theme.textMuted,
-                            padding: '6px 12px',
-                            borderRadius: '4px',
-                            cursor: 'pointer',
-                            fontSize: '13px',
-                            fontFamily: fonts.sans,
-                          }}
-                        >
-                          Close
-                        </button>
-                      </div>
-
-                      <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
-                        gap: '20px',
-                        paddingTop: '20px',
-                        borderTop: `1px solid ${theme.border}`,
-                      }}>
-                        {[
-                          { label: 'FP4 Dense', value: chip.fp4 ? `${chip.fp4} TFLOP/s` : '—' },
-                          { label: 'FP8 Dense', value: chip.fp8 ? `${chip.fp8} TFLOP/s` : '—' },
-                          { label: 'FP16 Dense', value: chip.fp16 ? `${chip.fp16} TFLOP/s` : '—' },
-                          { label: 'BF16 Dense', value: chip.bf16 ? `${chip.bf16} TFLOP/s` : '—' },
-                          { label: 'TF32 Dense', value: chip.tf32 ? `${chip.tf32} TFLOP/s` : '—' },
-                          { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
-                          { label: 'Die Area', value: chip.dieArea || '—' },
-                          { label: 'Process Node', value: chip.processNode || '—' },
-                          { label: 'HBM', value: chip.hbmCapacity || '—' },
-                          { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
-                          { label: 'TDP', value: chip.tdp || '—' },
-                          { label: 'ECCN', value: chip.eccn || '—' },
-                        ].map(item => (
-                          <div key={item.label}>
-                            <div style={{ ...labelStyle, marginBottom: '4px' }}>{item.label}</div>
-                            <div style={{ fontSize: '14px', fontFamily: fonts.mono, color: theme.text }}>
-                              {item.value}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {chip.notes && (
-                        <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: `1px solid ${theme.border}` }}>
-                          <div style={{ ...labelStyle, marginBottom: '8px' }}>Notes</div>
-                          <p style={{ margin: 0, fontSize: '14px', color: theme.textSecondary, lineHeight: '1.6' }}>
-                            {chip.notes}
-                          </p>
-                        </div>
-                      )}
-
-                      <div style={{ marginTop: '20px' }}>
-                        <div style={{ ...labelStyle, marginBottom: '10px' }}>Sources</div>
-                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                          {chip.sources.map((src, i) => (
-                            src.url ? (
-                              <a
-                                key={i}
-                                href={src.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                  fontSize: '12px',
-                                  color: theme.accent,
-                                  background: theme.accentBg,
-                                  padding: '5px 10px',
-                                  borderRadius: '4px',
-                                  textDecoration: 'none',
-                                }}
-                              >
-                                {src.name}
-                              </a>
-                            ) : (
-                              <span key={i} style={{
-                                fontSize: '12px',
-                                color: theme.textMuted,
-                                background: theme.bgHover,
-                                padding: '5px 10px',
-                                borderRadius: '4px',
-                              }}>
-                                {src.name}
-                              </span>
-                            )
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  );
-                })()}
-              </div>
-            )}
           </div>
         )}
 
