@@ -27,6 +27,9 @@ export const thresholdHistory = [
       and “[t]he wording from the officials is so severe that it is basically a ban for now, though this might change in the future should things evolve.”</p>
       <p>The Trump Administration is also <a href="https://www.nytimes.com/2026/01/14/business/economy/trump-chips-tariffs.html">imposing</a> a 25% tariff on AI chips (e.g., by Nvidia and AMD) imported into the US and then re-exported to other countries. 
       The tariff would not apply to semiconductors brought into the country to be used domestically in data centers or in products for American consumers, industry, or the government. The tariffs have been framed as a way for the US government to collect revenue from the sale of American AI chips to China.</p>
+      <p>In late January, the House of Representatives Foreign Affairs Committee <a href="https://www.reuters.com/legal/litigation/us-house-panel-vote-bill-give-congress-authority-over-ai-chip-exports-2026-01-21/">advanced</a> the AI Overwatch Act, which would give Congress power over AI chip exports.
+      Specifically, the bill would give the House Foreign Affairs Committee and the Senate Banking Committee 30 days to review and potentially block licenses issued to export AI chips to China and other countries.
+      The legislation was <href="https://www.congress.gov/bill/119th-congress/house-bill/6875/text">introduced</a> in late 2025 response to the Trump Administration’s approval of H200 exports to China, and the law would also ban exports of Blackwell generation chips, which the Trump Administration has <href="https://ifp.org/the-b30a-decision/">reportedly</a> been considering.
       `,
   },
   {
