@@ -1522,7 +1522,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 1/19/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 1/24/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}
@@ -1538,7 +1538,7 @@ export default function ChipExportTracker() {
             <div>
               Created and maintained by{' '}
               <a
-                href="https://www.skellystuff.net/"
+                href="https://www.skellydotcom.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'inherit', textDecoration: 'underline' }}
