@@ -313,7 +313,7 @@ export default function ChipExportTracker() {
             {/* Threshold Cards */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
+              gridTemplateColumns: 'repeat(3, 1fr)',
               gap: '16px',
               marginBottom: '36px',
             }}>
@@ -431,6 +431,60 @@ export default function ChipExportTracker() {
                     lineHeight: '1.6',
                   }}>
                     <div>TPP &lt; 4,800</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* H200 Exception Rule Card */}
+              <div style={{ ...cardStyle, padding: '24px' }}>
+                <div style={{
+                  ...labelStyle,
+                  marginBottom: '16px',
+                  fontSize: '12px',
+                  color: theme.accent,
+                }}>
+                  January 2026 H200 Exception Rule
+                </div>
+
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: '#ca8a04',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    Case-by-case eligible (to China and Macau)
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>TPP &lt; 21,000 AND Total DRAM Bandwidth &lt; 6.5 TB/s</div>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: `1px solid ${theme.border}`, paddingTop: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: theme.statusExceeds,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    Presumption of denial
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div>All other controlled chips</div>
                   </div>
                 </div>
               </div>
