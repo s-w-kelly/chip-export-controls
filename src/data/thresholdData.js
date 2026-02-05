@@ -17,17 +17,50 @@ export const thresholdHistory = [
     summary: "Current status and trends",
     rule: "",
     notes: ` 
-      <p>The 2023 TPP/PD framework remains in place (with the same thresholds), and was essentially <a href="https://newsletter.semianalysis.com/p/wafer-wars-deciphering-latest-restrictions#:~:text=The%20short%20answer%20is%2C%20no%2E%20Nvidia%20has%20no%20way%20to%20really%20game%20these%20rules%20even%20with%20a%20brand%2Dnew%20clean%20sheet%20design%2E">successful at closing the loopholes</a> the BIS was targeting.</p>
-      <p>However, the rise of reasoning models and test-time compute scaling in 2024 changed the landscape of what specifications were desirable for chips. For instance, the H20, a significantly downgraded China-specific Hopper chip NVIDIA designed in response to the 2023 controls, suddenly became powerful: the H20 is <a href="https://newsletter.semianalysis.com/p/nvidias-new-china-ai-chips-circumvent">~20% faster</a> for inference than the H100 due to its higher memory capacity (96 GB vs 80 GB) and memory bandwidth (4 vs 3.4 TB/s), even with significantly lower arithmetic performance.</p>        
-      In response to the “H20 problem” (i.e, the growing importance of inference and the implications for what chips are desirable), <a href="https://ifp.org/the-h20-problem/#3-bis-should-issue-a-new-rule-strengthening-export-controls-on-inference-chips">some policy analysts</a> and even the <a href="https://chinaselectcommittee.house.gov/sites/evo-subsites/selectcommitteeontheccp.house.gov/files/evo-media-document/DeepSeek Final.pdf#page=10">House Select Committee on the CCP</a> have argued for adding criteria to target inference chips, such as by using memory bandwidth as a threshold metric or by restricting the export of AI chips co-packaged with HBM.</p>    
+      <p><strong>H200 Exports</strong></p>  
+      <p>While the Trump Administration <a href="https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china">agreed</a> at the end of 2025 to allow NVIDIA to export H200s to China, in January Chinese authorities <a href="https://chipbriefing.substack.com/p/daily-china-to-limit-h200-chips-basically">told</a> its customs agents not to allow H200s into the country. 
+      Government officals further <a href="https://www.reuters.com/world/china/chinas-customs-agents-told-nvidias-h200-chips-are-not-permitted-sources-say-2026-01-14/">instructed</a> companies not to purchase the chips “unless necessary,”
+      and “[t]he wording from the officials is so severe that it is basically a ban for now, though this might change in the future should things evolve.”</p>
+      <p>On January 28, Reuters and the Wall Street Journal <a href="https://chipbriefing.substack.com/p/daily-china-approves-h200-chips">independently reported</a> that Beijing had conditionally approved H200 sales to ByteDance, Alibaba, and Tencent, but Nvidia CEO Jensen Huang <a href="https://chipbriefing.substack.com/p/daily-nvidia-says-china-has-not-yet">said</a> his company has received no orders yet.
+      <p>In the meantime, to implement the H200 export agreement, on January 13, the BIS <a href="https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china">announced</a> a rule allowing case-by-case exports of otherwise controlled chips to China and Macau, within which the H200 and AMD MI325X fall. 
+      The next day, the White House <a href="https://www.whitehouse.gov/presidential-actions/2026/01/adjusting-imports-of-semiconductors-semiconductor-manufacturing-equipment-and-their-derivative-products-into-the-united-states/">issued</a> a proclamation establishing a 25% tariff on chips within two narrow bands, which target the H200 and MI325X.</p>
+      <p>First, the new <a href="https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities">BIS rule</a> announces that controlled chips (i.e., chips that fall within the preexisting TPP/PD control thresholds)
+      are eligible for case-by-case review of export license applications to China or Macau (rather than the previous presumption of denial treatment) if they fall within a zone defined by TPP and memory bandwidth. Specifically, chips with</p>
+      <ul>
+        <li>
+          TPP < 21,000 AND
+        </li>
+        <li>
+          “Total DRAM Bandwidth” < 6,500 GB/s 
+        </li>
+      </ul>
+      <p>may be eligible for case-by-case license review. Controlled chips with metrics beyond this new range (e.g., NVIDIA Blackwell and Rubin chips) are still controlled and license applications are reviewed with a presumption of denial.</p>
+      <p>Note that TPP/PD still determine whether a chip is controlled in the first place. And only when a chip is deemed controlled do the new TPP/memory bandwidth thresholds and case-by-case exception even apply (uncontrolled chips would not need the exception because they are already exportable).</p>
+      <p>Second, the <a href="https://www.whitehouse.gov/presidential-actions/2026/01/adjusting-imports-of-semiconductors-semiconductor-manufacturing-equipment-and-their-derivative-products-into-the-united-states/">Presidential Proclamation</a> sets two “bands” (again defined by TPP and memory bandwidth) within which chips will be subject to a 25% tariff.</p>
+      <p>As defined in the <a href="https://www.whitehouse.gov/wp-content/uploads/2026/01/2026SemiConductor.prc_.rel-ANNEX.pdf#page=2">Annex</a> to the Proclamation, the two tariff bands are:</p> 
+      <ul>
+        <li>
+          (1) TPP 14,000-17,500 AND memory bandwidth 4,500-5,000 GB/s, OR
+        </li>
+        <li>
+          (2) TPP 20,800-21,100 AND memory bandwidth 5,800-6,200 GB/s 
+        </li>
+      </ul> 
+      <p>These are clearly designed to target:</p>
+      <ul>
+        <li>
+          (1) the H200 (SXM: TPP = 15,832	and memory bw = 4,800 GB/s) and
+        </li>
+        <li>
+          (2) the MI325X (TPP = 20,919 and memory bw = 6,000 GB/s) 
+        </li>
+      </ul>
+      <p>Overall, while the new TPP and memory bandwidth-based exception zone encompasses several currently controlled chips that are technically case-by-case eligible, chips outside the tariff bands are unlikely to receive approval without the tariff revenue mechanism. 
+      The narrow tariff bands suggest that, at least for now, the H200 and MI325X are specifically the targets of this rule and are only ones likely to be approved in this manner.</p>
+      <p><strong>Congressional Activity</strong></p>  
       <p>In light of ongoing chip smuggling and diversion by Chinese companies to access NVIDIA H100s and other powerful chips, <a href="https://www.transformernews.ai/p/ai-chip-location-verification-nvidia-china-csa">many experts</a> are pushing for implementing on-chip location verification mechanisms, and a bill has been introduced in Congress to this end.
       The <a href="https://www.congress.gov/bill/119th-congress/house-bill/3447/text">Chip Security Act</a> would “require any covered integrated circuit product to be outfitted with chip security mechanisms that implement location verification, using techniques that are feasible and appropriate.”
       Chipmakers have <a href="https://www.transformernews.ai/i/173170396/not-so-fast">criticized</a> the proposal as “burdensome,” but <a href="https://www.iaps.ai/research/location-verification-for-ai-chips#:~:text=Firmware%20update">analysts estimate</a> that location verification functionality could be achieved with a firmware update to existing chips costing less than $1 million, and NVIDIA has <a href="https://www.reuters.com/business/nvidia-builds-location-verification-tech-that-could-help-fight-chip-smuggling-2025-12-10/">already developed</a> the necessary technology.</p>
-      <p>While the Trump Administration agreed at the end of 2025 to allow NVIDIA to export H200s to China, in January Chinese authorities <a href="https://chipbriefing.substack.com/p/daily-china-to-limit-h200-chips-basically">told</a> its customs agents not to allow H200s into the country. Government officals further <a href="https://www.reuters.com/world/china/chinas-customs-agents-told-nvidias-h200-chips-are-not-permitted-sources-say-2026-01-14/">instructed</a> companies not to puchase the chips “unless necessary,”
-      and “[t]he wording from the officials is so severe that it is basically a ban for now, though this might change in the future should things evolve.”</p>
-      <p>On January 28, Reuters and the Wall Street Journal <a href="https://chipbriefing.substack.com/p/daily-china-approves-h200-chips">independently reported</a> that Beijing had conditionally approved H200 sales to ByteDance, Alibaba, and Tencent, but Nvidia CEO Jensen Huang <a href="https://chipbriefing.substack.com/p/daily-nvidia-says-china-has-not-yet">said</a> his company has received no orders yet.
-      <p>The Trump Administration is also <a href="https://www.nytimes.com/2026/01/14/business/economy/trump-chips-tariffs.html">imposing</a> a 25% tariff on AI chips (e.g., by Nvidia and AMD) imported into the US and then re-exported to other countries. 
-      The tariff would not apply to semiconductors brought into the country to be used domestically in data centers or in products for American consumers, industry, or the government. The tariffs have been framed as a way for the US government to collect revenue from the sale of American AI chips to China.</p>
       <p>In late January, the House of Representatives Foreign Affairs Committee <a href="https://www.reuters.com/legal/litigation/us-house-panel-vote-bill-give-congress-authority-over-ai-chip-exports-2026-01-21/">advanced</a> the AI Overwatch Act, which would give Congress power over AI chip exports.
       Specifically, the bill would give the House Foreign Affairs Committee and the Senate Banking Committee 30 days to review and potentially block licenses issued to export AI chips to China and other countries.
       The legislation was <a href="https://www.congress.gov/bill/119th-congress/house-bill/6875/text">introduced</a> in late 2025 response to the Trump Administration’s approval of H200 exports to China, and the law would also ban exports of Blackwell generation chips, which the Trump Administration has <href="https://ifp.org/the-b30a-decision/">reportedly</a> been considering.
