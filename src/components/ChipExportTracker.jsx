@@ -439,13 +439,21 @@ export default function ChipExportTracker() {
               <div style={{ ...cardStyle, padding: '24px' }}>
                 <div style={{
                   ...labelStyle,
-                  marginBottom: '16px',
+                  marginBottom: '6px',
                   fontSize: '12px',
                   color: theme.accent,
                 }}>
                   January 2026 H200 Exception Rule
                 </div>
-
+                <div style={{
+                    fontSize: '12px',
+                    fontFamily: fonts.sans,
+                    color: theme.textMuted,
+                    lineHeight: '1.6',
+                    marginBottom: '14px',
+                  }}>
+                    <div>For chips meeting control thresholds</div>
+                  </div>
                 <div style={{ marginBottom: '16px' }}>
                   <div style={{
                     fontSize: '11px',
