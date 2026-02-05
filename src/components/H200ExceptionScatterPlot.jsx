@@ -18,6 +18,12 @@ const THRESHOLDS = {
   MEM_BW: 6.5, // TB/s
 };
 
+// 25% tariff zones
+const TARIFF_ZONES = [
+  { x1: 14000, x2: 17500, y1: 4.5, y2: 5 },
+  { x1: 20800, x2: 21100, y1: 5.8, y2: 6.2 },
+];
+
 // Zoom limits
 const ZOOM_LIMITS = {
   TPP: { min: 5000, max: 110000 },
@@ -107,11 +113,19 @@ export default function H200ExceptionScatterPlot({
   const statusColors = {
     controlled: theme.statusExceeds,
     nacEligible: '#ca8a04',
+    caseByCase: '#a855f7',
+    tariff: '#3b82f6',
     notControlled: theme.statusBelow,
   };
 
   const getChipColor = (chip) => {
     const status = chip.controlStatus?.toLowerCase() || '';
+    if (status.includes('tariff')) {
+      return statusColors.tariff;
+    }
+    if (status.includes('case-by-case')) {
+      return statusColors.caseByCase;
+    }
     if (status.includes('exportable') || status.includes('not controlled')) {
       return statusColors.notControlled;
     }
@@ -307,7 +321,8 @@ export default function H200ExceptionScatterPlot({
   };
 
   // Use a distinct color for the H200 exception zone
-  const exceptionColor = '#6366f1'; // indigo
+  const exceptionColor = '#a855f7'; // purple (case-by-case eligible)
+  const tariffColor = '#3b82f6'; // blue (25% tariff)
 
   return (
     <div style={{
@@ -466,6 +481,19 @@ export default function H200ExceptionScatterPlot({
             fillOpacity={0.10}
           />
 
+          {/* Shaded regions: 25% tariff zones */}
+          {TARIFF_ZONES.map((zone, i) => (
+            <ReferenceArea
+              key={`tariff-zone-${i}`}
+              x1={zone.x1}
+              x2={zone.x2}
+              y1={zone.y1}
+              y2={zone.y2}
+              fill={tariffColor}
+              fillOpacity={0.15}
+            />
+          ))}
+
           {/* Threshold reference lines */}
           <ReferenceLine
             y={THRESHOLDS.MEM_BW}
@@ -594,6 +622,10 @@ export default function H200ExceptionScatterPlot({
             <div style={legendBoxStyle(exceptionColor, 0.3)}></div>
             <span>Case-by-case licensing permitted</span>
           </div>
+          <div style={legendItemStyle}>
+            <div style={legendBoxStyle(tariffColor, 0.3)}></div>
+            <span>25% Tariff zones</span>
+          </div>
         </div>
         <div style={{
           display: 'flex',
@@ -613,6 +645,14 @@ export default function H200ExceptionScatterPlot({
           <div style={legendItemStyle}>
             <div style={legendDotStyle(statusColors.controlled)}></div>
             <span>Controlled</span>
+          </div>
+          <div style={legendItemStyle}>
+            <div style={legendDotStyle(statusColors.caseByCase)}></div>
+            <span>Case-by-case eligible</span>
+          </div>
+          <div style={legendItemStyle}>
+            <div style={legendDotStyle(statusColors.tariff)}></div>
+            <span>25% Tariff</span>
           </div>
           <div style={legendItemStyle}>
             <div style={legendDotStyle(statusColors.nacEligible)}></div>

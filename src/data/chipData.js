@@ -163,7 +163,7 @@ export const chipData = [
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "600W",
-    controlStatus: "Exportable\n(special exception)",
+    controlStatus: "25% Tariff",
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
@@ -191,7 +191,7 @@ export const chipData = [
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "700W",
-    controlStatus: "Exportable\n(special exception)",
+    controlStatus: "25% Tariff",
     eccn: null,
     notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
     sources: [
@@ -248,7 +248,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "2 TB/s",
     tdp: "350W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
@@ -275,7 +275,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.35 TB/s",
     tdp: "700W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
@@ -302,7 +302,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.9 TB/s",
     tdp: "400W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -329,7 +329,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM3",
     memoryBandwidth: "3.35 TB/s",
     tdp: "700W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -356,7 +356,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM2e",
     memoryBandwidth: "1.9 TB/s",
     tdp: "250W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as A100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
@@ -383,7 +383,7 @@ export const chipData = [
     hbmCapacity: "80 GB HBM2e",
     memoryBandwidth: "2 TB/s",
     tdp: "400W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "China-specific chip with same arithmetic performance as H100 but with reduced interconnect designed to circumvent 2022 export controls. Loophole closed in 2023 controls with removal of interconnect threshold and introduction of PD.",
     sources: [
@@ -410,7 +410,7 @@ export const chipData = [
     hbmCapacity: "40 GB HBM2",
     memoryBandwidth: "1.6 TB/s",
     tdp: "250W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "Primary target of 2022 controls, with intial thresholds essentially set right at A100 levels (TPP limit of 4800 right below A100 TPP, interconnect limit of 600 GB/s right at A100 mark).",
     sources: [
@@ -437,7 +437,7 @@ export const chipData = [
     hbmCapacity: "40 GB HBM2",
     memoryBandwidth: "1.6 TB/s",
     tdp: "400W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "Primary target of 2022 controls, with intial thresholds essentially set right at A100 levels (TPP limit of 4800 right below A100 TPP, interconnect limit of 600 GB/s right at A100 mark).",
     sources: [
@@ -547,7 +547,7 @@ export const chipData = [
     hbmCapacity: "256 GB HBM3e",
     memoryBandwidth: "6 TB/s",
     tdp: "1000W",
-    controlStatus: "Controlled",
+    controlStatus: "25% Tariff",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -575,7 +575,7 @@ export const chipData = [
     hbmCapacity: "192 GB HBM3",
     memoryBandwidth: "5.3 TB/s",
     tdp: "750W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -603,7 +603,7 @@ export const chipData = [
     hbmCapacity: "128 GB HBM3",
     memoryBandwidth: "5.3 TB/s",
     tdp: "760W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -631,7 +631,7 @@ export const chipData = [
     hbmCapacity: "128 GB HBM2e",
     memoryBandwidth: "3.2 TB/s",
     tdp: "560W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
@@ -659,12 +659,12 @@ export const chipData = [
     hbmCapacity: "128 GB HBM2e",
     memoryBandwidth: "3.2 TB/s",
     tdp: "560W",
-    controlStatus: "Controlled",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: "3A090.a",
     notes: "—",
     sources: [
     { name: "MI250 product page (performance, specs)", url: "https://www.amd.com/en/products/accelerators/instinct/mi200/mi250.html" },
-    { name: "Tom’s Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
+    { name: "Tom's Hardware (die area)", url: "https://www.tomshardware.com/news/amd-instinct-mi250x-pictured" },
     { name: "TechPowerUp (process node)", url: "https://www.techpowerup.com/298100/amd-releases-its-cdna2-mi250x-aldebaran-hpc-gpu-block-diagram" },
     ]
   },

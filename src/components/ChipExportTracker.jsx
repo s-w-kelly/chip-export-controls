@@ -120,6 +120,8 @@ export default function ChipExportTracker() {
   const statusColors = {
     controlled: theme.statusExceeds,          // red
     nacEligible: '#ca8a04',                   // yellow/amber
+    caseByCase: '#a855f7',                    // purple
+    tariff: '#3b82f6',                        // blue
     notControlled: theme.statusBelow,         // green
     unknown: theme.textMuted
   };
@@ -458,7 +460,7 @@ export default function ChipExportTracker() {
                   <div style={{
                     fontSize: '11px',
                     fontWeight: '600',
-                    color: '#ca8a04',
+                    color: '#a855f7',
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px',
                     marginBottom: '8px',
@@ -472,6 +474,28 @@ export default function ChipExportTracker() {
                     lineHeight: '1.6',
                   }}>
                     <div>TPP &lt; 21,000 AND Total DRAM Bandwidth &lt; 6.5 TB/s</div>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: `1px solid ${theme.border}`, paddingTop: '16px', marginBottom: '16px' }}>
+                  <div style={{
+                    fontSize: '11px',
+                    fontWeight: '600',
+                    color: '#3b82f6',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    marginBottom: '8px',
+                  }}>
+                    25% tariff (targeting H200 and MI325X)
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    fontFamily: fonts.mono,
+                    color: theme.text,
+                    lineHeight: '1.6',
+                  }}>
+                    <div><strong>Tariff Band 1:</strong> TPP 14,000–17,500 AND Total DRAM Bandwidth 4.5–5 TB/s (targeting NVIDIA H200)</div>
+                    <div><strong>Tariff Band 2:</strong>TPP 20,800–21,100 AND Total DRAM Bandwidth 5.8–6.2 TB/s (targeting AMD MI325X)</div>
                   </div>
                 </div>
 
@@ -661,9 +685,13 @@ export default function ChipExportTracker() {
                             textTransform: 'uppercase',
                             letterSpacing: '0.3px',
                             background: chip.controlStatus.includes('Controlled') ? theme.statusExceedsBg :
+                                        chip.controlStatus.toLowerCase().includes('tariff') ? 'rgba(59, 130, 246, 0.12)' :
+                                        chip.controlStatus.toLowerCase().includes('case-by-case') ? 'rgba(168, 85, 247, 0.12)' :
                                         chip.controlStatus.toLowerCase().includes('nac') ? 'rgba(202, 138, 4, 0.12)' :
                                         chip.controlStatus === 'Unknown' ? theme.bgHover : theme.statusBelowBg,
                             color: chip.controlStatus.includes('Controlled') ? theme.statusExceeds :
+                                   chip.controlStatus.toLowerCase().includes('tariff') ? statusColors.tariff :
+                                   chip.controlStatus.toLowerCase().includes('case-by-case') ? statusColors.caseByCase :
                                    chip.controlStatus.toLowerCase().includes('nac') ? statusColors.nacEligible :
                                    chip.controlStatus === 'Unknown' ? theme.textMuted : theme.statusBelow,
                           }}>
