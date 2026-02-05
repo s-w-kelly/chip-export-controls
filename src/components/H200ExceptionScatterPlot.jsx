@@ -12,50 +12,56 @@ import {
   Cell,
 } from 'recharts';
 
-// Threshold constants from export control rules
+// H200 exception thresholds
 const THRESHOLDS = {
-  TPP: { low: 1600, mid: 2400, high: 4800 },
-  PD: { low: 1.6, mid: 3.2, high: 5.92 }
+  TPP: 21000,
+  MEM_BW: 6.5, // TB/s
 };
 
 // Zoom limits
 const ZOOM_LIMITS = {
-  PD: { min: 8, max: 70 },
-  TPP: { min: 5000, max: 110000 }
+  TPP: { min: 5000, max: 110000 },
+  MEM_BW: { min: 5, max: 25 },
 };
 
 // View presets
 const VIEW_PRESETS = {
-  threshold: { maxPD: 10, maxTPP: 6000 },
-  all: { maxPD: 70, maxTPP: 110000 }
+  exception: { maxTPP: 30000, maxMemBW: 10 },
+  all: { maxTPP: 110000, maxMemBW: 25 },
 };
 
-export default function ExportControlScatterPlot({
+// Parse memory bandwidth string like "7.7 TB/s" to numeric 7.7
+const parseMemBW = (str) => {
+  if (!str) return null;
+  const match = str.match(/^([\d.]+)\s*TB\/s/i);
+  return match ? parseFloat(match[1]) : null;
+};
+
+export default function H200ExceptionScatterPlot({
   chipData,
   theme,
   fonts,
   onChipSelect,
   selectedChip
 }) {
-  // Zoom state - controlled by sliders
-  const [maxPD, setMaxPD] = useState(VIEW_PRESETS.all.maxPD);
   const [maxTPP, setMaxTPP] = useState(VIEW_PRESETS.all.maxTPP);
+  const [maxMemBW, setMaxMemBW] = useState(VIEW_PRESETS.all.maxMemBW);
 
-  // Filter chips with valid TPP and PD values
+  // Filter chips with valid TPP and parseable memoryBandwidth
   const validChips = useMemo(() =>
-    chipData.filter(chip => chip.tpp != null && chip.pd != null),
+    chipData
+      .map(chip => ({ ...chip, memBW: parseMemBW(chip.memoryBandwidth) }))
+      .filter(chip => chip.tpp != null && chip.memBW != null),
     [chipData]
   );
 
-  // Group chips by TPP/PD to detect stacked points
-  // Round to 2 decimal places to group chips that are very close together
+  // Group chips by TPP/memBW to detect stacked points
   const chipGroups = useMemo(() => {
     const groups = {};
     validChips.forEach(chip => {
-      // Round TPP to nearest integer and PD to 2 decimal places for grouping
       const roundedTPP = Math.round(chip.tpp);
-      const roundedPD = Math.round(chip.pd * 100) / 100;
-      const key = `${roundedTPP}-${roundedPD}`;
+      const roundedMemBW = Math.round(chip.memBW * 10) / 10;
+      const key = `${roundedTPP}-${roundedMemBW}`;
       if (!groups[key]) {
         groups[key] = [];
       }
@@ -64,14 +70,12 @@ export default function ExportControlScatterPlot({
     return groups;
   }, [validChips]);
 
-  // Helper to get group key for a chip
   const getGroupKey = (chip) => {
     const roundedTPP = Math.round(chip.tpp);
-    const roundedPD = Math.round(chip.pd * 100) / 100;
-    return `${roundedTPP}-${roundedPD}`;
+    const roundedMemBW = Math.round(chip.memBW * 10) / 10;
+    return `${roundedTPP}-${roundedMemBW}`;
   };
 
-  // Create display data with stack info
   const displayChips = useMemo(() => {
     return validChips.map(chip => {
       const key = getGroupKey(chip);
@@ -85,7 +89,6 @@ export default function ExportControlScatterPlot({
     });
   }, [validChips, chipGroups]);
 
-  // Get unique positions (for rendering - avoid duplicate dots)
   const uniquePositions = useMemo(() => {
     const seen = new Set();
     return displayChips.filter(chip => {
@@ -96,64 +99,46 @@ export default function ExportControlScatterPlot({
     });
   }, [displayChips]);
 
-  // Count visible chips
   const visibleChipCount = useMemo(() =>
-    validChips.filter(chip => chip.pd <= maxPD && chip.tpp <= maxTPP).length,
-    [validChips, maxPD, maxTPP]
+    validChips.filter(chip => chip.tpp <= maxTPP && chip.memBW <= maxMemBW).length,
+    [validChips, maxTPP, maxMemBW]
   );
 
-  // Status colors matching the main component
   const statusColors = {
-    controlled: theme.statusExceeds,      // red
-    nacEligible: '#ca8a04',               // amber
-    notControlled: theme.statusBelow,     // green
+    controlled: theme.statusExceeds,
+    nacEligible: '#ca8a04',
+    notControlled: theme.statusBelow,
   };
 
-  // Determine chip control status for coloring
   const getChipColor = (chip) => {
     const status = chip.controlStatus?.toLowerCase() || '';
-
-    // Check for exportable/potentially exportable first (green)
     if (status.includes('exportable') || status.includes('not controlled')) {
       return statusColors.notControlled;
     }
-
-    // Check for NAC/ACA eligible (amber)
     if (status.includes('nac') || status.includes('aca')) {
       return statusColors.nacEligible;
     }
-
-    // Check for controlled (red)
     if (status.includes('controlled')) {
-      return statusColors.controlled;
-    }
-
-    // Default based on TPP/PD thresholds
-    if (chip.tpp >= THRESHOLDS.TPP.high ||
-        (chip.tpp >= THRESHOLDS.TPP.low && chip.pd >= THRESHOLDS.PD.high)) {
       return statusColors.controlled;
     }
     return statusColors.notControlled;
   };
 
-  // Apply preset
   const applyPreset = (preset) => {
-    setMaxPD(VIEW_PRESETS[preset].maxPD);
     setMaxTPP(VIEW_PRESETS[preset].maxTPP);
+    setMaxMemBW(VIEW_PRESETS[preset].maxMemBW);
   };
 
-  // Check if current view matches a preset
   const currentPreset = useMemo(() => {
-    if (maxPD === VIEW_PRESETS.threshold.maxPD && maxTPP === VIEW_PRESETS.threshold.maxTPP) {
-      return 'threshold';
+    if (maxTPP === VIEW_PRESETS.exception.maxTPP && maxMemBW === VIEW_PRESETS.exception.maxMemBW) {
+      return 'exception';
     }
-    if (maxPD === VIEW_PRESETS.all.maxPD && maxTPP === VIEW_PRESETS.all.maxTPP) {
+    if (maxTPP === VIEW_PRESETS.all.maxTPP && maxMemBW === VIEW_PRESETS.all.maxMemBW) {
       return 'all';
     }
     return null;
-  }, [maxPD, maxTPP]);
+  }, [maxTPP, maxMemBW]);
 
-  // Custom tooltip component - shows all stacked chips
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       const chip = payload[0].payload;
@@ -248,8 +233,8 @@ export default function ExportControlScatterPlot({
               <span style={{ color: theme.text }}>{chip.tpp.toLocaleString()}</span>
             </div>
             <div>
-              <span style={{ color: theme.textMuted }}>PD: </span>
-              <span style={{ color: theme.text }}>{chip.pd.toFixed(2)}</span>
+              <span style={{ color: theme.textMuted }}>Mem BW: </span>
+              <span style={{ color: theme.text }}>{chip.memBW} TB/s</span>
             </div>
           </div>
         </div>
@@ -258,7 +243,6 @@ export default function ExportControlScatterPlot({
     return null;
   };
 
-  // Button style
   const getButtonStyle = (isActive) => ({
     padding: '6px 14px',
     fontSize: '12px',
@@ -272,7 +256,6 @@ export default function ExportControlScatterPlot({
     transition: 'all 0.15s ease',
   });
 
-  // Slider container style
   const sliderContainerStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -281,7 +264,6 @@ export default function ExportControlScatterPlot({
     minWidth: '200px',
   };
 
-  // Slider style
   const sliderStyle = {
     flex: 1,
     height: '4px',
@@ -293,7 +275,6 @@ export default function ExportControlScatterPlot({
     cursor: 'pointer',
   };
 
-  // Legend item style
   const legendItemStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -318,13 +299,15 @@ export default function ExportControlScatterPlot({
     border: `1px solid ${color}`,
   });
 
-  // Format TPP for display
   const formatTPP = (value) => {
     if (value >= 1000) {
       return `${(value / 1000).toFixed(0)}k`;
     }
     return value.toString();
   };
+
+  // Use a distinct color for the H200 exception zone
+  const exceptionColor = '#6366f1'; // indigo
 
   return (
     <div style={{
@@ -349,7 +332,7 @@ export default function ExportControlScatterPlot({
           fontFamily: fonts.serif,
           color: theme.text,
         }}>
-          Export Control Threshold Map
+          January 2026 H200 Exception Rules
         </h3>
 
         <div style={{
@@ -390,10 +373,10 @@ export default function ExportControlScatterPlot({
             Presets:
           </span>
           <button
-            onClick={() => applyPreset('threshold')}
-            style={getButtonStyle(currentPreset === 'threshold')}
+            onClick={() => applyPreset('exception')}
+            style={getButtonStyle(currentPreset === 'exception')}
           >
-            Threshold Focus
+            Exception Focus
           </button>
           <button
             onClick={() => applyPreset('all')}
@@ -403,36 +386,7 @@ export default function ExportControlScatterPlot({
           </button>
         </div>
 
-        {/* PD Slider (X-axis) */}
-        <div style={sliderContainerStyle}>
-          <span style={{
-            fontSize: '12px',
-            color: theme.textMuted,
-            fontFamily: fonts.mono,
-            minWidth: '70px',
-          }}>
-            Max PD:
-          </span>
-          <input
-            type="range"
-            min={ZOOM_LIMITS.PD.min}
-            max={ZOOM_LIMITS.PD.max}
-            value={maxPD}
-            onChange={(e) => setMaxPD(Number(e.target.value))}
-            style={sliderStyle}
-          />
-          <span style={{
-            fontSize: '13px',
-            color: theme.text,
-            fontFamily: fonts.mono,
-            minWidth: '40px',
-            textAlign: 'right',
-          }}>
-            {maxPD}
-          </span>
-        </div>
-
-        {/* TPP Slider (Y-axis) */}
+        {/* TPP Slider (X-axis) */}
         <div style={sliderContainerStyle}>
           <span style={{
             fontSize: '12px',
@@ -461,6 +415,36 @@ export default function ExportControlScatterPlot({
             {formatTPP(maxTPP)}
           </span>
         </div>
+
+        {/* Memory BW Slider (Y-axis) */}
+        <div style={sliderContainerStyle}>
+          <span style={{
+            fontSize: '12px',
+            color: theme.textMuted,
+            fontFamily: fonts.mono,
+            minWidth: '70px',
+          }}>
+            Max BW:
+          </span>
+          <input
+            type="range"
+            min={ZOOM_LIMITS.MEM_BW.min}
+            max={ZOOM_LIMITS.MEM_BW.max}
+            step={0.5}
+            value={maxMemBW}
+            onChange={(e) => setMaxMemBW(Number(e.target.value))}
+            style={sliderStyle}
+          />
+          <span style={{
+            fontSize: '13px',
+            color: theme.text,
+            fontFamily: fonts.mono,
+            minWidth: '55px',
+            textAlign: 'right',
+          }}>
+            {maxMemBW} TB/s
+          </span>
+        </div>
       </div>
 
       {/* Chart */}
@@ -472,90 +456,24 @@ export default function ExportControlScatterPlot({
             strokeOpacity={0.5}
           />
 
-          {/* Background regions for control zones */}
-          {/* Not Controlled region (green) - bottom area */}
+          {/* Shaded region: case-by-case licensing permitted (bottom-left) */}
           <ReferenceArea
             x1={0}
-            x2={THRESHOLDS.PD.mid}
+            x2={THRESHOLDS.TPP}
             y1={0}
-            y2={THRESHOLDS.TPP.low}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
-          />
-          <ReferenceArea
-            x1={THRESHOLDS.PD.mid}
-            x2={THRESHOLDS.PD.high}
-            y1={0}
-            y2={THRESHOLDS.TPP.low}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
-          />
-          <ReferenceArea
-            x1={THRESHOLDS.PD.high}
-            x2={maxPD}
-            y1={0}
-            y2={THRESHOLDS.TPP.low}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
-          />
-          {/* Not controlled - left side below NAC zone */}
-          <ReferenceArea
-            x1={0}
-            x2={THRESHOLDS.PD.low}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.high}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
+            y2={THRESHOLDS.MEM_BW}
+            fill={exceptionColor}
+            fillOpacity={0.10}
           />
 
-          {/* NAC/ACA Eligible region (amber) */}
-          {/* .b.1: 2400 <= TPP < 4800 AND 1.6 <= PD < 5.92 */}
-          <ReferenceArea
-            x1={THRESHOLDS.PD.low}
-            x2={THRESHOLDS.PD.high}
-            y1={THRESHOLDS.TPP.mid}
-            y2={THRESHOLDS.TPP.high}
-            fill={statusColors.nacEligible}
-            fillOpacity={0.15}
-          />
-          {/* .b.2: TPP >= 1600 AND 3.2 <= PD < 5.92 */}
-          <ReferenceArea
-            x1={THRESHOLDS.PD.mid}
-            x2={THRESHOLDS.PD.high}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.mid}
-            fill={statusColors.nacEligible}
-            fillOpacity={0.15}
-          />
-
-          {/* License Required region (red) */}
-          {/* .a.1: TPP >= 4800 */}
-          <ReferenceArea
-            x1={0}
-            x2={maxPD}
-            y1={THRESHOLDS.TPP.high}
-            y2={maxTPP}
-            fill={statusColors.controlled}
-            fillOpacity={0.12}
-          />
-          {/* .a.2: TPP >= 1600 AND PD >= 5.92 */}
-          <ReferenceArea
-            x1={THRESHOLDS.PD.high}
-            x2={maxPD}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.high}
-            fill={statusColors.controlled}
-            fillOpacity={0.12}
-          />
-
-          {/* Threshold reference lines - horizontal (TPP) */}
+          {/* Threshold reference lines */}
           <ReferenceLine
-            y={THRESHOLDS.TPP.high}
+            y={THRESHOLDS.MEM_BW}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
-              value: 'TPP 4,800',
+              value: '6.5 TB/s',
               position: 'left',
               fill: theme.textMuted,
               fontSize: 11,
@@ -563,66 +481,12 @@ export default function ExportControlScatterPlot({
             }}
           />
           <ReferenceLine
-            y={THRESHOLDS.TPP.mid}
+            x={THRESHOLDS.TPP}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
-              value: 'TPP 2,400',
-              position: 'left',
-              fill: theme.textMuted,
-              fontSize: 11,
-              fontFamily: fonts.mono,
-            }}
-          />
-          <ReferenceLine
-            y={THRESHOLDS.TPP.low}
-            stroke={theme.textMuted}
-            strokeDasharray="5 5"
-            strokeWidth={1}
-            label={{
-              value: 'TPP 1,600',
-              position: 'left',
-              fill: theme.textMuted,
-              fontSize: 11,
-              fontFamily: fonts.mono,
-            }}
-          />
-
-          {/* Threshold reference lines - vertical (PD) */}
-          <ReferenceLine
-            x={THRESHOLDS.PD.high}
-            stroke={theme.textMuted}
-            strokeDasharray="5 5"
-            strokeWidth={1}
-            label={{
-              value: 'PD 5.92',
-              position: 'top',
-              fill: theme.textMuted,
-              fontSize: 11,
-              fontFamily: fonts.mono,
-            }}
-          />
-          <ReferenceLine
-            x={THRESHOLDS.PD.mid}
-            stroke={theme.textMuted}
-            strokeDasharray="5 5"
-            strokeWidth={1}
-            label={{
-              value: 'PD 3.2',
-              position: 'top',
-              fill: theme.textMuted,
-              fontSize: 11,
-              fontFamily: fonts.mono,
-            }}
-          />
-          <ReferenceLine
-            x={THRESHOLDS.PD.low}
-            stroke={theme.textMuted}
-            strokeDasharray="5 5"
-            strokeWidth={1}
-            label={{
-              value: 'PD 1.6',
+              value: 'TPP 21,000',
               position: 'top',
               fill: theme.textMuted,
               fontSize: 11,
@@ -631,24 +495,6 @@ export default function ExportControlScatterPlot({
           />
 
           <XAxis
-            dataKey="pd"
-            type="number"
-            domain={[0, maxPD]}
-            allowDataOverflow={true}
-            name="PD"
-            tick={{ fill: theme.textMuted, fontSize: 12, fontFamily: fonts.mono }}
-            tickLine={{ stroke: theme.border }}
-            axisLine={{ stroke: theme.border }}
-            label={{
-              value: 'Performance Density (PD)',
-              position: 'bottom',
-              offset: 35,
-              fill: theme.textSecondary,
-              fontSize: 13,
-              fontFamily: fonts.sans,
-            }}
-          />
-          <YAxis
             dataKey="tpp"
             type="number"
             domain={[0, maxTPP]}
@@ -660,6 +506,24 @@ export default function ExportControlScatterPlot({
             tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}
             label={{
               value: 'Total Processing Performance (TPP)',
+              position: 'bottom',
+              offset: 35,
+              fill: theme.textSecondary,
+              fontSize: 13,
+              fontFamily: fonts.sans,
+            }}
+          />
+          <YAxis
+            dataKey="memBW"
+            type="number"
+            domain={[0, maxMemBW]}
+            allowDataOverflow={true}
+            name="Memory BW"
+            tick={{ fill: theme.textMuted, fontSize: 12, fontFamily: fonts.mono }}
+            tickLine={{ stroke: theme.border }}
+            axisLine={{ stroke: theme.border }}
+            label={{
+              value: 'Memory Bandwidth (TB/s)',
               angle: -90,
               position: 'outsideLeft',
               offset: 20,
@@ -684,7 +548,6 @@ export default function ExportControlScatterPlot({
             {uniquePositions.map((chip, index) => {
               const isSelected = chip.stackedChips?.some(c => c.name === selectedChip);
               const isStacked = chip.isStacked;
-              // For stacked chips, use a gradient effect or ring
               const baseRadius = isStacked ? 8 : 6;
               const radius = isSelected ? baseRadius + 2 : baseRadius;
 
@@ -728,16 +591,8 @@ export default function ExportControlScatterPlot({
             Regions:
           </span>
           <div style={legendItemStyle}>
-            <div style={legendBoxStyle(statusColors.controlled, 0.3)}></div>
-            <span>License Required (3A090.a)</span>
-          </div>
-          <div style={legendItemStyle}>
-            <div style={legendBoxStyle(statusColors.nacEligible, 0.4)}></div>
-            <span>NAC/ACA Eligible (3A090.b)</span>
-          </div>
-          <div style={legendItemStyle}>
-            <div style={legendBoxStyle(statusColors.notControlled, 0.3)}></div>
-            <span>Not Controlled</span>
+            <div style={legendBoxStyle(exceptionColor, 0.3)}></div>
+            <span>Case-by-case licensing permitted</span>
           </div>
         </div>
         <div style={{

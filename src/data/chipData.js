@@ -518,11 +518,11 @@ export const chipData = [
     dieArea: "1017 mm² (estimate)",
     processNode: "TSMC N5 or N5P (estimate)",
     hbmCapacity: null,
-    memoryBandwidth: null,
+    memoryBandwidth: "4 TB/s",
     tdp: null,
     controlStatus: "Exportable (special exception)",
     eccn: "3A090.b.2",
-    notes: "NOTE: The MI308 specs are not public, so the TPP and PD listed above are based on assumptions that its performance is “likely to be close[]” to that of the NVIDIA H20. The threshold values should therefore not be taken as accurate. The MI308 is included here for the sake of completeness and to note that this chip—a China-specific CDNA 3 GPU serving essentially the same purpose of providing an export controls-compliant offering for the Chinese market as the H20 served for NVIDIA’s Hopper lineup—was permitted to be exported to China under the same 15% profit-sharing arrangement as the H20.",
+    notes: "NOTE: The MI308 specs are not public, so the TPP, PD, and memory bw listed above are based on assumptions that its performance is “likely to be close[]” to that of the NVIDIA H20. The threshold values should therefore not be taken as accurate. The MI308 is included here for the sake of completeness and to note that this chip—a China-specific CDNA 3 GPU serving essentially the same purpose of providing an export controls-compliant offering for the Chinese market as the H20 served for NVIDIA’s Hopper lineup—was permitted to be exported to China under the same 15% profit-sharing arrangement as the H20.",
     sources: [
     { name: "WCCF TECH (Trump deal, estimated specs)", url: "https://wccftech.com/amd-gears-up-for-a-major-win-as-its-instinct-mi308-nears-export-approval-for-china/" },
     { name: "TechPowerUp (Trump deal)", url: "https://www.techpowerup.com/338945/amd-cleared-to-resume-mi308-ai-gpu-sales-in-china" },    

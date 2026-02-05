@@ -3,6 +3,7 @@ import { chipData } from '../data/chipData';
 import { thresholdHistory } from '../data/thresholdData';
 import { notesContent } from '../data/notesData';
 import ExportControlScatterPlot from './ExportControlScatterPlot';
+import H200ExceptionScatterPlot from './H200ExceptionScatterPlot';
 
 // Clean, editorial theme configurations
 const themes = {
@@ -54,7 +55,6 @@ export default function ChipExportTracker() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [sortConfig, setSortConfig] = useState({ key: 'tpp', direction: 'desc' });
   const [selectedChip, setSelectedChip] = useState(null);
-  const [showInterconnectTooltip, setShowInterconnectTooltip] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const theme = isDarkMode ? themes.dark : themes.light;
@@ -78,8 +78,8 @@ export default function ChipExportTracker() {
         const bStr = bVal ?? '';
         return sortConfig.direction === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
       }
-      // Handle interconnect column - extract numeric value from strings like "3600 GB/s (NVLink)"
-      if (sortConfig.key === 'interconnect') {
+      // Handle memoryBandwidth column - extract numeric value from strings like "22 TB/s"
+      if (sortConfig.key === 'memoryBandwidth') {
         const extractNumber = (val) => {
           if (!val || val === '—') return -Infinity;
           const match = val.match(/^[\d.]+/);
@@ -501,7 +501,7 @@ export default function ChipExportTracker() {
                       { key: 'name', label: 'Chip', width: '24%' },
                       { key: 'tpp', label: 'TPP', width: '14%' },
                       { key: 'pd', label: 'PD', width: '12%' },
-                      { key: 'interconnect', label: 'Interconnect', width: '26%', hasTooltip: true },
+                      { key: 'memoryBandwidth', label: 'Memory Bandwidth', width: '26%' },
                       { key: 'controlStatus', label: 'Status', width: '24%' }
                     ].map(col => (
                       <th
@@ -519,65 +519,17 @@ export default function ChipExportTracker() {
                           cursor: 'pointer',
                           userSelect: 'none',
                           background: theme.bgAlt,
-                          position: col.hasTooltip ? 'relative' : 'static',
+                          position: 'static',
                         }}
                       >
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                           {col.label}
-                          {col.hasTooltip && (
-                            <span
-                              onMouseEnter={() => setShowInterconnectTooltip(true)}
-                              onMouseLeave={() => setShowInterconnectTooltip(false)}
-                              onClick={(e) => e.stopPropagation()}
-                              style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '14px',
-                                height: '14px',
-                                borderRadius: '50%',
-                                border: `1px solid ${theme.textMuted}`,
-                                fontSize: '9px',
-                                color: theme.textMuted,
-                                textTransform: 'lowercase',
-                                cursor: 'help',
-                              }}
-                            >
-                              i
-                            </span>
-                          )}
                           {sortConfig.key === col.key && (
                             <span style={{ opacity: 0.5 }}>
                               {sortConfig.direction === 'asc' ? '↑' : '↓'}
                             </span>
                           )}
                         </span>
-                        {col.hasTooltip && showInterconnectTooltip && (
-                          <div
-                            onClick={(e) => e.stopPropagation()}
-                            style={{
-                              position: 'absolute',
-                              top: '100%',
-                              left: '0',
-                              marginTop: '8px',
-                              width: '340px',
-                              padding: '16px',
-                              background: theme.bgCard,
-                              border: `1px solid ${theme.border}`,
-                              borderRadius: '8px',
-                              boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                              zIndex: 1000,
-                              textTransform: 'none',
-                              letterSpacing: 'normal',
-                              fontWeight: '400',
-                              fontSize: '13px',
-                              lineHeight: '1.6',
-                              color: theme.textSecondary,
-                            }}
-                          >
-                            Interconnect bandwidth (the rate at which chips can transfer data between each other) was used as an export control threshold in the 2022 controls but was removed in 2023 and replaced with PD after Nvidia manipulated interconnect on China-specific chips to circumvent controls. See History tab for more.
-                          </div>
-                        )}
                       </th>
                     ))}
                   </tr>
@@ -635,7 +587,7 @@ export default function ChipExportTracker() {
                           fontSize: '13px',
                           color: theme.textMuted,
                         }}>
-                          {chip.interconnect ? chip.interconnect.toLocaleString() : '—'}
+                          {chip.memoryBandwidth || '—'}
                         </td>
                         <td style={{ padding: '14px 20px' }}>
                           <span style={{
@@ -709,7 +661,7 @@ export default function ChipExportTracker() {
                                   { label: 'Die Area', value: chip.dieArea || '—' },
                                   { label: 'Process Node', value: chip.processNode || '—' },
                                   { label: 'HBM', value: chip.hbmCapacity || '—' },
-                                  { label: 'Memory BW', value: chip.memoryBandwidth || '—' },
+                                  { label: 'Interconnect', value: chip.interconnect || '—' },
                                   { label: 'TDP', value: chip.tdp || '—' },
                                   { label: 'ECCN', value: chip.eccn || '—' },
                                 ].map(item => (
@@ -792,6 +744,13 @@ export default function ChipExportTracker() {
                 </h2>
               </div>
               <ExportControlScatterPlot
+                chipData={chipData}
+                theme={theme}
+                fonts={fonts}
+                onChipSelect={setSelectedChip}
+                selectedChip={selectedChip}
+              />
+              <H200ExceptionScatterPlot
                 chipData={chipData}
                 theme={theme}
                 fonts={fonts}
@@ -1522,7 +1481,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 1/24/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 2/4/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}
