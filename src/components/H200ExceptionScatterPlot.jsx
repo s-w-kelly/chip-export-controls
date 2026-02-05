@@ -322,7 +322,8 @@ export default function H200ExceptionScatterPlot({
 
   // Use a distinct color for the H200 exception zone
   const exceptionColor = '#a855f7'; // purple (case-by-case eligible)
-  const tariffColor = '#3b82f6'; // blue (25% tariff)
+  const tariffColor = '#3b82f6'; // blue (25% tariff dots)
+  const tariffZoneColor = '#a3e635'; // lime green (25% tariff zone shading)
 
   return (
     <div style={{
@@ -489,8 +490,8 @@ export default function H200ExceptionScatterPlot({
               x2={zone.x2}
               y1={zone.y1}
               y2={zone.y2}
-              fill={tariffColor}
-              fillOpacity={0.15}
+              fill={tariffZoneColor}
+              fillOpacity={0.25}
             />
           ))}
 
@@ -623,7 +624,7 @@ export default function H200ExceptionScatterPlot({
             <span>Case-by-case licensing permitted</span>
           </div>
           <div style={legendItemStyle}>
-            <div style={legendBoxStyle(tariffColor, 0.3)}></div>
+            <div style={legendBoxStyle(tariffZoneColor, 0.5)}></div>
             <span>25% Tariff zones</span>
           </div>
         </div>
