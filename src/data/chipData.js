@@ -165,11 +165,12 @@ export const chipData = [
     tdp: "600W",
     controlStatus: "25% Tariff",
     eccn: null,
-    notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
+    notes: "Primary target of the Trump Administration’s January 2026 exceptions for case-by-case review of export licenses to China and Macau, released in conjunction with a Presidential Proclamation announcing a 25% tariff on such exports, which again targeted the H200.",
     sources: [
       { name: "H200 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
       { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
-      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
+      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" },
+      { name: "CNAS (export exception/tariff rule)", url: "https://www.cnas.org/publications/commentary/cnas-insights-unpacking-the-h200-export-policy" },
     ]
   },
   {
@@ -193,11 +194,13 @@ export const chipData = [
     tdp: "700W",
     controlStatus: "25% Tariff",
     eccn: null,
-    notes: "In December 2025, the Trump Administration announced that Nvidia will be allowed to sell H200 chips to China in exchange for a 25% surcharge.",
+    notes: "Primary target of the Trump Administration’s January 2026 exceptions for case-by-case review of export licenses to China and Macau, released in conjunction with a Presidential Proclamation announcing a 25% tariff on such exports, which again targeted the H200.",
     sources: [
       { name: "H200 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
       { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
-      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" }
+      { name: "Semafor (Trump deal)", url: "https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china" },
+      { name: "CNAS (export exception/tariff rule)", url: "https://www.cnas.org/publications/commentary/cnas-insights-unpacking-the-h200-export-policy" },
+
     ]
   },
   {
@@ -549,11 +552,12 @@ export const chipData = [
     tdp: "1000W",
     controlStatus: "25% Tariff",
     eccn: "3A090.a",
-    notes: "—",
+    notes: "The MI325X was targeted along with the NVIDIA H200 as part of the Trump Administration’s January 2026 exceptions for case-by-case review of export licenses to China and Macau, released in conjunction with a Presidential Proclamation announcing a 25% tariff on such exports, which again targeted the MI325X.",
     sources: [
     { name: "MI325X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/instinct-mi325x-datasheet.pdf" },
     { name: "TechPowerUp (die area)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi300x.c4179" },    
     { name: "Tom’s Hardware (process node)", url: "https://www.tomshardware.com/news/amd-cdna-3-mi300-apu" },
+    { name: "CNAS (export exception/tariff rule)", url: "https://www.cnas.org/publications/commentary/cnas-insights-unpacking-the-h200-export-policy" },
   ]
   },
   {

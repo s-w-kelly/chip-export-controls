@@ -15,7 +15,7 @@ export const thresholdHistory = [
   {
     date: "2026",
     summary: "Current status and trends",
-    rule: "",
+    rule: "Revision to License Review Policy for Advanced Computing Commodities, 91 Fed. Reg. 1684 (Jan. 15, 2026)",
     notes: ` 
       <p><strong>H200 Exports</strong></p>  
       <p>While the Trump Administration <a href="https://www.semafor.com/article/12/09/2025/trump-says-nvidia-can-sell-h200-ai-chips-to-china">agreed</a> at the end of 2025 to allow NVIDIA to export H200s to China, in January Chinese authorities <a href="https://chipbriefing.substack.com/p/daily-china-to-limit-h200-chips-basically">told</a> its customs agents not to allow H200s into the country. 
@@ -65,6 +65,7 @@ export const thresholdHistory = [
       Specifically, the bill would give the House Foreign Affairs Committee and the Senate Banking Committee 30 days to review and potentially block licenses issued to export AI chips to China and other countries.
       The legislation was <a href="https://www.congress.gov/bill/119th-congress/house-bill/6875/text">introduced</a> in late 2025 response to the Trump Administration’s approval of H200 exports to China, and the law would also ban exports of Blackwell generation chips, which the Trump Administration has <href="https://ifp.org/the-b30a-decision/">reportedly</a> been considering.
       `,
+    url: "https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities",
   },
   {
     date: "2025",
