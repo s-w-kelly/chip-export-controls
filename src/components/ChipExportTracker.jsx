@@ -465,7 +465,7 @@ export default function ChipExportTracker() {
                     letterSpacing: '0.5px',
                     marginBottom: '8px',
                   }}>
-                    Case-by-case eligible (to China and Macau)
+                    Case-by-case eligible (to China and Macau) (Section 742.6)
                   </div>
                   <div style={{
                     fontSize: '14px',
@@ -495,7 +495,7 @@ export default function ChipExportTracker() {
                     lineHeight: '1.6',
                   }}>
                     <div><strong>Tariff Band 1:</strong> TPP 14,000–17,500 AND Total DRAM Bandwidth 4.5–5 TB/s (targeting NVIDIA H200)</div>
-                    <div><strong>Tariff Band 2:</strong>TPP 20,800–21,100 AND Total DRAM Bandwidth 5.8–6.2 TB/s (targeting AMD MI325X)</div>
+                    <div><strong>Tariff Band 2:</strong> TPP 20,800–21,100 AND Total DRAM Bandwidth 5.8–6.2 TB/s (targeting AMD MI325X)</div>
                   </div>
                 </div>
 

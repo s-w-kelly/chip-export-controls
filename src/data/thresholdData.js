@@ -22,9 +22,10 @@ export const thresholdHistory = [
       Government officals further <a href="https://www.reuters.com/world/china/chinas-customs-agents-told-nvidias-h200-chips-are-not-permitted-sources-say-2026-01-14/">instructed</a> companies not to purchase the chips “unless necessary,”
       and “[t]he wording from the officials is so severe that it is basically a ban for now, though this might change in the future should things evolve.”</p>
       <p>On January 28, Reuters and the Wall Street Journal <a href="https://chipbriefing.substack.com/p/daily-china-approves-h200-chips">independently reported</a> that Beijing had conditionally approved H200 sales to ByteDance, Alibaba, and Tencent, but Nvidia CEO Jensen Huang <a href="https://chipbriefing.substack.com/p/daily-nvidia-says-china-has-not-yet">said</a> his company has received no orders yet.
-      <p>In the meantime, to implement the H200 export agreement, on January 13, the BIS <a href="https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china">announced</a> a rule allowing case-by-case exports of otherwise controlled chips to China and Macau, within which the H200 and AMD MI325X fall. 
+      <p>In the meantime, to implement the H200 export agreement, on January 13 BIS <a href="https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china">announced</a> a rule allowing case-by-case exports of otherwise controlled chips to China and Macau, under which the H200 and AMD MI325X fall. 
       The next day, the White House <a href="https://www.whitehouse.gov/presidential-actions/2026/01/adjusting-imports-of-semiconductors-semiconductor-manufacturing-equipment-and-their-derivative-products-into-the-united-states/">issued</a> a proclamation establishing a 25% tariff on chips within two narrow bands, which target the H200 and MI325X.</p>
-      <p>First, the new <a href="https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities">BIS rule</a> announces that controlled chips (i.e., chips that fall within the preexisting TPP/PD control thresholds)
+      <p>First, the new <a href="https://www.federalregister.gov/documents/2026/01/15/2026-00789/revision-to-license-review-policy-for-advanced-computing-commodities">BIS rule</a> (codified at <a href="https://www.ecfr.gov/current/title-15/part-742/section-742.6#p-742.6(b)(10)(iii)(A)(1)">15 C.F.R. § 742.6(b)(10)(iii)(A)(1)</a>)
+      announces that controlled chips (i.e., chips that fall within the preexisting TPP/PD control thresholds)
       are eligible for case-by-case review of export license applications to China or Macau (rather than the previous presumption of denial treatment) if they fall within a zone defined by TPP and memory bandwidth. Specifically, chips with</p>
       <ul>
         <li>
@@ -34,13 +35,13 @@ export const thresholdHistory = [
           “Total DRAM Bandwidth” < 6,500 GB/s 
         </li>
       </ul>
-      <p>may be eligible for case-by-case license review. Controlled chips with metrics beyond this new range (e.g., NVIDIA Blackwell and Rubin chips) are still controlled and license applications are reviewed with a presumption of denial.</p>
+      <p>may be eligible for case-by-case license review. Controlled chips with metrics beyond this new range (e.g., NVIDIA Blackwell and Rubin chips) are still controlled, and their license applications are reviewed with a presumption of denial.</p>
       <p>Note that TPP/PD still determine whether a chip is controlled in the first place. And only when a chip is deemed controlled do the new TPP/memory bandwidth thresholds and case-by-case exception even apply (uncontrolled chips would not need the exception because they are already exportable).</p>
       <p>Second, the <a href="https://www.whitehouse.gov/presidential-actions/2026/01/adjusting-imports-of-semiconductors-semiconductor-manufacturing-equipment-and-their-derivative-products-into-the-united-states/">Presidential Proclamation</a> sets two “bands” (again defined by TPP and memory bandwidth) within which chips will be subject to a 25% tariff.</p>
       <p>As defined in the <a href="https://www.whitehouse.gov/wp-content/uploads/2026/01/2026SemiConductor.prc_.rel-ANNEX.pdf#page=2">Annex</a> to the Proclamation, the two tariff bands are:</p> 
       <ul>
         <li>
-          (1) TPP 14,000-17,500 AND memory bandwidth 4,500-5,000 GB/s, OR
+          (1) TPP 14,000-17,500 AND memory bandwidth 4,500-5,000 GB/s OR
         </li>
         <li>
           (2) TPP 20,800-21,100 AND memory bandwidth 5,800-6,200 GB/s 

@@ -163,9 +163,9 @@ export const chipData = [
     hbmCapacity: "141 GB HBM3e",
     memoryBandwidth: "4.8 TB/s",
     tdp: "600W",
-    controlStatus: "25% Tariff",
+    controlStatus: "Case-by-case eligible\n(to China and Macau)",
     eccn: null,
-    notes: "Primary target of the Trump Administration’s January 2026 exceptions for case-by-case review of export licenses to China and Macau, released in conjunction with a Presidential Proclamation announcing a 25% tariff on such exports, which again targeted the H200.",
+    notes: "Primary target of the Trump Administration’s January 2026 exceptions for case-by-case review of export licenses to China and Macau, released in conjunction with a Presidential Proclamation announcing a 25% tariff on such exports, which again targeted the H200. Note: The NVL variant technically falls outside of Tariff Band 1 due to lower TPP (stemming from lower arithmetic performance compared to SXM); the BIS Final Rule and Presidential Proclamation reference targeting the “H200” broadly without variant specification, so it is unclear if the NVL will be subject to the 25% tariff as with the SXM.",
     sources: [
       { name: "H200 datasheet (performance, specs)", url: "https://resources.nvidia.com/en-us-data-center-overview/hpc-datasheet-sc23-h200" },
       { name: "NVIDIA Technical Blog (die area and process node)", url: "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" },    
