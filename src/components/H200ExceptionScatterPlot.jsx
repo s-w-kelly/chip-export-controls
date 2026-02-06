@@ -503,7 +503,7 @@ export default function H200ExceptionScatterPlot({
             strokeWidth={1}
             label={{
               value: '6.5 TB/s',
-              position: 'left',
+              position: 'right',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
@@ -536,7 +536,7 @@ export default function H200ExceptionScatterPlot({
             label={{
               value: 'Total Processing Performance (TPP)',
               position: 'bottom',
-              offset: 35,
+              offset: 20,
               fill: theme.textSecondary,
               fontSize: 13,
               fontFamily: fonts.sans,

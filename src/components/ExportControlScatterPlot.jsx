@@ -332,6 +332,7 @@ export default function ExportControlScatterPlot({
       border: `1px solid ${theme.border}`,
       borderRadius: '8px',
       padding: '24px',
+      marginBottom: '24px',
     }}>
       {/* Header */}
       <div style={{
@@ -403,36 +404,7 @@ export default function ExportControlScatterPlot({
           </button>
         </div>
 
-        {/* PD Slider (X-axis) */}
-        <div style={sliderContainerStyle}>
-          <span style={{
-            fontSize: '12px',
-            color: theme.textMuted,
-            fontFamily: fonts.mono,
-            minWidth: '70px',
-          }}>
-            Max PD:
-          </span>
-          <input
-            type="range"
-            min={ZOOM_LIMITS.PD.min}
-            max={ZOOM_LIMITS.PD.max}
-            value={maxPD}
-            onChange={(e) => setMaxPD(Number(e.target.value))}
-            style={sliderStyle}
-          />
-          <span style={{
-            fontSize: '13px',
-            color: theme.text,
-            fontFamily: fonts.mono,
-            minWidth: '40px',
-            textAlign: 'right',
-          }}>
-            {maxPD}
-          </span>
-        </div>
-
-        {/* TPP Slider (Y-axis) */}
+        {/* TPP Slider (X-axis) */}
         <div style={sliderContainerStyle}>
           <span style={{
             fontSize: '12px',
@@ -461,6 +433,35 @@ export default function ExportControlScatterPlot({
             {formatTPP(maxTPP)}
           </span>
         </div>
+
+        {/* PD Slider (Y-axis) */}
+        <div style={sliderContainerStyle}>
+          <span style={{
+            fontSize: '12px',
+            color: theme.textMuted,
+            fontFamily: fonts.mono,
+            minWidth: '70px',
+          }}>
+            Max PD:
+          </span>
+          <input
+            type="range"
+            min={ZOOM_LIMITS.PD.min}
+            max={ZOOM_LIMITS.PD.max}
+            value={maxPD}
+            onChange={(e) => setMaxPD(Number(e.target.value))}
+            style={sliderStyle}
+          />
+          <span style={{
+            fontSize: '13px',
+            color: theme.text,
+            fontFamily: fonts.mono,
+            minWidth: '40px',
+            textAlign: 'right',
+          }}>
+            {maxPD}
+          </span>
+        </div>
       </div>
 
       {/* Chart */}
@@ -473,37 +474,37 @@ export default function ExportControlScatterPlot({
           />
 
           {/* Background regions for control zones */}
-          {/* Not Controlled region (green) - bottom area */}
+          {/* Not Controlled region (green) - left area */}
           <ReferenceArea
+            y1={0}
+            y2={THRESHOLDS.PD.mid}
             x1={0}
-            x2={THRESHOLDS.PD.mid}
-            y1={0}
-            y2={THRESHOLDS.TPP.low}
+            x2={THRESHOLDS.TPP.low}
             fill={statusColors.notControlled}
             fillOpacity={0.08}
           />
           <ReferenceArea
-            x1={THRESHOLDS.PD.mid}
-            x2={THRESHOLDS.PD.high}
-            y1={0}
-            y2={THRESHOLDS.TPP.low}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
-          />
-          <ReferenceArea
-            x1={THRESHOLDS.PD.high}
-            x2={maxPD}
-            y1={0}
-            y2={THRESHOLDS.TPP.low}
-            fill={statusColors.notControlled}
-            fillOpacity={0.08}
-          />
-          {/* Not controlled - left side below NAC zone */}
-          <ReferenceArea
+            y1={THRESHOLDS.PD.mid}
+            y2={THRESHOLDS.PD.high}
             x1={0}
-            x2={THRESHOLDS.PD.low}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.high}
+            x2={THRESHOLDS.TPP.low}
+            fill={statusColors.notControlled}
+            fillOpacity={0.08}
+          />
+          <ReferenceArea
+            y1={THRESHOLDS.PD.high}
+            y2={maxPD}
+            x1={0}
+            x2={THRESHOLDS.TPP.low}
+            fill={statusColors.notControlled}
+            fillOpacity={0.08}
+          />
+          {/* Not controlled - bottom below NAC zone */}
+          <ReferenceArea
+            y1={0}
+            y2={THRESHOLDS.PD.low}
+            x1={THRESHOLDS.TPP.low}
+            x2={THRESHOLDS.TPP.high}
             fill={statusColors.notControlled}
             fillOpacity={0.08}
           />
@@ -511,19 +512,19 @@ export default function ExportControlScatterPlot({
           {/* NAC/ACA Eligible region (amber) */}
           {/* .b.1: 2400 <= TPP < 4800 AND 1.6 <= PD < 5.92 */}
           <ReferenceArea
-            x1={THRESHOLDS.PD.low}
-            x2={THRESHOLDS.PD.high}
-            y1={THRESHOLDS.TPP.mid}
-            y2={THRESHOLDS.TPP.high}
+            y1={THRESHOLDS.PD.low}
+            y2={THRESHOLDS.PD.high}
+            x1={THRESHOLDS.TPP.mid}
+            x2={THRESHOLDS.TPP.high}
             fill={statusColors.nacEligible}
             fillOpacity={0.15}
           />
           {/* .b.2: TPP >= 1600 AND 3.2 <= PD < 5.92 */}
           <ReferenceArea
-            x1={THRESHOLDS.PD.mid}
-            x2={THRESHOLDS.PD.high}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.mid}
+            y1={THRESHOLDS.PD.mid}
+            y2={THRESHOLDS.PD.high}
+            x1={THRESHOLDS.TPP.low}
+            x2={THRESHOLDS.TPP.mid}
             fill={statusColors.nacEligible}
             fillOpacity={0.15}
           />
@@ -531,99 +532,99 @@ export default function ExportControlScatterPlot({
           {/* License Required region (red) */}
           {/* .a.1: TPP >= 4800 */}
           <ReferenceArea
-            x1={0}
-            x2={maxPD}
-            y1={THRESHOLDS.TPP.high}
-            y2={maxTPP}
+            y1={0}
+            y2={maxPD}
+            x1={THRESHOLDS.TPP.high}
+            x2={maxTPP}
             fill={statusColors.controlled}
             fillOpacity={0.12}
           />
           {/* .a.2: TPP >= 1600 AND PD >= 5.92 */}
           <ReferenceArea
-            x1={THRESHOLDS.PD.high}
-            x2={maxPD}
-            y1={THRESHOLDS.TPP.low}
-            y2={THRESHOLDS.TPP.high}
+            y1={THRESHOLDS.PD.high}
+            y2={maxPD}
+            x1={THRESHOLDS.TPP.low}
+            x2={THRESHOLDS.TPP.high}
             fill={statusColors.controlled}
             fillOpacity={0.12}
           />
 
-          {/* Threshold reference lines - horizontal (TPP) */}
+          {/* Threshold reference lines - vertical (TPP) */}
           <ReferenceLine
-            y={THRESHOLDS.TPP.high}
+            x={THRESHOLDS.TPP.high}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'TPP 4,800',
-              position: 'left',
+              position: 'top',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
             }}
           />
           <ReferenceLine
-            y={THRESHOLDS.TPP.mid}
+            x={THRESHOLDS.TPP.mid}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'TPP 2,400',
-              position: 'left',
+              position: 'top',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
             }}
           />
           <ReferenceLine
-            y={THRESHOLDS.TPP.low}
+            x={THRESHOLDS.TPP.low}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'TPP 1,600',
-              position: 'left',
+              position: 'top',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
             }}
           />
 
-          {/* Threshold reference lines - vertical (PD) */}
+          {/* Threshold reference lines - horizontal (PD) */}
           <ReferenceLine
-            x={THRESHOLDS.PD.high}
+            y={THRESHOLDS.PD.high}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'PD 5.92',
-              position: 'top',
+              position: 'right',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
             }}
           />
           <ReferenceLine
-            x={THRESHOLDS.PD.mid}
+            y={THRESHOLDS.PD.mid}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'PD 3.2',
-              position: 'top',
+              position: 'right',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
             }}
           />
           <ReferenceLine
-            x={THRESHOLDS.PD.low}
+            y={THRESHOLDS.PD.low}
             stroke={theme.textMuted}
             strokeDasharray="5 5"
             strokeWidth={1}
             label={{
               value: 'PD 1.6',
-              position: 'top',
+              position: 'right',
               fill: theme.textMuted,
               fontSize: 11,
               fontFamily: fonts.mono,
@@ -631,24 +632,6 @@ export default function ExportControlScatterPlot({
           />
 
           <XAxis
-            dataKey="pd"
-            type="number"
-            domain={[0, maxPD]}
-            allowDataOverflow={true}
-            name="PD"
-            tick={{ fill: theme.textMuted, fontSize: 12, fontFamily: fonts.mono }}
-            tickLine={{ stroke: theme.border }}
-            axisLine={{ stroke: theme.border }}
-            label={{
-              value: 'Performance Density (PD)',
-              position: 'bottom',
-              offset: 35,
-              fill: theme.textSecondary,
-              fontSize: 13,
-              fontFamily: fonts.sans,
-            }}
-          />
-          <YAxis
             dataKey="tpp"
             type="number"
             domain={[0, maxTPP]}
@@ -660,6 +643,24 @@ export default function ExportControlScatterPlot({
             tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}
             label={{
               value: 'Total Processing Performance (TPP)',
+              position: 'bottom',
+              offset: 20,
+              fill: theme.textSecondary,
+              fontSize: 13,
+              fontFamily: fonts.sans,
+            }}
+          />
+          <YAxis
+            dataKey="pd"
+            type="number"
+            domain={[0, maxPD]}
+            allowDataOverflow={true}
+            name="PD"
+            tick={{ fill: theme.textMuted, fontSize: 12, fontFamily: fonts.mono }}
+            tickLine={{ stroke: theme.border }}
+            axisLine={{ stroke: theme.border }}
+            label={{
+              value: 'Performance Density (PD)',
               angle: -90,
               position: 'outsideLeft',
               offset: 20,
