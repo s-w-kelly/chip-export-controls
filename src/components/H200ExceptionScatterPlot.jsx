@@ -32,7 +32,7 @@ const ZOOM_LIMITS = {
 
 // View presets
 const VIEW_PRESETS = {
-  exception: { maxTPP: 30000, maxMemBW: 10 },
+  exception: { maxTPP: 29000, maxMemBW: 8 },
   all: { maxTPP: 110000, maxMemBW: 25 },
 };
 
