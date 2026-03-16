@@ -32,7 +32,7 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "Limited specs and threshold metrics based on intial NVIDIA announcements/blog posts in March 2026. It is unclear if advertised performance figures were dense or sparse and die area is unknown, so TPP/PD should be considered rough estimates.",
     sources: [
-      { name: "Groq 3 LPX technical blog", url: "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/" },
+      { name: "Groq 3 LPX technical blog (performance, specs)", url: "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/" },
       { name: "More than Moore (TDP)", url: "https://morethanmoore.substack.com/p/nvidia-introduces-groq-lp30-and-lpx" },
     ]
   },
@@ -59,7 +59,7 @@ export const chipData = [
     eccn: "3A090.a",
     notes: "Specs and threshold metrics based on intial NVIDIA press releases/blog posts in early 2026. It is unclear if advertised performance figures were dense or sparse (but were assumed sparse in line with NVIDIA tendencies) and die area is unknown, so TPP/PD should be considered rough estimates.",
     sources: [
-      { name: "Vera Rubin platform technical blog", url: "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/#rubin_gpu_execution_engine_for_transformer-era_ai" },
+      { name: "Vera Rubin platform technical blog (performance, specs)", url: "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/#rubin_gpu_execution_engine_for_transformer-era_ai" },
       { name: "Semicon (process node)", url: "https://www.semicone.com/article-179.html" },
     ]
   },
@@ -110,7 +110,7 @@ export const chipData = [
     tdp: "1000W",
     controlStatus: "Controlled",
     eccn: "3A090.a",
-    notes: "While the B300 has identical arithmetic performance for most bit lengths as the B200, Blackwell Ultra improved dense performance for FP4, so the B300 TPP is ~1.6x the B200. For INT8, the official Blackwell Ultra datasheet performance figure appears erroneous and has been exluded from the data above.",
+    notes: "While the B300 has identical arithmetic performance for most bit lengths as the B200, Blackwell Ultra improved dense performance for FP4, so the B300 TPP is ~1.6x the B200. For INT8, the official Blackwell Ultra datasheet performance figure appears erroneous and has been excluded from the data above.",
     sources: [
       { name: "Blackwell Ultra technical brief (performance, specs)", url: "https://resources.nvidia.com/en-us-blackwell-architecture/blackwell-ultra-datasheet?ncid=no-ncid" },
       { name: "Blackwell technical brief (process node)", url: "https://www.tech-odyssey.cn/pdf/nv-gpu/NVIDIA-Blackwell-Architecture-Technical-Overview.pdf#page=6" },
