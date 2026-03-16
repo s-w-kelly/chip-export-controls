@@ -10,6 +10,33 @@
 
 export const chipData = [
   {
+    name: "NVIDIA Groq LP30 (estimate)",
+    manufacturer: "NVIDIA",
+    architecture: "Groq",
+    releaseDate: "2026",
+    tpp: 9600,
+    pd: null,
+    interconnect: "112 GB/s",
+    fp4: null,
+    fp8: 1200,
+    fp16: null,
+    bf16: null,
+    tf32: null,
+    int8: null,
+    dieArea: null,
+    processNode: null,
+    hbmCapacity: "500 MB SRAM",
+    memoryBandwidth: "150 TB/s",
+    tdp: "600 W (estimate)",
+    controlStatus: "Likely Controlled",
+    eccn: "3A090.a",
+    notes: "Limited specs and threshold metrics based on intial NVIDIA announcements/blog posts in March 2026. It is unclear if advertised performance figures were dense or sparse and die area is unknown, so TPP/PD should be considered rough estimates.",
+    sources: [
+      { name: "Groq 3 LPX technical blog", url: "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/" },
+      { name: "More than Moore (TDP)", url: "https://morethanmoore.substack.com/p/nvidia-introduces-groq-lp30-and-lpx" },
+    ]
+  },
+  {
     name: "NVIDIA R100 (estimate)",
     manufacturer: "NVIDIA",
     architecture: "Rubin",
