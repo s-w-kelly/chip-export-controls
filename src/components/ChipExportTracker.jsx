@@ -750,7 +750,7 @@ export default function ChipExportTracker() {
                                   { label: 'INT8 Dense', value: chip.int8 ? `${chip.int8} TOP/s` : '—' },
                                   { label: 'Die Area', value: chip.dieArea || '—' },
                                   { label: 'Process Node', value: chip.processNode || '—' },
-                                  { label: 'HBM', value: chip.hbmCapacity || '—' },
+                                  { label: 'Memory', value: chip.hbmCapacity || '—' },
                                   { label: 'Interconnect', value: chip.interconnect || '—' },
                                   { label: 'TDP', value: chip.tdp || '—' },
                                   { label: 'ECCN', value: chip.eccn || '—' },

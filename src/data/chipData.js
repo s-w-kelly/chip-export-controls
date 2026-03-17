@@ -37,7 +37,7 @@ export const chipData = [
     ]
   },
   {
-    name: "NVIDIA R100 (estimate)",
+    name: "NVIDIA Rubin (estimate)",
     manufacturer: "NVIDIA",
     architecture: "Rubin",
     releaseDate: "2026",
