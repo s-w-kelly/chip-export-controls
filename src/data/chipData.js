@@ -24,7 +24,7 @@ export const chipData = [
     tf32: null,
     int8: null,
     dieArea: null,
-    processNode: null,
+    processNode: "Samsung LP4X",
     hbmCapacity: "500 MB SRAM",
     memoryBandwidth: "150 TB/s",
     tdp: "600 W (estimate)",
@@ -33,7 +33,7 @@ export const chipData = [
     notes: "Limited specs and threshold metrics based on intial NVIDIA announcements/blog posts in March 2026. It is unclear if advertised performance figures were dense or sparse and die area is unknown, so TPP/PD should be considered rough estimates.",
     sources: [
       { name: "Groq 3 LPX technical blog (performance, specs)", url: "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/" },
-      { name: "More than Moore (TDP)", url: "https://morethanmoore.substack.com/p/nvidia-introduces-groq-lp30-and-lpx" },
+      { name: "More than Moore (TDP, process node)", url: "https://morethanmoore.substack.com/p/nvidia-introduces-groq-lp30-and-lpx" },
     ]
   },
   {
