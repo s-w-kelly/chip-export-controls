@@ -25,7 +25,7 @@ export const notesContent = `
         Gregory C. Allen, <a href="https://www.csis.org/analysis/understanding-biden-administrations-updated-export-controls">Understanding the Biden Administration’s Updated Export Controls</a>, CSIS (Dec. 6, 2024)
       </li>
       <li>
-        Hannah Dohmen and Jacob Feldgoise, <a href="https://cset.georgetown.edu/article/bis-2023-update-explainer/">A Bigger Yard, A Higher Fence: Understanding BIS’s Expanded Controls on Advanced Computing Exports</a>, CSET (Dec. 4, 2023)
+        Hanna Dohmen and Jacob Feldgoise, <a href="https://cset.georgetown.edu/article/bis-2023-update-explainer/">A Bigger Yard, A Higher Fence: Understanding BIS’s Expanded Controls on Advanced Computing Exports</a>, CSET (Dec. 4, 2023)
       </li>
       <li>
         Janet Egan and James Sanders, <a href="https://www.cnas.org/publications/commentary/cnas-insights-unpacking-the-h200-export-policy">CNAS Insights | Unpacking the H200 Export Policy</a>, CNAS (Jan. 16, 2026)
