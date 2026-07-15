@@ -1571,7 +1571,7 @@ export default function ChipExportTracker() {
         >
           {/* Left side */}
           <div>
-            Last updated: 5/6/2026 · Unofficial reference tool · Not legal advice
+            Last updated: 7/14/2026 · Unofficial reference tool · Not legal advice
           </div>
 
           {/* Right side */}
