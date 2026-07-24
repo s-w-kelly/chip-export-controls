@@ -476,6 +476,33 @@ export const chipData = [
     ]
   },
   {
+    name: "AMD MI455X",
+    manufacturer: "AMD",
+    architecture: "CDNA 5",
+    releaseDate: "2026",
+    tpp: 161060,
+    pd: 67.11,
+    interconnect: "3600 GB/s",
+    fp4: 40265,
+    fp8: 20133,
+    fp16: 5033,
+    bf16: 5033,
+    tf32: null,
+    int8: 5033,
+    dieArea: "2400 mm² (estimate)",
+    processNode: "TSMC N2/N3P",
+    hbmCapacity: "432 GB HBM4",
+    memoryBandwidth: "23.3 TB/s",
+    tdp: "1400 W",
+    controlStatus: "Controlled",
+    eccn: "3A090.a",
+    notes: "Die area is not publicly available, so the area listed above (and, in turn, the PD) should be taken as estimates.",
+    sources: [
+      { name: "MI455X datasheet (performance, specs)", url: "https://www.amd.com/content/dam/amd/en/documents/products/accelerators/instinct/amd-instinct-mi455x_brochure.pdf" },    
+      { name: "TechPowerUp (TDP)", url: "https://www.techpowerup.com/gpu-specs/radeon-instinct-mi455x.c4423" }, 
+    ]
+  },  
+  {
     name: "AMD MI355X",
     manufacturer: "AMD",
     architecture: "CDNA 4",
