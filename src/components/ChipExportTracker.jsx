@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { chipData } from '../data/chipData';
 import { thresholdHistory } from '../data/thresholdData';
 import { notesContent } from '../data/notesData';
@@ -52,10 +52,27 @@ const fonts = {
 };
 
 export default function ChipExportTracker() {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const validTabs = ['dashboard', 'calculator', 'methodology', 'history', 'notes'];
+  const getTabFromHash = () => {
+    const hash = window.location.hash.replace('#', '');
+    return validTabs.includes(hash) ? hash : 'dashboard';
+  };
+  const [activeTab, setActiveTab] = useState(getTabFromHash);
+
+  // Keep the URL hash in sync with the active tab, and respond to back/forward
+  useEffect(() => {
+    const onHashChange = () => setActiveTab(getTabFromHash());
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  const selectTab = (tab) => {
+    window.location.hash = tab;
+    setActiveTab(tab);
+  };
   const [sortConfig, setSortConfig] = useState({ key: 'tpp', direction: 'desc' });
   const [selectedChip, setSelectedChip] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const theme = isDarkMode ? themes.dark : themes.light;
 
@@ -256,10 +273,10 @@ export default function ChipExportTracker() {
           display: 'flex',
           gap: '4px',
         }}>
-          {['dashboard', 'calculator', 'methodology', 'history', 'notes'].map(tab => (
+          {validTabs.map(tab => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => selectTab(tab)}
               style={{
                 padding: '12px 16px',
                 background: activeTab === tab ? theme.accentBg : 'transparent',
