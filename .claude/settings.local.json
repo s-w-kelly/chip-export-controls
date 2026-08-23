@@ -10,7 +10,14 @@
       "Bash(npm install:*)",
       "Bash(timeout:*)",
       "mcp__ide__getDiagnostics",
-      "WebFetch(domain:www.cnas.org)"
+      "WebFetch(domain:www.cnas.org)",
+      "WebSearch",
+      "WebFetch(domain:www.hklaw.com)",
+      "WebFetch(domain:www.ecfr.gov)",
+      "WebFetch(domain:www.law.cornell.edu)",
+      "WebFetch(domain:www.pillsburylaw.com)",
+      "WebFetch(domain:www.gao.gov)",
+      "WebFetch(domain:www.chinatalk.media)"
     ]
   }
 }
