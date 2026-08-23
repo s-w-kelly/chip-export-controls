@@ -237,7 +237,7 @@ export default function ChipExportTracker() {
               color: theme.textMuted,
               margin: '4px 0 0',
             }}>
-              Tools for tracking and undestanding AI chip export controls
+              Tools for tracking and understanding AI chip export controls
             </p>
           </div>
 

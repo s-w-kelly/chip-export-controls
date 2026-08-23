@@ -17,7 +17,19 @@
       "WebFetch(domain:www.law.cornell.edu)",
       "WebFetch(domain:www.pillsburylaw.com)",
       "WebFetch(domain:www.gao.gov)",
-      "WebFetch(domain:www.chinatalk.media)"
+      "WebFetch(domain:www.chinatalk.media)",
+      "Skill(artifact-design)",
+      "Artifact",
+      "Bash(npx vite *)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(npm i *)",
+      "Bash(node \"C:/Users/yelle/AppData/Local/Temp/claude/C--Users-yelle-OneDrive-desktop-projects-export-controls-project/6cfd4db9-fc6a-4e5d-8338-12436af13451/scratchpad/drive.mjs\")",
+      "Bash(cp \"C:/Users/yelle/AppData/Local/Temp/claude/C--Users-yelle-OneDrive-desktop-projects-export-controls-project/6cfd4db9-fc6a-4e5d-8338-12436af13451/scratchpad/drive.mjs\" \"C:/Users/yelle/OneDrive/desktop/projects/export-controls-project/_drive_tmp.mjs\")",
+      "Bash(node _drive_tmp.mjs)",
+      "Bash(rm -f _drive_tmp.mjs)",
+      "Bash(npm rm *)",
+      "Bash(powershell -Command 'Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like '\\\\''*vite preview*4319*'\\\\'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }')",
+      "Bash(git checkout *)"
     ]
   }
 }
